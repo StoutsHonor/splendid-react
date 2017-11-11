@@ -1,8 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 import App from './App';
+import {ConnectedRouter} from 'react-router-redux';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render (
+  <Provider store={createStore}>
+    <ConnectedRouter>
+      <App />
+    </ConnectedRouter>
+  </Provider>,
+  document.getElementById('root')
+);
 registerServiceWorker();
