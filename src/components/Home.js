@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
-import {withRouter} from "react-router"
-import {connect} from "react-redux";
+import {Link} from 'react-router-dom';
 
 class Home extends Component {
 
   render() {
     return (
       <div>
-        This is the Home Page
+        <li><Link to='/create-game'>Create Game</Link></li>
+        <li><Link to='/join-game'>Join Game</Link></li>
+        <li><Link to='/leaderboard'>Leaderboard</Link></li>
+        <li><Link to='/game-screen'>Game Screen Shortcut</Link></li>
       </div>
     )
   }
 }
 
-export default withRouter(connect()(Home))
+export default Home;
