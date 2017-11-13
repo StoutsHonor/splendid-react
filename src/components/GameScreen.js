@@ -10,23 +10,34 @@ export default class GameScreen extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        whiteCoins: 0,
-        blueCoins: 0,
-        greenCoins: 0,
-        redCoins: 0,
-        blackCoins: 0,
+        whiteCoins: 7,
+        blueCoins: 7,
+        greenCoins: 7,
+        redCoins: 7,
+        blackCoins: 7,
         goldCoins: 5,
-        LvlOneCards: [],
-        LvlTwoCards: [],
-        LvlThreeCards: []
+        levelOneCards: [],
+        levelTwoCards: [],
+        levelThreeCards: []
       }
     }
   
     render() {
       return (
         <div>
-          <CardsDisplay/>
-          <CoinDisplay/>
+          <CardsDisplay 
+            levelOneCards={this.state.levelOneCards} 
+            levelTwoCards={this.state.levelTwoCards} 
+            levelThreeCards={this.state.levelThreeCards}
+          />
+          <CoinsDisplay
+            whiteCoins={this.state.whiteCoins}
+            blueCoins={this.state.blueCoins}
+            greenCoins={this.state.greenCoins}
+            redCoins={this.state.redCoins}
+            blackCoins={this.state.blackCoins}
+            goldCoins={this.state.goldCoins}
+          />
           <PlayerItems/>
           <GameButtons/>
         </div>
