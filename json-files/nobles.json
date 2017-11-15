@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "white": null,
+    "blue": null,
+    "green": 3,
+    "red": 3,
+    "black": 3
+  },
+  {
+    "id": 2,
+    "white": 3,
+    "blue": 3,
+    "green": 3,
+    "red": null,
+    "black": null
+  },
+  {
+    "id": 3,
+    "white": 3,
+    "blue": 3,
+    "green": null,
+    "red": null,
+    "black": 3
+  },
+  {
+    "id": 4,
+    "white": null,
+    "blue": 3,
+    "green": 3,
+    "red": 3,
+    "black": null
+  },
+  {
+    "id": 5,
+    "white": 3,
+    "blue": null,
+    "green": null,
+    "red": 3,
+    "black": 3
+  },
+  {
+    "id": 6,
+    "white": 4,
+    "blue": 4,
+    "green": null,
+    "red": null,
+    "black": null
+  },
+  {
+    "id": 7,
+    "white": null,
+    "blue": null,
+    "green": 4,
+    "red": 4,
+    "black": null
+  },
+  {
+    "id": 8,
+    "white": null,
+    "blue": null,
+    "green": null,
+    "red": 4,
+    "black": 4
+  },
+  {
+    "id": 9,
+    "white": null,
+    "blue": 4,
+    "green": 4,
+    "red": null,
+    "black": null
+  },
+  {
+    "id": 10,
+    "white": 4,
+    "blue": null,
+    "green": null,
+    "red": null,
+    "black": 4
+  }
+]
