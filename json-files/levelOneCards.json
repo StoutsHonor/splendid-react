@@ -1,0 +1,402 @@
+[
+  {
+    "id": 1,
+    "persist": "green",
+    "white": null,
+    "blue": null,
+    "green": null,
+    "red": null,
+    "black": 4,
+    "points": 1
+  },
+  {
+    "id": 2,
+    "persist": "green",
+    "white": 1,
+    "blue": 1,
+    "green": null,
+    "red": 1,
+    "black": 1,
+    "points": null
+  },
+  {
+    "id": 3,
+    "persist": "blue",
+    "white": null,
+    "blue": null,
+    "green": null,
+    "red": 4,
+    "black": null,
+    "points": 1
+  },
+  {
+    "id": 4,
+    "persist": "green",
+    "white": 2,
+    "blue": 1,
+    "green": null,
+    "red": null,
+    "black": null,
+    "points": null
+  },
+  {
+    "id": 5,
+    "persist": "white",
+    "white": null,
+    "blue": 2,
+    "green": 2,
+    "red": null,
+    "black": 1,
+    "points": null
+  },
+  {
+    "id": 6,
+    "persist": "black",
+    "white": null,
+    "blue": null,
+    "green": null,
+    "red": 1,
+    "black": 3,
+    "points": 1
+  },
+  {
+    "id": 7,
+    "persist": "red",
+    "white": 4,
+    "blue": null,
+    "green": null,
+    "red": null,
+    "black": null,
+    "points": 1
+  },
+  {
+    "id": 8,
+    "persist": "red",
+    "white": 1,
+    "blue": 1,
+    "green": 1,
+    "red": null,
+    "black": 1,
+    "points": null
+  },
+  {
+    "id": 9,
+    "persist": "green",
+    "white": 1,
+    "blue": 3,
+    "green": 1,
+    "red": null,
+    "black": null,
+    "points": null
+  },
+  {
+    "id": 10,
+    "persist": "red",
+    "white": 2,
+    "blue": null,
+    "green": null,
+    "red": 2,
+    "black": null,
+    "points": null
+  },
+  {
+    "id": 11,
+    "persist": "black",
+    "white": 2,
+    "blue": null,
+    "green": 2,
+    "red": null,
+    "black": null,
+    "points": null
+  },
+  {
+    "id": 12,
+    "persist": "red",
+    "white": 2,
+    "blue": 1,
+    "green": 1,
+    "red": null,
+    "black": 1,
+    "points": null
+  },
+  {
+    "id": 13,
+    "persist": "green",
+    "white": null,
+    "blue": null,
+    "green": null,
+    "red": 3,
+    "black": null,
+    "points": null
+  },
+  {
+    "id": 14,
+    "persist": "red",
+    "white": 1,
+    "blue": null,
+    "green": null,
+    "red": 1,
+    "black": 3,
+    "points": null
+  },
+  {
+    "id": 15,
+    "persist": "blue",
+    "white": 1,
+    "blue": null,
+    "green": 2,
+    "red": 2,
+    "black": null,
+    "points": null
+  },
+  {
+    "id": 16,
+    "persist": "white",
+    "white": null,
+    "blue": 2,
+    "green": null,
+    "red": null,
+    "black": 2,
+    "points": null
+  },
+  {
+    "id": 17,
+    "persist": "black",
+    "white": 2,
+    "blue": 2,
+    "green": null,
+    "red": 1,
+    "black": null,
+    "points": null
+  },
+  {
+    "id": 18,
+    "persist": "blue",
+    "white": ,
+    "blue": ,
+    "green": 2,
+    "red": ,
+    "black": 2,
+    "points": null
+  },
+  {
+    "id": 19,
+    "persist": "blue",
+    "white": null,
+    "blue": null,
+    "green": null,
+    "red": null,
+    "black": 3,
+    "points": null
+  },
+  {
+    "id": 20,
+    "persist": "red",
+    "white": null,
+    "blue": 2,
+    "green": 1,
+    "red": null,
+    "black": null,
+    "points": null
+  },
+  {
+    "id": 21,
+    "persist": "white",
+    "white": null,
+    "blue": 3,
+    "green": null,
+    "red": null,
+    "black": null,
+    "points": null
+  },
+  {
+    "id": 22,
+    "persist": "white",
+    "white": null,
+    "blue": 1,
+    "green": 2,
+    "red": 1,
+    "black": 1,
+    "points": null
+  },
+  {
+    "id": 23,
+    "persist": "white",
+    "white": 3,
+    "blue": 1,
+    "green": null,
+    "red": null,
+    "black": 1,
+    "points": null
+  },
+  {
+    "id": 24,
+    "persist": "black",
+    "white": 1,
+    "blue": 2,
+    "green": 1,
+    "red": 1,
+    "black": null,
+    "points": null
+  },
+  {
+    "id": 25,
+    "persist": "green",
+    "white": 1,
+    "blue": 1,
+    "green": null,
+    "red": 1,
+    "black": 2,
+    "points": null
+  },
+  {
+    "id": 26,
+    "persist": "white",
+    "white": null,
+    "blue": null,
+    "green": null,
+    "red": 2,
+    "black": 1,
+    "points": null
+  },
+  {
+    "id": 27,
+    "persist": "green",
+    "white": null,
+    "blue": 2,
+    "green": null,
+    "red": 2,
+    "black": null,
+    "points": null
+  },
+  {
+    "id": 28,
+    "persist": "blue",
+    "white": 1,
+    "blue": null,
+    "green": null,
+    "red": null,
+    "black": 2,
+    "points": null
+  },
+  {
+    "id": 29,
+    "persist": "blue",
+    "white": null,
+    "blue": 1,
+    "green": 3,
+    "red": 1,
+    "black": null,
+    "points": null
+  },
+  {
+    "id": 30,
+    "persist": "red",
+    "white": 2,
+    "blue": null,
+    "green": 1,
+    "red": null,
+    "black": 2,
+    "points": null
+  },
+  {
+    "id": 31,
+    "persist": "blue",
+    "white": 1,
+    "blue": null,
+    "green": 1,
+    "red": 1,
+    "black": 1,
+    "points": null
+  },
+  {
+    "id": 32,
+    "persist": "blue",
+    "white": 1,
+    "blue": null,
+    "green": 1,
+    "red": 2,
+    "black": 1,
+    "points": null
+  },
+  {
+    "id": 33,
+    "persist": "black",
+    "white": null,
+    "blue": null,
+    "green": 3,
+    "red": null,
+    "black": null,
+    "points": null
+  },
+  {
+    "id": 34,
+    "persist": "black",
+    "white": null,
+    "blue": null,
+    "green": 2,
+    "red": 1,
+    "black": null,
+    "points": null
+  },
+  {
+    "id": 35,
+    "persist": "black",
+    "white": 1,
+    "blue": 1,
+    "green": 1,
+    "red": 1,
+    "black": null,
+    "points": null
+  },
+  {
+    "id": 36,
+    "persist": "black",
+    "white": null,
+    "blue": 4,
+    "green": null,
+    "red": null,
+    "black": null,
+    "points": 1
+  },
+  {
+    "id": 37,
+    "persist": "green",
+    "white": null,
+    "blue": 1,
+    "green": null,
+    "red": 2,
+    "black": 2,
+    "points": null
+  },
+  {
+    "id": 38,
+    "persist": "white",
+    "white": null,
+    "blue": null,
+    "green": 4,
+    "red": null,
+    "black": null,
+    "points": 1
+  },
+  {
+    "id": 39,
+    "persist": "white",
+    "white": null,
+    "blue": 1,
+    "green": 1,
+    "red": 1,
+    "black": 1,
+    "points": null
+  },
+  {
+    "id": 40,
+    "persist": "red",
+    "white": 3,
+    "blue": null,
+    "green": null,
+    "red": null,
+    "black": null,
+    "points": null
+  }
+]
