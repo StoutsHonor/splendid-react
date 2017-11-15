@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "persist": "black",
+    "white": null,
+    "blue": null,
+    "green": null,
+    "red": 7,
+    "black": 3,
+    "points": 5
+  },
+  {
+    "id": 2,
+    "persist": "blue",
+    "white": 7,
+    "blue": 3,
+    "green": null,
+    "red": null,
+    "black": null,
+    "points": 5
+  },
+  {
+    "id": 3,
+    "persist": "white",
+    "white": 3,
+    "blue": null,
+    "green": null,
+    "red": null,
+    "black": 7,
+    "points": 5
+  },
+  {
+    "id": 4,
+    "persist": "blue",
+    "white": 3,
+    "blue": null,
+    "green": 3,
+    "red": 3,
+    "black": 5,
+    "points": 3
+  },
+  {
+    "id": 5,
+    "persist": "white",
+    "white": 3,
+    "blue": null,
+    "green": null,
+    "red": 3,
+    "black": 6,
+    "points": 4
+  },
+  {
+    "id": 6,
+    "persist": "black",
+    "white": null,
+    "blue": null,
+    "green": 3,
+    "red": 6,
+    "black": 3,
+    "points": 4
+  },
+  {
+    "id": 7,
+    "persist": "green",
+    "white": 3,
+    "blue": 6,
+    "green": 3,
+    "red": null,
+    "black": null,
+    "points": 4
+  },
+  {
+    "id": 8,
+    "persist": "green",
+    "white": null,
+    "blue": 7,
+    "green": null,
+    "red": null,
+    "black": null,
+    "points": 4
+  },
+  {
+    "id": 9,
+    "persist": "red",
+    "white": null,
+    "blue": null,
+    "green": 7,
+    "red": 3,
+    "black": null,
+    "points": 5
+  },
+  {
+    "id": 10,
+    "persist": "white",
+    "white": null,
+    "blue": null,
+    "green": null,
+    "red": null,
+    "black": 7,
+    "points": 4
+  },
+  {
+    "id": 11,
+    "persist": "red",
+    "white": null,
+    "blue": 3,
+    "green": 6,
+    "red": 3,
+    "black": null,
+    "points": 4
+  },
+  {
+    "id": 12,
+    "persist": "green",
+    "white": null,
+    "blue": 7,
+    "green": 3,
+    "red": null,
+    "black": null,
+    "points": 5
+  },
+  {
+    "id": 13,
+    "persist": "red",
+    "white": 3,
+    "blue": 5,
+    "green": 3,
+    "red": null,
+    "black": 3,
+    "points": 3
+  },
+  {
+    "id": 14,
+    "persist": "white",
+    "white": null,
+    "blue": 3,
+    "green": 3,
+    "red": 5,
+    "black": 3,
+    "points": 3
+  },
+  {
+    "id": 15,
+    "persist": "blue",
+    "white": 7,
+    "blue": null,
+    "green": null,
+    "red": null,
+    "black": null,
+    "points": 4
+  },
+  {
+    "id": 16,
+    "persist": "green",
+    "white": 5,
+    "blue": 3,
+    "green": null,
+    "red": 3,
+    "black": 3,
+    "points": 3
+  },
+  {
+    "id": 17,
+    "persist": "blue",
+    "white": 6,
+    "blue": 3,
+    "green": null,
+    "red": null,
+    "black": 3,
+    "points": 4
+  },
+  {
+    "id": 18,
+    "persist": "black",
+    "white": 3,
+    "blue": 3,
+    "green": 5,
+    "red": 3,
+    "black": null,
+    "points": 3
+  },
+  {
+    "id": 19,
+    "persist": "red",
+    "white": null,
+    "blue": null,
+    "green": 7,
+    "red": null,
+    "black": null,
+    "points": 4
+  },
+  {
+    "id": 20,
+    "persist": "black",
+    "white": null,
+    "blue": null,
+    "green": null,
+    "red": 7,
+    "black": null,
+    "points": 4
+  }
+]
