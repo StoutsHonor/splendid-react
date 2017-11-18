@@ -8,20 +8,20 @@ class GameButtons extends Component {
       <div>
         <Button 
           bsClass="btn btn-w-m btn-default pull-left">
-          <i className="fa fa-arrow-left"></i> Back To Home
+          <i className="fa fa-arrow-left"/> Back To Home
         </Button>
         <ButtonGroup bsClass="text-center">
           <Button 
             bsClass="btn btn-w-m btn-success">
-            <i className="fa fa-superpowers"></i> Collect Coins
+            <i className="fa fa-superpowers"/> Collect Coins
           </Button>
           <Button 
             bsClass="btn btn-w-m btn-success">
-            <i className="fa fa-money"></i> Purchase Card
+            <i className="fa fa-money"/> Purchase Card
           </Button>
           <Button 
             bsClass="btn btn-w-m btn-success">
-            <i className="fa fa-lock"></i> Reserve Card
+            <i className="fa fa-lock"/> Reserve Card
           </Button>
         </ButtonGroup>
       </div>
