@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Panel, Grid, Row, Col, Image} from 'react-bootstrap';
 
 class CardsDisplay extends Component {
   constructor(props) {
@@ -18,8 +19,11 @@ class CardsDisplay extends Component {
 
   render() {
     return (
-      <div>
-        Cards Display
+      <div className="text-center">
+          <span className="col-lg-3">level 3 card</span>
+          <span className="col-lg-3">level 3 card</span>
+          <span className="col-lg-3">level 3 card</span>
+          <span className="col-lg-3">level 3 card</span>
       </div>
     )
   }
