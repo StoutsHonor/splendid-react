@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Panel, Image} from 'react-bootstrap';
 
 class CardsDisplay extends Component {
   constructor(props) {
@@ -18,8 +19,25 @@ class CardsDisplay extends Component {
 
   render() {
     return (
-      <div>
-        Cards Display
+      <div className="text-center">
+        <Panel header="Level 3 Cards">
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
+        </Panel>
+        <Panel header="Level 2 Cards">
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
+        </Panel>
+        <Panel header="Level 1 Cards">
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
+        </Panel>
       </div>
     )
   }
