@@ -1,11 +1,16 @@
 import React, {Component} from 'react';
+import {Panel, Image} from 'react-bootstrap';
 
 class NoblesDisplay extends Component {
 
   render() {
     return (
-      <div>
-        Nobles Display
+      <div className="text-center">
+        <Panel header="Nobles">
+          {this.props.nobles.map(noble => {
+            return <Image className="col-sm-2" src="http://nerdyraptor.net/wp-content/uploads/2014/10/Noble.jpg" thumbnail/>
+          })}
+        </Panel>
       </div>
     )
   }
