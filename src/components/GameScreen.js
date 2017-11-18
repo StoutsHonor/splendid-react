@@ -4,6 +4,7 @@ import CardsDisplay from './gameplay_components/CardsDisplay';
 import GameButtons from './gameplay_components/GameButtons';
 import CoinsDisplay from './gameplay_components/CoinsDisplay';
 import PlayerItems from './gameplay_components/PlayerItems';
+import OpponentsInfo from './gameplay_components/OpponentsInfo';
 import nobles from '../json_files/nobles';
 import levelOneCards from '../json_files/levelOneCards';
 import levelTwoCards from '../json_files/levelTwoCards';
@@ -41,6 +42,7 @@ export default class GameScreen extends Component {
         <div>
           <GameButtons/>
           <PlayerItems/>
+          <OpponentsInfo/>
           <CoinsDisplay
             whiteCoins={this.state.whiteCoins}
             blueCoins={this.state.blueCoins}
