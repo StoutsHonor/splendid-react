@@ -39,12 +39,8 @@ export default class GameScreen extends Component {
     render() {
       return (
         <div>
-          <NoblesDisplay nobles={this.state.nobles}/>
-          <CardsDisplay 
-            levelOneCards={this.state.levelOneCards} 
-            levelTwoCards={this.state.levelTwoCards} 
-            levelThreeCards={this.state.levelThreeCards}
-          />
+          <GameButtons/>
+          <PlayerItems/>
           <CoinsDisplay
             whiteCoins={this.state.whiteCoins}
             blueCoins={this.state.blueCoins}
@@ -53,7 +49,12 @@ export default class GameScreen extends Component {
             blackCoins={this.state.blackCoins}
             goldCoins={this.state.goldCoins}
           />
-          <PlayerItems/>
+          <CardsDisplay 
+            levelOneCards={this.state.levelOneCards} 
+            levelTwoCards={this.state.levelTwoCards} 
+            levelThreeCards={this.state.levelThreeCards}
+          />
+          <NoblesDisplay nobles={this.state.nobles}/>
           <GameButtons/>
         </div>
       )

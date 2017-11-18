@@ -21,10 +21,10 @@ class CardsDisplay extends Component {
     return (
       <div className="text-center">
         <Panel header="Level 3 Cards">
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card8.jpg" thumbnail/></span>
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card8.jpg" thumbnail/></span>
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card8.jpg" thumbnail/></span>
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card8.jpg" thumbnail/></span>
         </Panel>
         <Panel header="Level 2 Cards">
           <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
@@ -33,10 +33,10 @@ class CardsDisplay extends Component {
           <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
         </Panel>
         <Panel header="Level 1 Cards">
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card6.jpg" thumbnail/></span>
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card6.jpg" thumbnail/></span>
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card6.jpg" thumbnail/></span>
+          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card6.jpg" thumbnail/></span>
         </Panel>
       </div>
     )
