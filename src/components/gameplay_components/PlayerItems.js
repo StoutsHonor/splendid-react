@@ -6,7 +6,7 @@ class PlayerItems extends Component {
   render() {
     return (
       <div>
-        <Panel>
+        <Panel onClick={this.props.toggleModalDetails} style={{cursor:"pointer"}}>
           <div className="col-sm-3">
             Points: 9
           </div>

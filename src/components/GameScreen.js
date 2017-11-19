@@ -16,6 +16,7 @@ export default class GameScreen extends Component {
   
     constructor(props) {
       super(props);
+      this.toggleModalDetails = this.toggleModalDetails.bind(this);
       this.state = {
         showModalDetails: false,
         whiteCoins: 0,
@@ -53,31 +54,38 @@ export default class GameScreen extends Component {
         blackCoins: coin
       })
     }
+
+    toggleModalDetails() {
+      this.setState({showModalDetails: !this.state.showModalDetails});
+    }
   
     render() {
       return (
         <div>
-          {this.state.showModalDetails ?
-            <Modal.Dialog>
-            <Modal.Header>
-              <Modal.Title>Modal title</Modal.Title>
+          <Modal 
+            {...this.props} 
+            bsSize="large" 
+            aria-labelledby="contained-modal-title-sm"
+            show={this.state.showModalDetails}
+            onHide={this.toggleModalDetails}>
+            <Modal.Header closeButton>
+              <Modal.Title id="contained-modal-title-sm">Modal heading</Modal.Title>
             </Modal.Header>
-      
             <Modal.Body>
-              One fine body...
+              <h4>Wrapped Text</h4>
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
             </Modal.Body>
-      
             <Modal.Footer>
-              <Button>Close</Button>
-              <Button bsStyle="primary">Save changes</Button>
+              <Button onClick={this.toggleModalDetails}>Close</Button>
             </Modal.Footer>
-      
-          </Modal.Dialog>
-          : null
-          }
+          </Modal>
+          
           <GameButtons/>
-          <PlayerItems/>
-          <OpponentsInfo/>
+          <PlayerItems toggleModalDetails={this.toggleModalDetails}/>
+          <OpponentsInfo toggleModalDetails={this.toggleModalDetails}/>
           <CoinsDisplay
             whiteCoins={this.state.whiteCoins}
             blueCoins={this.state.blueCoins}

@@ -6,7 +6,10 @@ class OpponentsInfo extends Component {
   render() {
     return (
       <Panel>
-        <div className="col-sm-4">
+        <div 
+          className="col-lg-4" 
+          onClick={this.props.toggleModalDetails}
+          style={{cursor:"pointer"}}>
           <div className="row">Player 2:</div>
           <div className="row"><i className="fa fa-bolt">6</i></div>
           <div className="row">
@@ -27,7 +30,10 @@ class OpponentsInfo extends Component {
           <div className="row"><i className="fa fa-lock">2</i></div>
         </div>
 
-        <div className="col-sm-4">
+        <div 
+          className="col-lg-4" 
+          onClick={this.props.toggleModalDetails}
+          style={{cursor:"pointer"}}>
           <div className="row">Player 3:</div>
           <div className="row"><i className="fa fa-bolt">6</i></div>
           <div className="row">
@@ -48,7 +54,10 @@ class OpponentsInfo extends Component {
           <div className="row"><i className="fa fa-lock">2</i></div>
         </div>
 
-        <div className="col-sm-4">
+        <div 
+          className="col-lg-4" 
+          onClick={this.props.toggleModalDetails}
+          style={{cursor:"pointer"}}>
           <div className="row">Player 4:</div>
           <div className="row"><i className="fa fa-bolt">6</i></div>
           <div className="row">
