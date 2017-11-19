@@ -6,6 +6,7 @@ import GameButtons from './gameplay_components/GameButtons';
 import CoinsDisplay from './gameplay_components/CoinsDisplay';
 import PlayerItems from './gameplay_components/PlayerItems';
 import OpponentsInfo from './gameplay_components/OpponentsInfo';
+import ModalDetails from './modals/ModalDetails';
 import nobles from '../json_files/nobles';
 import levelOneCards from '../json_files/levelOneCards';
 import levelTwoCards from '../json_files/levelTwoCards';
@@ -62,27 +63,10 @@ export default class GameScreen extends Component {
     render() {
       return (
         <div>
-          <Modal 
-            {...this.props} 
-            bsSize="large" 
-            aria-labelledby="contained-modal-title-sm"
-            show={this.state.showModalDetails}
-            onHide={this.toggleModalDetails}>
-            <Modal.Header closeButton>
-              <Modal.Title id="contained-modal-title-sm">Modal heading</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <h4>Wrapped Text</h4>
-              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button onClick={this.toggleModalDetails}>Close</Button>
-            </Modal.Footer>
-          </Modal>
-          
+          <ModalDetails
+            showModalDetails={this.state.showModalDetails}
+            toggleModalDetails={this.toggleModalDetails}
+          />
           <GameButtons/>
           <PlayerItems toggleModalDetails={this.toggleModalDetails}/>
           <OpponentsInfo toggleModalDetails={this.toggleModalDetails}/>

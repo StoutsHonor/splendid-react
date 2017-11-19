@@ -8,7 +8,7 @@ class PlayerItems extends Component {
       <div>
         <Panel onClick={this.props.toggleModalDetails} style={{cursor:"pointer"}}>
           <div className="col-sm-3">
-            Points: 9
+            <i className="fa fa-bolt"/> Points: 9
           </div>
           <div className="col-sm-3">
             Buying Power: 
@@ -28,7 +28,7 @@ class PlayerItems extends Component {
             <i className="fa fa-certificate" style={{color:'black'}}>5</i>
           </div>
           <div className="col-sm-3">
-            Cards Reserved: 2
+            <i className="fa fa-lock"/> Cards Reserved: 2
           </div>
         </Panel>
       </div>
