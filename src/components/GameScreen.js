@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Modal, Button} from 'react-bootstrap';
 import NoblesDisplay from './gameplay_components/NoblesDisplay';
 import CardsDisplay from './gameplay_components/CardsDisplay';
 import GameButtons from './gameplay_components/GameButtons';
@@ -16,11 +17,12 @@ export default class GameScreen extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        whiteCoins: 7,
-        blueCoins: 7,
-        greenCoins: 7,
-        redCoins: 7,
-        blackCoins: 7,
+        showModalDetails: false,
+        whiteCoins: 0,
+        blueCoins: 0,
+        greenCoins: 0,
+        redCoins: 0,
+        blackCoins: 0,
         goldCoins: 5,
         nobles: [],
         levelOneCards: [],
@@ -35,11 +37,44 @@ export default class GameScreen extends Component {
       this.setState({levelOneCards: Random.randomizeArray(levelOneCards)});
       this.setState({levelOneCards: Random.randomizeArray(levelTwoCards)});
       this.setState({levelOneCards: Random.randomizeArray(levelThreeCards)});
+      let coin;
+      if(this.state.players === 2) {
+        coin = 4;
+      } else if(this.state.players === 3) {
+        coin = 5;
+      } else {
+        coin = 7;
+      }
+      this.setState({
+        whiteCoins: coin, 
+        blueCoins: coin,
+        greenCoins: coin,
+        redCoins: coin,
+        blackCoins: coin
+      })
     }
   
     render() {
       return (
         <div>
+          {this.state.showModalDetails ?
+            <Modal.Dialog>
+            <Modal.Header>
+              <Modal.Title>Modal title</Modal.Title>
+            </Modal.Header>
+      
+            <Modal.Body>
+              One fine body...
+            </Modal.Body>
+      
+            <Modal.Footer>
+              <Button>Close</Button>
+              <Button bsStyle="primary">Save changes</Button>
+            </Modal.Footer>
+      
+          </Modal.Dialog>
+          : null
+          }
           <GameButtons/>
           <PlayerItems/>
           <OpponentsInfo/>

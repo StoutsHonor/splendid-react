@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {Router, Switch, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import history from './history';
@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <BrowserRouter history={history}>
+        <Router history={history}>
           <Switch>
             <Route exact path='/' component={Home}/>
             <Route exact path='/login' component={Login}/>
@@ -26,7 +26,7 @@ class App extends Component {
             <Route exact path='/leaderboard' component={Leaderboard}/>
             <Route exact path='/waiting-room' component={WaitingRoom}/>
           </Switch>
-        </BrowserRouter>
+        </Router>
       </div>
     );
   }
