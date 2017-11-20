@@ -46,7 +46,7 @@ export default class GameScreen extends Component {
         coin = 7;
       }
       this.setState({
-        whiteCoins: coin, 
+        whiteCoins: 2, 
         blueCoins: coin,
         greenCoins: coin,
         redCoins: coin,
@@ -87,12 +87,13 @@ export default class GameScreen extends Component {
           <CoinsDisplay
             isPlayerTurn = {this.state.isPlayerTurn}
             adjustCoins={this.adjustCoins}
-            whiteCoins={this.state.whiteCoins}
-            blueCoins={this.state.blueCoins}
-            greenCoins={this.state.greenCoins}
-            redCoins={this.state.redCoins}
-            blackCoins={this.state.blackCoins}
-            goldCoins={this.state.goldCoins}
+            coins={[this.state.whiteCoins,
+              this.state.blueCoins,
+              this.state.greenCoins,
+              this.state.redCoins,
+              this.state.blackCoins,
+              this.state.goldCoins
+            ]}
           />
           <CardsDisplay
             toggleModalCard={this.toggleModalCard}
