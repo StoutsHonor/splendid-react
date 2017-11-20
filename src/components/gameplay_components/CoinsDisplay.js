@@ -23,8 +23,8 @@ class CoinsDisplay extends Component {
     this.setState({showButtons: false});
   }
 
-  updateSelectedCoins(color) {
-    let coins = this.state.selectedCoins;
+  updateSelectedCoins(color, colorIndex) {
+    const coins = this.state.selectedCoins;
     const duplicateCheck = (a) => {
       for(let i = 0; i < a.length; i++) {
         for(let x = i; x < a.length; x++) {
@@ -35,65 +35,68 @@ class CoinsDisplay extends Component {
         return false
       }
     }
-    if(coins.length < 3 && !duplicateCheck(coins)) {
-      if(!coins.includes(color) || coins.length < 2) {
-        this.setState({selectedCoins: coins.concat(color)});
+    if(coins.length < 3 && !duplicateCheck(coins) && this.props.coins[colorIndex]) {
+      if(!coins.includes(color) || coins.length < 2 || this.props.coins[colorIndex] > 2) {
+        let displayColor = color;
+        if(color === 'white') {displayColor = 'gray'}
+        this.setState({selectedCoins: coins.concat(displayColor)});
       }
     }
   }
 
   render() {
+    console.log(this.props.coins, 'coins')
     return (
       <div>
         <div>
           <Panel
             style={{cursor:'pointer'}}
             onClick={() => { this.toggleButtonsOn();
-              this.updateSelectedCoins('gray');
+              this.updateSelectedCoins('white', 0);
             }} 
             className="col-sm-2 text-center" 
             header={<i className="fa fa-bandcamp fa-2x" style={{color:'gray'}}/>}>
-            {this.props.whiteCoins}
+            {this.props.coins[0]}
           </Panel>
           <Panel
             style={{cursor:'pointer'}}
             onClick={() => { this.toggleButtonsOn();
-              this.updateSelectedCoins('blue');
+              this.updateSelectedCoins('blue', 1);
             }} 
             className="col-sm-2 text-center"
             header={<i className="fa fa-bandcamp fa-2x" style={{color:'blue'}}/>}
             bsStyle="primary">
-            {this.props.blueCoins}
+            {this.props.coins[1]}
           </Panel>
           <Panel
             style={{cursor:'pointer'}}
             onClick={() => { this.toggleButtonsOn();
-              this.updateSelectedCoins('green');
+              this.updateSelectedCoins('green', 2);
             }} 
             className="col-sm-2 text-center" 
             header={<i className="fa fa-bandcamp fa-2x" style={{color:'green'}}/>}
             bsStyle="success">
-            {this.props.greenCoins}
+            {this.props.coins[2]}
           </Panel>
           <Panel
             style={{cursor:'pointer'}}
             onClick={() => { this.toggleButtonsOn();
-              this.updateSelectedCoins('red');
+              this.updateSelectedCoins('red', 3);
             }} 
             className="col-sm-2 text-center" 
             header={<i className="fa fa-bandcamp fa-2x" style={{color:'red'}}/>}
             bsStyle="danger">
-            {this.props.redCoins}
+            {this.props.coins[3]}
           </Panel>
           <Panel
             style={{cursor:'pointer'}}
             onClick={() => { this.toggleButtonsOn();
-              this.updateSelectedCoins('black');
+              this.updateSelectedCoins('black', 4);
             }} 
             className="col-sm-2 text-center" 
             header={<i className="fa fa-bandcamp fa-2x" style={{color:'black'}}/>} 
             bsStyle="default">
-            {this.props.blackCoins}
+            {this.props.coins[4]}
           </Panel>
           <Panel
             style={{cursor:'pointer'}}
@@ -101,7 +104,7 @@ class CoinsDisplay extends Component {
             className="col-sm-2 text-center" 
             header={<i className="fa fa-bandcamp fa-2x" style={{color:'#DAA520'}}/>}
             bsStyle="warning">
-            {this.props.goldCoins}
+            {this.props.coins[5]}
           </Panel>
         </div>
         { this.state.selectedCoins.length > 0 ?
