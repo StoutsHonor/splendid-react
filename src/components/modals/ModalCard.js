@@ -19,13 +19,13 @@ export default class ModalCard extends Component {
         </Modal.Body>
         <Modal.Footer>
           <Button 
-            className="pull-left"
+            className="btn btn-w-m btn-danger pull-left"
             onClick={this.props.toggleModalCard}>Close</Button>
           <Button
-            bsClass="btn-w-m btn-warning"
+            bsClass="btn btn-w-m btn-warning"
             onClick={this.props.toggleModalCard}>Reserve Card</Button>
           <Button
-            bsClass="btn-w-m btn-success"
+            bsClass="btn btn-w-m btn-success"
             onClick={this.props.toggleModalCard}>Buy Card</Button>
         </Modal.Footer>
       </Modal>
