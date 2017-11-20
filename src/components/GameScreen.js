@@ -82,7 +82,6 @@ export default class GameScreen extends Component {
             showModalCard={this.state.showModalCard}
             toggleModalCard={this.toggleModalCard}
           />
-          <GameButtons/>
           <PlayerItems toggleModalDetails={this.toggleModalDetails}/>
           <OpponentsInfo toggleModalDetails={this.toggleModalDetails}/>
           <CoinsDisplay

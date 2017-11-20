@@ -27,40 +27,51 @@ class CoinsDisplay extends Component {
             style={{cursor:'pointer'}}
             onClick={this.toggleButtonsOn} 
             className="col-sm-2 text-center" 
-            header="White">{this.props.whiteCoins}
+            header={<i className="fa fa-bandcamp fa-2x" style={{color:'gray'}}/>}>
+            {this.props.whiteCoins}
           </Panel>
           <Panel
             style={{cursor:'pointer'}}
             onClick={this.toggleButtonsOn} 
             className="col-sm-2 text-center"
-            header="Blue" bsStyle="primary">{this.props.blueCoins}
+            header={<i className="fa fa-bandcamp fa-2x" style={{color:'blue'}}/>}
+            sStyle="primary">
+            {this.props.blueCoins}
           </Panel>
           <Panel
             style={{cursor:'pointer'}}
             onClick={this.toggleButtonsOn} 
             className="col-sm-2 text-center" 
-            header="Green" bsStyle="success">{this.props.greenCoins}
+            header={<i className="fa fa-bandcamp fa-2x" style={{color:'green'}}/>}
+            bsStyle="success">
+            {this.props.greenCoins}
           </Panel>
           <Panel
             style={{cursor:'pointer'}}
             onClick={this.toggleButtonsOn} 
             className="col-sm-2 text-center" 
-            header="Red" bsStyle="danger">{this.props.redCoins}
+            header={<i className="fa fa-bandcamp fa-2x" style={{color:'red'}}/>}            bsStyle="danger">
+            {this.props.redCoins}
           </Panel>
           <Panel
             style={{cursor:'pointer'}}
             onClick={this.toggleButtonsOn} 
             className="col-sm-2 text-center" 
-            header="Black" bsStyle="default">{this.props.blackCoins}
+            header={<i className="fa fa-bandcamp fa-2x" style={{color:'black'}}/>} 
+            bsStyle="default">
+            {this.props.blackCoins}
           </Panel>
           <Panel
             style={{cursor:'pointer'}}
             onClick={this.toggleButtonsOn} 
             className="col-sm-2 text-center" 
-            header="Gold" bsStyle="warning">{this.props.goldCoins}
+            header={<i className="fa fa-bandcamp fa-2x" style={{color:'#DAA520'}}/>}
+            bsStyle="warning">
+            {this.props.goldCoins}
           </Panel>
         </div>
-        { this.state.showButtons ?
+        
+        { this.state.showButtons && this.props.isPlayerTurn ?
           <div className="text-center">
             <ButtonGroup>
               <Button 
