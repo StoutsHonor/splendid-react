@@ -12,11 +12,11 @@ class CoinsDisplay extends Component {
   }
 
   toggleButtonsOn() {
-    this.setState({showButtons: true});
+    this.props.isPlayerTurn ? this.setState({showButtons: true}) : null;
   }
 
   toggleButtonsOff() {
-    this.setState({showButtons: false});
+    this.props.isPlayerTurn ? this.setState({showButtons: false}) : null;
   }
 
   render() {
@@ -24,31 +24,37 @@ class CoinsDisplay extends Component {
       <div>
         <div>
           <Panel
+            style={{cursor:'pointer'}}
             onClick={this.toggleButtonsOn} 
             className="col-sm-2 text-center" 
             header="White">{this.props.whiteCoins}
           </Panel>
           <Panel
+            style={{cursor:'pointer'}}
             onClick={this.toggleButtonsOn} 
-            className="col-sm-2 text-center" 
+            className="col-sm-2 text-center"
             header="Blue" bsStyle="primary">{this.props.blueCoins}
           </Panel>
           <Panel
+            style={{cursor:'pointer'}}
             onClick={this.toggleButtonsOn} 
             className="col-sm-2 text-center" 
             header="Green" bsStyle="success">{this.props.greenCoins}
           </Panel>
           <Panel
+            style={{cursor:'pointer'}}
             onClick={this.toggleButtonsOn} 
             className="col-sm-2 text-center" 
             header="Red" bsStyle="danger">{this.props.redCoins}
           </Panel>
           <Panel
+            style={{cursor:'pointer'}}
             onClick={this.toggleButtonsOn} 
             className="col-sm-2 text-center" 
             header="Black" bsStyle="default">{this.props.blackCoins}
           </Panel>
           <Panel
+            style={{cursor:'pointer'}}
             onClick={this.toggleButtonsOn} 
             className="col-sm-2 text-center" 
             header="Gold" bsStyle="warning">{this.props.goldCoins}

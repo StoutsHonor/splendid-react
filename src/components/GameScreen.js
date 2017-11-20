@@ -23,11 +23,11 @@ export default class GameScreen extends Component {
       this.adjustCoins = this.adjustCoins.bind(this);
       this.handleClickCard = this.handleClickCard.bind(this);
       this.state = {
+        players: 4, isPlayerTurn: true,
         showModalDetails: false, showModalCard: false,
         whiteCoins: 0, blueCoins: 0, greenCoins: 0, redCoins: 0, blackCoins: 0, goldCoins: 5,
         nobles: [],
         levelOneCards: [], levelTwoCards: [], levelThreeCards: [],
-        players: 4,
         selectedCard: {}
       }
     }
@@ -86,6 +86,7 @@ export default class GameScreen extends Component {
           <PlayerItems toggleModalDetails={this.toggleModalDetails}/>
           <OpponentsInfo toggleModalDetails={this.toggleModalDetails}/>
           <CoinsDisplay
+            isPlayerTurn = {this.state.isPlayerTurn}
             adjustCoins={this.adjustCoins}
             whiteCoins={this.state.whiteCoins}
             blueCoins={this.state.blueCoins}
