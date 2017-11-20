@@ -27,7 +27,6 @@ class CardsDisplay extends Component {
               style={{cursor: 'pointer'}}
               onClick={() => {
                 this.props.handleClickCard(this.state.levelThreeDisplay[0])
-                console.log('card is clicked');
               }}
               thumbnail/></span>
           <span className="col-lg-3">

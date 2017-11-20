@@ -89,6 +89,7 @@ export default class GameScreen extends Component {
             goldCoins={this.state.goldCoins}
           />
           <CardsDisplay
+            toggleModalCard={this.toggleModalCard}
             handleClickCard={this.handleClickCard} 
             levelOneCards={this.state.levelOneCards} 
             levelTwoCards={this.state.levelTwoCards} 
