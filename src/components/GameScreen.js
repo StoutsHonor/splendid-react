@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Modal, Button} from 'react-bootstrap';
+import {} from 'react-bootstrap';
 import NoblesDisplay from './gameplay_components/NoblesDisplay';
 import CardsDisplay from './gameplay_components/CardsDisplay';
 import GameButtons from './gameplay_components/GameButtons';
@@ -7,6 +7,7 @@ import CoinsDisplay from './gameplay_components/CoinsDisplay';
 import PlayerItems from './gameplay_components/PlayerItems';
 import OpponentsInfo from './gameplay_components/OpponentsInfo';
 import ModalDetails from './modals/ModalDetails';
+import ModalCard from './modals/ModalCard';
 import nobles from '../json_files/nobles';
 import levelOneCards from '../json_files/levelOneCards';
 import levelTwoCards from '../json_files/levelTwoCards';
@@ -18,19 +19,15 @@ export default class GameScreen extends Component {
     constructor(props) {
       super(props);
       this.toggleModalDetails = this.toggleModalDetails.bind(this);
+      this.toggleModalCard = this.toggleModalCard.bind(this);
+      this.handleClickCard = this.handleClickCard.bind(this);
       this.state = {
-        showModalDetails: false,
-        whiteCoins: 0,
-        blueCoins: 0,
-        greenCoins: 0,
-        redCoins: 0,
-        blackCoins: 0,
-        goldCoins: 5,
+        showModalDetails: false, showModalCard: false,
+        whiteCoins: 0, blueCoins: 0, greenCoins: 0, redCoins: 0, blackCoins: 0, goldCoins: 5,
         nobles: [],
-        levelOneCards: [],
-        levelTwoCards: [],
-        levelThreeCards: [],
-        players: 4
+        levelOneCards: [], levelTwoCards: [], levelThreeCards: [],
+        players: 4,
+        selectedCard: {}
       }
     }
 
@@ -59,6 +56,15 @@ export default class GameScreen extends Component {
     toggleModalDetails() {
       this.setState({showModalDetails: !this.state.showModalDetails});
     }
+
+    toggleModalCard() {
+      this.setState({showModalCard: !this.state.showModalCard});
+    }
+
+    handleClickCard(card) {
+      this.setState({selectedCard: card});
+      this.toggleModalCard();
+    }
   
     render() {
       return (
@@ -66,6 +72,10 @@ export default class GameScreen extends Component {
           <ModalDetails
             showModalDetails={this.state.showModalDetails}
             toggleModalDetails={this.toggleModalDetails}
+          />
+          <ModalCard
+            showModalCard={this.state.showModalCard}
+            toggleModalCard={this.toggleModalCard}
           />
           <GameButtons/>
           <PlayerItems toggleModalDetails={this.toggleModalDetails}/>
@@ -78,7 +88,9 @@ export default class GameScreen extends Component {
             blackCoins={this.state.blackCoins}
             goldCoins={this.state.goldCoins}
           />
-          <CardsDisplay 
+          <CardsDisplay
+            toggleModalCard={this.toggleModalCard}
+            handleClickCard={this.handleClickCard} 
             levelOneCards={this.state.levelOneCards} 
             levelTwoCards={this.state.levelTwoCards} 
             levelThreeCards={this.state.levelThreeCards}

@@ -21,22 +21,84 @@ class CardsDisplay extends Component {
     return (
       <div className="text-center">
         <Panel header="Level 3 Cards">
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card8.jpg" thumbnail/></span>
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card8.jpg" thumbnail/></span>
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card8.jpg" thumbnail/></span>
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card8.jpg" thumbnail/></span>
+          <span className="col-lg-3">
+            <Image 
+              src="http://www.spacecowboys.fr/img/games/splendor/cards/card8.jpg" 
+              style={{cursor: 'pointer'}}
+              onClick={() => {
+                this.props.handleClickCard(this.state.levelThreeDisplay[0])
+              }}
+              thumbnail/></span>
+          <span className="col-lg-3">
+            <Image 
+              src="http://www.spacecowboys.fr/img/games/splendor/cards/card8.jpg" 
+              style={{cursor: 'pointer'}}
+              onClick={() => this.props.handleClickCard(this.state.levelThreeDisplay[1])}
+              thumbnail/></span>
+          <span className="col-lg-3">
+            <Image 
+              src="http://www.spacecowboys.fr/img/games/splendor/cards/card8.jpg" 
+              style={{cursor: 'pointer'}}
+              onClick={() => this.props.handleClickCard(this.state.levelThreeDisplay[2])}
+              thumbnail/></span>
+          <span className="col-lg-3">
+            <Image 
+              src="http://www.spacecowboys.fr/img/games/splendor/cards/card8.jpg" 
+              style={{cursor: 'pointer'}}
+              onClick={() => this.props.handleClickCard(this.state.levelThreeDisplay[3])}
+              thumbnail/></span>
         </Panel>
         <Panel header="Level 2 Cards">
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" thumbnail/></span>
+          <span className="col-lg-3">
+            <Image 
+              src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" 
+              style={{cursor: 'pointer'}}
+              onClick={() => this.props.handleClickCard(this.state.levelTwoDisplay[0])}
+              thumbnail/></span>
+          <span className="col-lg-3">
+            <Image 
+              src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" 
+              style={{cursor: 'pointer'}}
+              onClick={() => this.props.handleClickCard(this.state.levelTwoDisplay[1])}
+              thumbnail/></span>
+          <span className="col-lg-3">
+            <Image 
+              src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" 
+              style={{cursor: 'pointer'}}
+              onClick={() => this.props.handleClickCard(this.state.levelTwoDisplay[2])}
+              thumbnail/></span>
+          <span className="col-lg-3">
+            <Image 
+              src="http://www.spacecowboys.fr/img/games/splendor/cards/card1.jpg" 
+              style={{cursor: 'pointer'}}
+              onClick={() => this.props.handleClickCard(this.state.levelTwoDisplay[3])}
+              thumbnail/></span>
         </Panel>
         <Panel header="Level 1 Cards">
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card6.jpg" thumbnail/></span>
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card6.jpg" thumbnail/></span>
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card6.jpg" thumbnail/></span>
-          <span className="col-lg-3"><Image src="http://www.spacecowboys.fr/img/games/splendor/cards/card6.jpg" thumbnail/></span>
+          <span className="col-lg-3">
+            <Image 
+              src="http://www.spacecowboys.fr/img/games/splendor/cards/card6.jpg" 
+              style={{cursor: 'pointer'}}
+              onClick={() => this.props.handleClickCard(this.state.levelOneDisplay[0])}
+              thumbnail/></span>
+          <span className="col-lg-3">
+            <Image 
+              src="http://www.spacecowboys.fr/img/games/splendor/cards/card6.jpg" 
+              style={{cursor: 'pointer'}}
+              onClick={() => this.props.handleClickCard(this.state.levelOneDisplay[1])}
+              thumbnail/></span>
+          <span className="col-lg-3">
+            <Image 
+              src="http://www.spacecowboys.fr/img/games/splendor/cards/card6.jpg" 
+              style={{cursor: 'pointer'}}
+              onClick={() => this.props.handleClickCard(this.state.levelOneDisplay[2])}
+              thumbnail/></span>
+          <span className="col-lg-3">
+            <Image 
+              src="http://www.spacecowboys.fr/img/games/splendor/cards/card6.jpg" 
+              style={{cursor: 'pointer'}}
+              onClick={() => this.props.handleClickCard(this.state.levelOneDisplay[3])}
+              thumbnail/></span>
         </Panel>
       </div>
     )
