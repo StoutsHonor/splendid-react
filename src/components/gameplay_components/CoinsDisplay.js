@@ -29,14 +29,15 @@ class CoinsDisplay extends Component {
       for(let i = 0; i < a.length; i++) {
         for(let x = i; x < a.length; x++) {
           if(x !== i && a[x] === a[i]) {
-            return true
+            return true;
           }
         }
-        return false
+        return false;
       }
     }
+    if(this.props.coins[colorIndex] <= 2 && coins.includes(color)) {return;};
     if(coins.length < 3 && !duplicateCheck(coins) && this.props.coins[colorIndex]) {
-      if(!coins.includes(color) || coins.length < 2 || this.props.coins[colorIndex] > 2) {
+      if(!coins.includes(color) || coins.length < 2) {
         let displayColor = color;
         if(color === 'white') {displayColor = 'gray'}
         this.setState({selectedCoins: coins.concat(displayColor)});
@@ -46,6 +47,8 @@ class CoinsDisplay extends Component {
 
   render() {
     console.log(this.props.coins, 'coins')
+    let selected;
+    if(this.state.selectedCoins.length > 0){selected = this.state.selectedCoins.replace(/white/i, 'gray');}
     return (
       <div>
         <div>
@@ -107,9 +110,9 @@ class CoinsDisplay extends Component {
             {this.props.coins[5]}
           </Panel>
         </div>
-        { this.state.selectedCoins.length > 0 ?
+        { selected ?
           <div className="text-center">
-            {this.state.selectedCoins.map((value, key) => {
+            {selected.map((value, key) => {
               return <i className="fa fa-bandcamp fa-4x" style={{color: value}} key={key}/>
             })}
           </div>: null
