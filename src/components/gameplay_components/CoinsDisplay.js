@@ -35,7 +35,12 @@ class CoinsDisplay extends Component {
         return false;
       }
     }
-    if(this.props.coins[colorIndex] <= 2 && coins.includes(color)) {return;};
+    console.log(this.props.coins[colorIndex], 'coins remaing')
+    console.log(coins, 'current coin')
+    if(this.props.coins[colorIndex] <= 2) {
+      if(coins.includes(color)) {return;}
+      else if(color === 'white' && coins.includes('gray')) {return;}
+    }
     if(coins.length < 3 && !duplicateCheck(coins) && this.props.coins[colorIndex]) {
       if(!coins.includes(color) || coins.length < 2) {
         let displayColor = color;
@@ -48,7 +53,7 @@ class CoinsDisplay extends Component {
   render() {
     console.log(this.props.coins, 'coins')
     let selected;
-    if(this.state.selectedCoins.length > 0){selected = this.state.selectedCoins.replace(/white/i, 'gray');}
+    this.state.selectedCoins.length > 0 ? selected = this.state.selectedCoins.join(' ').replace('white', 'gray').split(' ') : null;
     return (
       <div>
         <div>
