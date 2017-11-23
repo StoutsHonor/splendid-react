@@ -18,7 +18,7 @@ export default class Card extends Component {
   }
 
   convertStyle(style) {
-    if(style === 'white' || style ==='black') { return 'gray'}
+    if(style === 'white' || style ==='black') { return 'default'}
     if(style === 'blue') { return 'primary'}
     if(style === 'green') { return 'success'}
     if(style === 'red') { return 'danger'}
@@ -26,7 +26,10 @@ export default class Card extends Component {
 
   render() {
     return (
-      <Panel className='col-sm-3' 
+      <Panel className='col-sm-2'
+        onClick={() => {
+          this.props.handleClickCard(this.props.level, this.props.index);
+        }}
         header={
           <div>
             <i className="fa fa-superpowers fa-3x"/>
@@ -34,7 +37,7 @@ export default class Card extends Component {
           </div>
         } 
         bsStyle={this.convertStyle(this.props.card.persist)} 
-        style={{backgroundColor: this.convertColor(this.props.card.persist), height: 250}}>
+        style={{backgroundColor: this.convertColor(this.props.card.persist), height: 250, marginLeft: 10, cursor: 'pointer'}}>
         <div>
           {this.props.card.white ? <div><i className="fa fa-bandcamp fa-2x" style={{color:'gray'}}>{this.props.card.white}</i></div> : null }
           {this.props.card.blue ? <div><i className="fa fa-bandcamp fa-2x" style={{color:'blue'}}>{this.props.card.blue}</i></div> : null }
@@ -46,19 +49,3 @@ export default class Card extends Component {
     )
   }
 }
-
-
-{/* <div className="card col-md-3" 
-  style={{
-    width: 175, 
-    height: 250, 
-    backgroundColor: this.props.card.persist, 
-    border: 9, 
-    borderColor: 'yellow'
-  }}>
-  <img className="card-img-top" src="..." alt="Card image cap"/>
-  <div className="card-block">
-    <h4 className="card-title">Card title</h4>
-    <p className="card-text">Card Content</p>
-  </div>
-</div> */}

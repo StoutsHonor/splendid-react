@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Router, Switch, Route} from 'react-router-dom';
-import {Provider} from 'react-redux';
-import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {} from 'react-redux';
+import {} from 'redux';
 import history from './history';
 
 import CreateGame from './components/CreateGame';
