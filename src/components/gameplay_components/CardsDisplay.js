@@ -20,24 +20,25 @@ class CardsDisplay extends Component {
     console.log(this.props.levelThreeCards, 'level 3 cards')
     return (
       <div className="text-center">
+      <div className="text-center">
         <Panel header="Level 3 Cards">
           {this.props.levelThreeCards ?
             this.props.levelThreeCards.slice(0,4).map((card, key) => { 
-              return <Card className="col-sm-3" card={card} key={key}/>
+              return <Card card={card} key={key} toggleModalCard={this.props.toggleModalCard}/>
             }) : null }
         </Panel>
-
+          </div>
         <Panel header="Level 2 Cards">
           {this.props.levelTwoCards ?
             this.props.levelTwoCards.slice(0,4).map((card, key) => { 
-              return <Card className="col-sm-3" card={card} key={key}/>
+              return <Card card={card} key={key} toggleModalCard={this.props.toggleModalCard}/>
             }) : null }
         </Panel>
         
-        <Panel header="Level ` Cards">
+        <Panel header="Level 1 Cards">
           {this.props.levelOneCards ?
             this.props.levelOneCards.slice(0,4).map((card, key) => { 
-              return <Card className="col-sm-3" card={card} key={key}/>
+              return <Card card={card} key={key} toggleModalCard={this.props.toggleModalCard}/>
             }) : null }
         </Panel>
       </div>

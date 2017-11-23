@@ -26,7 +26,11 @@ export default class Card extends Component {
 
   render() {
     return (
-      <Panel className='col-sm-3' 
+      <Panel className='col-sm-2'
+        onClick={() => {
+          this.props.toggleModalCard(3, this.props.card.id);
+          console.log(this.props.card.id, 'card id');
+        }}
         header={
           <div>
             <i className="fa fa-superpowers fa-3x"/>
@@ -34,7 +38,7 @@ export default class Card extends Component {
           </div>
         } 
         bsStyle={this.convertStyle(this.props.card.persist)} 
-        style={{backgroundColor: this.convertColor(this.props.card.persist), height: 250}}>
+        style={{backgroundColor: this.convertColor(this.props.card.persist), height: 250, marginLeft: 10, cursor: 'pointer'}}>
         <div>
           {this.props.card.white ? <div><i className="fa fa-bandcamp fa-2x" style={{color:'gray'}}>{this.props.card.white}</i></div> : null }
           {this.props.card.blue ? <div><i className="fa fa-bandcamp fa-2x" style={{color:'blue'}}>{this.props.card.blue}</i></div> : null }
