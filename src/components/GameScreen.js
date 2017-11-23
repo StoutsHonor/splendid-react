@@ -46,7 +46,7 @@ export default class GameScreen extends Component {
         coin = 7;
       }
       this.setState({
-        whiteCoins: 2, 
+        whiteCoins: 0, 
         blueCoins: coin,
         greenCoins: coin,
         redCoins: coin,

@@ -14,7 +14,6 @@ class CoinsDisplay extends Component {
   }
 
   toggleButtonsOn() {
-    console.log('clicked')
     this.props.isPlayerTurn ? this.setState({showButtons: true}) : null;
   }
 
@@ -35,20 +34,19 @@ class CoinsDisplay extends Component {
         return false;
       }
     }
-    if(this.props.coins[colorIndex] <= 2 && coins.includes(color)) {return;};
+    //prevents player from picking up coin if there are no coins of that color
+    if(!this.props.coins[colorIndex] && coins.length === 0){this.setState({showButtons: false}); return;}
+    //prevents player from picking up 2 coins of the same color if colored coin is less than 3
+    if(this.props.coins[colorIndex] <= 2 && coins.includes(color)){return;}
+    //prevents player from picking up another coin of the same color if they already have 2 coins
     if(coins.length < 3 && !duplicateCheck(coins) && this.props.coins[colorIndex]) {
       if(!coins.includes(color) || coins.length < 2) {
-        let displayColor = color;
-        if(color === 'white') {displayColor = 'gray'}
-        this.setState({selectedCoins: coins.concat(displayColor)});
+        this.setState({selectedCoins: coins.concat(color)});
       }
     }
   }
 
   render() {
-    console.log(this.props.coins, 'coins')
-    let selected;
-    if(this.state.selectedCoins.length > 0){selected = this.state.selectedCoins.replace(/white/i, 'gray');}
     return (
       <div>
         <div>
@@ -110,9 +108,10 @@ class CoinsDisplay extends Component {
             {this.props.coins[5]}
           </Panel>
         </div>
-        { selected ?
+        { this.state.selectedCoins ?
           <div className="text-center">
-            {selected.map((value, key) => {
+            {this.state.selectedCoins.map((value, key) => {
+              if(value === 'white') { value = 'gray'}
               return <i className="fa fa-bandcamp fa-4x" style={{color: value}} key={key}/>
             })}
           </div>: null
