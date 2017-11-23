@@ -35,8 +35,8 @@ export default class GameScreen extends Component {
     componentDidMount() {
       this.setState({nobles: (Random.randomizeArray(nobles)).slice(0, this.state.players + 1)});
       this.setState({levelOneCards: Random.randomizeArray(levelOneCards)});
-      this.setState({levelOneCards: Random.randomizeArray(levelTwoCards)});
-      this.setState({levelOneCards: Random.randomizeArray(levelThreeCards)});
+      this.setState({levelTwoCards: Random.randomizeArray(levelTwoCards)});
+      this.setState({levelThreeCards: Random.randomizeArray(levelThreeCards)});
       let coin;
       if(this.state.players === 2) {
         coin = 4;
