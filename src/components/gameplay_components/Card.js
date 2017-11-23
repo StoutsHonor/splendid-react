@@ -18,7 +18,7 @@ export default class Card extends Component {
   }
 
   convertStyle(style) {
-    if(style === 'white' || style ==='black') { return 'gray'}
+    if(style === 'white' || style ==='black') { return 'default'}
     if(style === 'blue') { return 'primary'}
     if(style === 'green') { return 'success'}
     if(style === 'red') { return 'danger'}
@@ -28,8 +28,7 @@ export default class Card extends Component {
     return (
       <Panel className='col-sm-2'
         onClick={() => {
-          this.props.toggleModalCard(3, this.props.card.id);
-          console.log(this.props.card.id, 'card id');
+          this.props.handleClickCard(this.props.level, this.props.index);
         }}
         header={
           <div>
@@ -50,19 +49,3 @@ export default class Card extends Component {
     )
   }
 }
-
-
-{/* <div className="card col-md-3" 
-  style={{
-    width: 175, 
-    height: 250, 
-    backgroundColor: this.props.card.persist, 
-    border: 9, 
-    borderColor: 'yellow'
-  }}>
-  <img className="card-img-top" src="..." alt="Card image cap"/>
-  <div className="card-block">
-    <h4 className="card-title">Card title</h4>
-    <p className="card-text">Card Content</p>
-  </div>
-</div> */}

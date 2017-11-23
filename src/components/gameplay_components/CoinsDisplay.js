@@ -14,7 +14,7 @@ class CoinsDisplay extends Component {
   }
 
   toggleButtonsOn() {
-    this.props.isPlayerTurn ? this.setState({showButtons: true}) : null;
+    if(this.props.isPlayerTurn) {this.setState({showButtons: true})};
   }
 
   toggleButtonsOff() {

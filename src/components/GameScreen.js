@@ -66,12 +66,19 @@ export default class GameScreen extends Component {
       console.log('adjust coins function called');
     }
 
-    handleClickCard(card) {
-      this.setState({selectedCard: card});
+    handleClickCard(level, index) {
+      if(level === 1) {
+        this.setState({selectedCard: this.state.levelOneCards[index]});
+      } else if(level === 2) {
+        this.setState({selectedCard: this.state.levelTwoCards[index]});
+      } else {
+        this.setState({selectedCard: this.state.levelThreeCards[index]});
+      }
       this.toggleModalCard();
     }
   
     render() {
+      console.log(this.state.selectedCard, 'selected')
       return (
         <div>
           <ModalDetails
