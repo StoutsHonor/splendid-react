@@ -127,6 +127,10 @@ class CoinsDisplay extends Component {
               <Button
                 bsClass="btn btn-w-m btn-success"
                 onClick={ () => {
+                  if(this.props.coinTotal + this.state.selectedCoins.length > 10) {
+                    this.toggleButtonsOff();
+                    return alert("You cannot have more than 10 coins total!");
+                  }
                   this.props.adjustCoins(this.state.selectedCoins);
                   this.toggleButtonsOff();
                 }}>
