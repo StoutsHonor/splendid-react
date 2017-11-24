@@ -22,6 +22,8 @@ export default class GameScreen extends Component {
       this.toggleModalCard = this.toggleModalCard.bind(this);
       this.adjustCoins = this.adjustCoins.bind(this);
       this.handleClickCard = this.handleClickCard.bind(this);
+      this.convertColor = this.convertColor.bind(this);
+      this.convertStyle = this.convertStyle.bind(this);
       this.state = {
         players: 4, isPlayerTurn: true,
         showModalDetails: false, showModalCard: false,
@@ -76,9 +78,24 @@ export default class GameScreen extends Component {
       }
       this.toggleModalCard();
     }
+
+    convertColor(color) {
+      if(color === 'white') { return "#dcdcdc";}
+      if(color === 'blue') { return "#b0e0e6";}
+      if(color === 'green') {return "#3cb371";}
+      if(color === 'red') {return "#FFE4E1";}
+      if(color === 'black') { return "#696969";}
+      return color;
+    }
+  
+    convertStyle(style) {
+      if(style === 'white' || style ==='black') { return 'default'}
+      if(style === 'blue') { return 'primary'}
+      if(style === 'green') { return 'success'}
+      if(style === 'red') { return 'danger'}
+    }
   
     render() {
-      console.log(this.state.selectedCard, 'selected')
       return (
         <div>
           <ModalDetails
@@ -89,6 +106,8 @@ export default class GameScreen extends Component {
             showModalCard={this.state.showModalCard}
             toggleModalCard={this.toggleModalCard}
             selectedCard={this.state.selectedCard}
+            convertColor={this.convertColor}
+            convertStyle={this.convertStyle}
           />
           <PlayerItems toggleModalDetails={this.toggleModalDetails}/>
           <OpponentsInfo toggleModalDetails={this.toggleModalDetails}/>
@@ -106,6 +125,8 @@ export default class GameScreen extends Component {
           <CardsDisplay
             toggleModalCard={this.toggleModalCard}
             handleClickCard={this.handleClickCard} 
+            convertColor={this.convertColor}
+            convertStyle={this.convertStyle}
             levelOneCards={this.state.levelOneCards} 
             levelTwoCards={this.state.levelTwoCards} 
             levelThreeCards={this.state.levelThreeCards}
