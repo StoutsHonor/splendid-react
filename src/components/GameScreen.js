@@ -72,8 +72,39 @@ export default class GameScreen extends Component {
       this.setState({showModalCard: !this.state.showModalCard});
     }
 
-    adjustCoins() {
-      console.log('adjust coins function called');
+    adjustCoins(coins) {
+      //created extra control flow for 2 coins of same color, state is not changing fast enough when done one by one
+      const duplicateCheck = (a) => {
+        for(let i = 0; i < a.length; i++) {
+          for(let x = i; x < a.length; x++) {
+            if(x !== i && a[x] === a[i]) {
+              return true;
+            }
+          }
+          return false;
+        }
+      }
+      if(duplicateCheck(coins)) {
+        let coinState = coins[0] + 'Coins';
+        this.setState({[coinState]: this.state[coinState] - 2});
+        this.setState(prevState => ({
+          playerCoins: {
+            ...prevState.playerCoins,
+            [coins[0]]: prevState.playerCoins[coins[0]] + 2
+          }
+        }))
+      } else {
+        coins.forEach(coin => {
+          let coinState = coin + 'Coins';
+          this.setState({[coinState]: this.state[coinState] - 1});
+          this.setState(prevState => ({
+            playerCoins: {
+              ...prevState.playerCoins,
+              [coin]: prevState.playerCoins[coin] + 1
+            }
+          }))
+        })
+      }
     }
 
     handleClickCard(level, index) {

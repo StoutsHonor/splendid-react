@@ -126,7 +126,10 @@ class CoinsDisplay extends Component {
               </Button>
               <Button
                 bsClass="btn btn-w-m btn-success"
-                onClick={this.toggleButtonsOff}>
+                onClick={ () => {
+                  this.props.adjustCoins(this.state.selectedCoins);
+                  this.toggleButtonsOff();
+                }}>
                 Confirm Selection
               </Button>
             </ButtonGroup>
