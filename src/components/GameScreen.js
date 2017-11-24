@@ -30,7 +30,10 @@ export default class GameScreen extends Component {
         whiteCoins: 0, blueCoins: 0, greenCoins: 0, redCoins: 0, blackCoins: 0, goldCoins: 5,
         nobles: [],
         levelOneCards: [], levelTwoCards: [], levelThreeCards: [],
-        selectedCard: {}
+        selectedCard: {},
+        playerInfo: {
+          
+        }
       }
     }
 

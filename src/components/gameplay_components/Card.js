@@ -14,7 +14,7 @@ export default class Card extends Component {
         header={
           <div>
             <i className="fa fa-eercast fa-3x" style={{color: persistColor}}/>
-            {this.props.card.points ? <i className="fa fa-bolt fa-2x pull-right">{this.props.card.points}</i> : null }
+            {this.props.card.points ? <i className="fa fa-bolt fa-2x pull-right" style={{color: persistColor}}>{this.props.card.points}</i> : null }
           </div>
         } 
         bsStyle={this.props.convertStyle(this.props.card.persist)} 

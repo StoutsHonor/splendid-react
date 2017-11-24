@@ -8,7 +8,6 @@ export default class ModalCard extends Component {
     return (
       <Modal 
         className="text-center"
-        {...this.props} 
         bsSize="large" 
         aria-labelledby="contained-modal-title-sm"
         show={this.props.showModalCard}
@@ -21,7 +20,7 @@ export default class ModalCard extends Component {
             header={
               <div>
                 <i className="fa fa-eercast fa-3x" style={{color: persistColor}}/>
-                {this.props.selectedCard.points ? <i className="fa fa-bolt fa-2x pull-right">{this.props.selectedCard.points}</i> : null }
+                {this.props.selectedCard.points ? <i className="fa fa-bolt fa-2x pull-right" style={{color: persistColor}}>{this.props.selectedCard.points}</i> : null }
               </div>
             } 
             bsStyle={this.props.convertStyle(this.props.selectedCard.persist)} 

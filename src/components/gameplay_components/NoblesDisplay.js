@@ -4,7 +4,6 @@ import {Panel} from 'react-bootstrap';
 class NoblesDisplay extends Component {
 
   render() {
-    console.log(this.props.nobles);
     return (
       <div className="text-center">
         <Panel header="Nobles">

@@ -10,7 +10,8 @@
 
 ## Updates:
 
-- 11/23 coin logic is done
+- 11/24 card and noble logic displays are done
+- 11/23 coin logic display is done
 
 ## Resources and Dependency Docs:
 
