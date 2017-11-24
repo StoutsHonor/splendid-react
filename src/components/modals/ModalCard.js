@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Modal, Button} from 'react-bootstrap';
+import {Modal, Button, Panel} from 'react-bootstrap';
 
 export default class ModalCard extends Component {
   render() {
@@ -15,7 +15,23 @@ export default class ModalCard extends Component {
           <Modal.Title id="contained-modal-title-sm">Selected Card</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Selected Card</h4>
+          <Panel className='col-sm-2'
+            header={
+              <div>
+                <i className="fa fa-superpowers fa-3x"/>
+                {this.props.selectedCard.points ? <i className="fa fa-bolt fa-2x pull-right">{this.props.card.points}</i> : null }
+              </div>
+            } 
+            bsStyle={this.convertStyle(this.props.selectedCard.persist)} 
+            style={{backgroundColor: this.convertColor(this.props.selectedCard.persist), height: 250, marginLeft: 10, cursor: 'pointer'}}>
+            <div>
+              {this.props.selectedCard.white ? <div><i className="fa fa-bandcamp fa-2x" style={{color:'gray'}}>{this.props.selectedCard.white}</i></div> : null }
+              {this.props.selectedCard.blue ? <div><i className="fa fa-bandcamp fa-2x" style={{color:'blue'}}>{this.props.selectedCard.blue}</i></div> : null }
+              {this.props.selectedCard.green ? <div><i className="fa fa-bandcamp fa-2x" style={{color:'green'}}>{this.props.selectedCard.green}</i></div> : null }
+              {this.props.selectedCard.red ? <div><i className="fa fa-bandcamp fa-2x" style={{color:'red'}}>{this.props.selectedCard.red}</i></div> : null }
+              {this.props.selectedCard.black ? <div><i className="fa fa-bandcamp fa-2x" style={{color:'black'}}>{this.props.selectedCard.black}</i></div> : null }
+            </div>
+          </Panel>
         </Modal.Body>
         <Modal.Footer>
           <Button 
