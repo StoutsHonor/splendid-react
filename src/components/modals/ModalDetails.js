@@ -6,7 +6,6 @@ export default class ModalDetails extends Component {
     return (
       <Modal 
         className="text-center"
-        {...this.props} 
         bsSize="large" 
         aria-labelledby="contained-modal-title-sm"
         show={this.props.showModalDetails}
