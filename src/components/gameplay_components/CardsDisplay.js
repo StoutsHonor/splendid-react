@@ -19,7 +19,7 @@ class CardsDisplay extends Component {
                 card={card} 
                 key={key} 
                 index={key} 
-                level={3}
+                level={'Three'}
                 handleClickCard={this.props.handleClickCard} 
                 convertColor={this.props.convertColor}
                 convertStyle={this.props.convertStyle}
@@ -34,7 +34,7 @@ class CardsDisplay extends Component {
                 card={card} 
                 key={key} 
                 index={key}
-                level={2}
+                level={'Two'}
                 handleClickCard={this.props.handleClickCard} 
                 convertColor={this.props.convertColor}
                 convertStyle={this.props.convertStyle}
@@ -49,7 +49,7 @@ class CardsDisplay extends Component {
                 card={card} 
                 key={key} 
                 index={key}
-                level={1}
+                level={'One'}
                 handleClickCard={this.props.handleClickCard} 
                 convertColor={this.props.convertColor}
                 convertStyle={this.props.convertStyle}

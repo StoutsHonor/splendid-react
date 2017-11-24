@@ -8,7 +8,7 @@ class PlayerInfo extends Component {
     return (
       <div>
         <Panel onClick={this.props.toggleModalDetails} style={{cursor:"pointer"}}>
-          <div className="col-sm-3" style={{fontSize: 18}}>
+          <div className="col-sm-2" style={{fontSize: 18}}>
             <i className="fa fa-bolt fa-2x"/> Points: {info.points}
           </div>
           <div className="col-sm-3">
@@ -26,8 +26,11 @@ class PlayerInfo extends Component {
             <i className="fa fa-eercast fa-2x" style={{color:'red'}}>{info.persistColors.red}</i>
             <i className="fa fa-eercast fa-2x" style={{color:'black'}}>{info.persistColors.black}</i>
           </div>
-          <div className="col-sm-3" style={{fontSize: 18}}>
-            <i className="fa fa-lock fa-2x"/> Cards Reserved: {info.reservedCards.length}
+          <div className="col-sm-2" style={{fontSize: 18}}>
+            <i className="fa fa-superpowers fa-2x"/> Total Coins: {info.coins.total}
+          </div>
+          <div className="col-sm-2" style={{fontSize: 18}}>
+            <i className="fa fa-lock fa-2x"/> Reserved: {info.reservedCards.length}
           </div>
         </Panel>
       </div>
