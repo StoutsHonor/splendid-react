@@ -4,6 +4,8 @@ import {Panel} from 'react-bootstrap';
 export default class Card extends Component {
 
   render() {
+    let persistColor = this.props.card.persist;
+    if(this.props.card.persist === "white") {persistColor = "gray"}
     return (
       <Panel className='col-sm-2'
         onClick={() => {
@@ -11,7 +13,7 @@ export default class Card extends Component {
         }}
         header={
           <div>
-            <i className="fa fa-eercast fa-3x"/>
+            <i className="fa fa-eercast fa-3x" style={{color: persistColor}}/>
             {this.props.card.points ? <i className="fa fa-bolt fa-2x pull-right">{this.props.card.points}</i> : null }
           </div>
         } 

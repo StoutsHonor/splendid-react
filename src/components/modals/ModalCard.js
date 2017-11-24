@@ -3,7 +3,8 @@ import {Modal, Button, Panel} from 'react-bootstrap';
 
 export default class ModalCard extends Component {
   render() {
-    console.log(this.props.selectedCard.points, 'selected card')
+    let persistColor = this.props.selectedCard.persist;
+    if(this.props.selectedCard.persist === "white") {persistColor = "gray"}
     return (
       <Modal 
         className="text-center"
@@ -19,7 +20,7 @@ export default class ModalCard extends Component {
           <Panel className="mx-auto"
             header={
               <div>
-                <i className="fa fa-superpowers fa-3x"/>
+                <i className="fa fa-eercast fa-3x" style={{color: persistColor}}/>
                 {this.props.selectedCard.points ? <i className="fa fa-bolt fa-2x pull-right">{this.props.selectedCard.points}</i> : null }
               </div>
             } 
