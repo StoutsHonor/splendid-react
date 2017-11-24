@@ -4,7 +4,7 @@ import NoblesDisplay from './gameplay_components/NoblesDisplay';
 import CardsDisplay from './gameplay_components/CardsDisplay';
 import GameButtons from './gameplay_components/GameButtons';
 import CoinsDisplay from './gameplay_components/CoinsDisplay';
-import PlayerItems from './gameplay_components/PlayerItems';
+import PlayerInfo from './gameplay_components/PlayerInfo';
 import OpponentsInfo from './gameplay_components/OpponentsInfo';
 import ModalDetails from './modals/ModalDetails';
 import ModalCard from './modals/ModalCard';
@@ -33,8 +33,9 @@ export default class GameScreen extends Component {
         selectedCard: {},
         //player states:
         isPlayerTurn: true,
-        playerPoints: {}, 
-        playerCards: [], 
+        playerPoints: 0, 
+        playerCards: [],
+        playerReservedCards: [],
         playerCoins: {white: 0, blue: 0, green: 0, red: 0, black: 0, gold: 0},
         playerPersistColors: {white: 0, blue: 0, green: 0, red: 0, black: 0},
         playerNobles: []
@@ -108,6 +109,14 @@ export default class GameScreen extends Component {
           <ModalDetails
             showModalDetails={this.state.showModalDetails}
             toggleModalDetails={this.toggleModalDetails}
+            playerDetails={{
+              points: this.state.player,
+              cards: this.state.playerCards,
+              reservedCards: this.state.playerReservedCards,
+              coins: this.state.playerCoins,
+              persistColors: this.state.persistColors,
+              nobles: this.state.playerNobles
+            }}
           />
           <ModalCard
             isPlayerTurn={this.state.isPlayerTurn}
@@ -117,7 +126,18 @@ export default class GameScreen extends Component {
             convertColor={this.convertColor}
             convertStyle={this.convertStyle}
           />
-          <PlayerItems toggleModalDetails={this.toggleModalDetails}/>
+          <PlayerInfo 
+            isPlayerTurn={this.state.isPlayerTurn}
+            toggleModalDetails={this.toggleModalDetails}
+            playerDetails={{
+              points: this.state.playerPoints,
+              cards: this.state.playerCards,
+              reservedCards: this.state.playerReservedCards,
+              coins: this.state.playerCoins,
+              persistColors: this.state.playerPersistColors,
+              nobles: this.state.playerNobles
+            }}
+          />
           <OpponentsInfo toggleModalDetails={this.toggleModalDetails}/>
           <CoinsDisplay
             isPlayerTurn={this.state.isPlayerTurn}
