@@ -13,7 +13,7 @@ export default class ModalCard extends Component {
         show={this.props.showModalCard}
         onHide={this.props.toggleModalCard}>
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-sm">What Would You Like To Do?</Modal.Title>
+          <Modal.Title id="contained-modal-title-sm">{this.props.isPlayerTurn? "What Would You Like To Do?" : ""}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Panel className="mx-auto"
@@ -35,15 +35,19 @@ export default class ModalCard extends Component {
           </Panel>
         </Modal.Body>
         <Modal.Footer>
-          <Button 
-            className="btn btn-w-m btn-danger pull-left"
-            onClick={this.props.toggleModalCard}>Cancel</Button>
-          <Button
-            bsClass="btn btn-w-m btn-warning"
-            onClick={this.props.toggleModalCard}>Reserve Card</Button>
-          <Button
-            bsClass="btn btn-w-m btn-success"
-            onClick={this.props.toggleModalCard}>Buy Card</Button>
+          {this.props.isPlayerTurn ?
+            <div>
+            <Button 
+              className="btn btn-w-m btn-danger pull-left"
+              onClick={this.props.toggleModalCard}>Cancel</Button>
+            <Button
+              bsClass="btn btn-w-m btn-warning"
+              onClick={this.props.toggleModalCard}>Reserve Card</Button>
+            <Button
+              bsClass="btn btn-w-m btn-success"
+              onClick={this.props.toggleModalCard}>Buy Card</Button>
+            </div>
+          : null }
         </Modal.Footer>
       </Modal>
     )

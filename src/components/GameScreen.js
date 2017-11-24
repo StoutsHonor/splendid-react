@@ -25,15 +25,19 @@ export default class GameScreen extends Component {
       this.convertColor = this.convertColor.bind(this);
       this.convertStyle = this.convertStyle.bind(this);
       this.state = {
-        players: 4, isPlayerTurn: true,
+        players: 4, 
         showModalDetails: false, showModalCard: false,
         whiteCoins: 0, blueCoins: 0, greenCoins: 0, redCoins: 0, blackCoins: 0, goldCoins: 5,
         nobles: [],
         levelOneCards: [], levelTwoCards: [], levelThreeCards: [],
         selectedCard: {},
-        playerInfo: {
-          
-        }
+        //player states:
+        isPlayerTurn: true,
+        playerPoints: {}, 
+        playerCards: [], 
+        playerCoins: {white: 0, blue: 0, green: 0, red: 0, black: 0, gold: 0},
+        playerPersistColors: {white: 0, blue: 0, green: 0, red: 0, black: 0},
+        playerNobles: []
       }
     }
 
@@ -106,6 +110,7 @@ export default class GameScreen extends Component {
             toggleModalDetails={this.toggleModalDetails}
           />
           <ModalCard
+            isPlayerTurn={this.state.isPlayerTurn}
             showModalCard={this.state.showModalCard}
             toggleModalCard={this.toggleModalCard}
             selectedCard={this.state.selectedCard}
@@ -115,7 +120,7 @@ export default class GameScreen extends Component {
           <PlayerItems toggleModalDetails={this.toggleModalDetails}/>
           <OpponentsInfo toggleModalDetails={this.toggleModalDetails}/>
           <CoinsDisplay
-            isPlayerTurn = {this.state.isPlayerTurn}
+            isPlayerTurn={this.state.isPlayerTurn}
             adjustCoins={this.adjustCoins}
             coins={[this.state.whiteCoins,
               this.state.blueCoins,
