@@ -101,7 +101,7 @@ class CoinsDisplay extends Component {
           </Panel>
           <Panel
             style={{cursor:'pointer'}}
-            onClick={() => alert("To collect a Gold Coin, please reserve a Card")} 
+            onClick={() => alert("You must reserve a Card collect a Gold Coin")} 
             className="col-sm-2 text-center" 
             header={<i className="fa fa-bandcamp fa-2x" style={{color:'#DAA520'}}/>}
             bsStyle="warning">

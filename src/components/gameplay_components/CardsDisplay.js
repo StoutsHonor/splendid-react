@@ -15,21 +15,45 @@ class CardsDisplay extends Component {
         <Panel header="Level 3 Cards">
           {this.props.levelThreeCards ?
             this.props.levelThreeCards.slice(0,4).map((card, key) => { 
-              return <Card card={card} key={key} index={key} handleClickCard={this.props.handleClickCard} level={3}/>
+              return <Card 
+                card={card} 
+                key={key} 
+                index={key} 
+                level={3}
+                handleClickCard={this.props.handleClickCard} 
+                convertColor={this.props.convertColor}
+                convertStyle={this.props.convertStyle}
+              />
             }) : null }
         </Panel>
 
         <Panel header="Level 2 Cards">
           {this.props.levelTwoCards ?
             this.props.levelTwoCards.slice(0,4).map((card, key) => { 
-              return <Card card={card} key={key} index={key} handleClickCard={this.props.handleClickCard} level={2}/>
+              return <Card 
+                card={card} 
+                key={key} 
+                index={key}
+                level={2}
+                handleClickCard={this.props.handleClickCard} 
+                convertColor={this.props.convertColor}
+                convertStyle={this.props.convertStyle}
+              />
             }) : null }
         </Panel>
         
         <Panel header="Level 1 Cards">
           {this.props.levelOneCards ?
             this.props.levelOneCards.slice(0,4).map((card, key) => { 
-              return <Card card={card} key={key} index={key} handleClickCard={this.props.handleClickCard} level={1}/>
+              return <Card 
+                card={card} 
+                key={key} 
+                index={key}
+                level={1}
+                handleClickCard={this.props.handleClickCard} 
+                convertColor={this.props.convertColor}
+                convertStyle={this.props.convertStyle}
+              />
             }) : null }
         </Panel>
       </div>
