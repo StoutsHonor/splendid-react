@@ -11,7 +11,7 @@ export default class Card extends Component {
         }}
         header={
           <div>
-            <i className="fa fa-superpowers fa-3x"/>
+            <i className="fa fa-eercast fa-3x"/>
             {this.props.card.points ? <i className="fa fa-bolt fa-2x pull-right">{this.props.card.points}</i> : null }
           </div>
         } 
