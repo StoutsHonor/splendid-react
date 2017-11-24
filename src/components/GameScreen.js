@@ -36,7 +36,7 @@ export default class GameScreen extends Component {
         playerPoints: 0, 
         playerCards: [],
         playerReservedCards: [],
-        playerCoins: {white: 0, blue: 0, green: 0, red: 0, black: 0, gold: 0},
+        playerCoins: {white: 0, blue: 0, green: 0, red: 0, black: 0, gold: 0, total: 0},
         playerPersistColors: {white: 0, blue: 0, green: 0, red: 0, black: 0},
         playerNobles: []
       }
@@ -90,7 +90,8 @@ export default class GameScreen extends Component {
         this.setState(prevState => ({
           playerCoins: {
             ...prevState.playerCoins,
-            [coins[0]]: prevState.playerCoins[coins[0]] + 2
+            [coins[0]]: prevState.playerCoins[coins[0]] + 2,
+            total: prevState.playerCoins.total + 2
           }
         }))
       } else {
@@ -100,7 +101,8 @@ export default class GameScreen extends Component {
           this.setState(prevState => ({
             playerCoins: {
               ...prevState.playerCoins,
-              [coin]: prevState.playerCoins[coin] + 1
+              [coin]: prevState.playerCoins[coin] + 1,
+              total: prevState.playerCoins.total + 1
             }
           }))
         })
