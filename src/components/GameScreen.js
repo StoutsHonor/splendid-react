@@ -5,7 +5,7 @@ import CardsDisplay from './gameplay_components/CardsDisplay';
 import GameButtons from './gameplay_components/GameButtons';
 import CoinsDisplay from './gameplay_components/CoinsDisplay';
 import PlayerInfo from './gameplay_components/PlayerInfo';
-import OpponentsInfo from './gameplay_components/OpponentsInfo';
+//import OpponentsInfo from './gameplay_components/OpponentsInfo';
 import ModalDetails from './modals/ModalDetails';
 import ModalCard from './modals/ModalCard';
 import nobles from '../json_files/nobles';
@@ -20,16 +20,18 @@ export default class GameScreen extends Component {
       super(props);
       this.toggleModalDetails = this.toggleModalDetails.bind(this);
       this.toggleModalCard = this.toggleModalCard.bind(this);
+      this.handleClickCard = this.handleClickCard.bind(this);
       this.adjustCoins = this.adjustCoins.bind(this);
       this.buyCard = this.buyCard.bind(this);
       this.reserveCard = this.reserveCard.bind(this);
-      this.handleClickCard = this.handleClickCard.bind(this);
+      this.costCalculator = this.costCalculator.bind(this);
+      this.isAbleToBuy = this.isAbleToBuy.bind(this);
       this.convertColor = this.convertColor.bind(this);
       this.convertStyle = this.convertStyle.bind(this);
       this.state = {
         players: 4, 
         showModalDetails: false, showModalCard: false,
-        whiteCoins: 0, blueCoins: 0, greenCoins: 0, redCoins: 0, blackCoins: 0, goldCoins: 5,
+        whiteCoins: 0, blueCoins: 0, greenCoins: 0, redCoins: 0, blackCoins: 0, goldCoins: 2,
         nobles: [],
         levelOneCards: [], levelTwoCards: [], levelThreeCards: [],
         selectedCard: {}, selectedCardPosition:[],
@@ -74,6 +76,13 @@ export default class GameScreen extends Component {
       this.setState({showModalCard: !this.state.showModalCard});
     }
 
+    handleClickCard(level, index) {
+      const cardState = 'level' + level + 'Cards';
+      this.setState({selectedCard: this.state[cardState][index]});
+      this.setState({selectedCardPosition: [level, index]})
+      this.toggleModalCard();
+    }
+
     adjustCoins(coins) {
       //created extra control flow for 2 coins of same color, state is not changing fast enough when done one by one
       const duplicateCheck = (a) => {
@@ -111,8 +120,11 @@ export default class GameScreen extends Component {
       }
     }
 
-    buyCard() {
-
+    buyCard(level, index) {
+      const cardState = 'level' + level + 'Cards';
+      const card = this.state[cardState][index];
+      console.log(card, 'card to buy')
+      
     }
 
     reserveCard(level, index) {
@@ -129,16 +141,32 @@ export default class GameScreen extends Component {
         cards.splice(index, 1);
         this.setState({[cardsState]: cards});
       }
-      console.log(this.state.playerCoins.total, 'total coins')
       if(this.state.goldCoins !== 0 && this.state.playerCoins.total < 10) {this.adjustCoins(['gold']);}
       this.toggleModalCard();
     }
 
-    handleClickCard(level, index) {
-      const cardState = 'level' + level + 'Cards';
-      this.setState({selectedCard: this.state[cardState][index]});
-      this.setState({selectedCardPosition: [level, index]})
-      this.toggleModalCard();
+    costCalculator(playerBuyingPower, cardCost) {
+      const results = {total: 0};
+      for(let color in cardCost) {
+        if(playerBuyingPower[color]) {
+          if(cardCost[color] > playerBuyingPower[color]) {
+            results[color] = cardCost[color] - playerBuyingPower[color];
+            results.total += results[color];
+          }
+        } else {
+          results[color] = cardCost[color];
+          results.total += results[color];
+        }
+      }
+      return results;
+    }
+
+    isAbleToBuy(playerBuyingPower, cardCost) {
+      let coinsNeeded = this.costCalculator(playerBuyingPower, cardCost);
+      if (coinsNeeded.total > playerBuyingPower.gold) {
+        return false;
+      }
+      return true;
     }
 
     convertColor(color) {
@@ -168,7 +196,7 @@ export default class GameScreen extends Component {
               cards: this.state.playerCards,
               reservedCards: this.state.playerReservedCards,
               coins: this.state.playerCoins,
-              persistColors: this.state.persistColors,
+              persistColors: this.state.playerPersistColors,
               nobles: this.state.playerNobles
             }}
           />
@@ -180,13 +208,16 @@ export default class GameScreen extends Component {
             position={this.state.selectedCardPosition}
             convertColor={this.convertColor}
             convertStyle={this.convertStyle}
+            buyCard={this.buyCard}
             reserveCard={this.reserveCard}
+            costCalculator={this.costCalculator}
+            isAbleToBuy={this.isAbleToBuy}
             playerDetails={{
               points: this.state.player,
               cards: this.state.playerCards,
               reservedCards: this.state.playerReservedCards,
               coins: this.state.playerCoins,
-              persistColors: this.state.persistColors,
+              persistColors: this.state.playerPersistColors,
               nobles: this.state.playerNobles
             }}
           />

@@ -7,6 +7,7 @@ class CoinsDisplay extends Component {
     this.toggleButtonsOn = this.toggleButtonsOn.bind(this);
     this.toggleButtonsOff = this.toggleButtonsOff.bind(this);
     this.updateSelectedCoins = this.updateSelectedCoins.bind(this);
+    this.removeSelectedCoin = this.removeSelectedCoin.bind(this);
     this.state = {
       showButtons: false,
       selectedCoins: []
@@ -43,6 +44,15 @@ class CoinsDisplay extends Component {
       if(!coins.includes(color) || coins.length < 2) {
         this.setState({selectedCoins: coins.concat(color)});
       }
+    }
+  }
+
+  removeSelectedCoin(index) {
+    let coins = this.state.selectedCoins;
+    coins.splice(index, 1);
+    this.setState({selectedCoins: coins});
+    if(this.state.selectedCoins.length === 0) {
+      this.toggleButtonsOff();
     }
   }
 
@@ -110,9 +120,9 @@ class CoinsDisplay extends Component {
         </div>
         { this.state.selectedCoins ?
           <div className="text-center">
-            {this.state.selectedCoins.map((value, key) => {
+            {this.state.selectedCoins.map((value, index) => {
               if(value === 'white') { value = 'gray'}
-              return <i className="fa fa-bandcamp fa-4x" style={{color: value}} key={key}/>
+              return <i className="fa fa-bandcamp fa-4x" style={{color: value}} onClick={() => {this.removeSelectedCoin(index)}} key={index}/>
             })}
           </div>: null
         }
