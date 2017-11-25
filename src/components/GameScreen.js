@@ -42,7 +42,7 @@ export default class GameScreen extends Component {
         playerCards: [],
         playerReservedCards: [],
         playerCoins: {white: 0, blue: 0, green: 0, red: 0, black: 0, gold: 0, total: 0},
-        playerPersistColors: {white: 10, blue: 10, green: 11, red: 11, black: 11},
+        playerPersistColors: {white: 10, blue: 10, green: 10, red: 10, black: 10},
         playerNobles: []
       }
     }
@@ -119,11 +119,27 @@ export default class GameScreen extends Component {
 
     buyCard(level, index) {
       const cardsState = 'level' + level + 'Cards';
-      const card = this.state[cardsState][index];
+      const card = this.state[cardsState].slice(index, index + 1);
       const cards = this.state[cardsState].slice();
       const playerCards = this.state.playerCards.slice();
+      //player states adjustment
+      console.log(card, 'card to buy')
+      //player persist colors update
+      this.setState(prevState => ({
+        playerPersistColors: {
+          ...prevState.playerPersistColors,
+          [card.persist]: prevState.playerPersistColors[card.persist] + 1
+        }
+      }))
+      //player points update
+      if(card.points) {
+        this.setState({playerPoints: this.state.playerPoints + card.points});
+      }
+      //player cards array update
       playerCards.push(card);
       this.setState({playerCards: playerCards});
+      //points adjustment
+      //cards array adjustment
       if(cards.length > 4) {
         cards[index] = cards[4];
         cards.splice(4, 1);
@@ -139,8 +155,10 @@ export default class GameScreen extends Component {
       const cardsState = 'level' + level + 'Cards';
       const cards = this.state[cardsState].slice();
       const playerCards = this.state.playerReservedCards.slice();
+      //player reserved cards array update
       playerCards.push(cards[index]);
       this.setState({playerReservedCards: playerCards});
+      //cards array adjustment
       if(cards.length > 4) {
         cards[index] = cards[4];
         cards.splice(4, 1);
@@ -149,6 +167,7 @@ export default class GameScreen extends Component {
         cards.splice(index, 1);
         this.setState({[cardsState]: cards});
       }
+      //gold coins logic
       if(this.state.goldCoins !== 0 && this.state.playerCoins.total < 10) {this.adjustBankCoins({goldCoins: 1}, 'subtract');}
       this.toggleModalCard();
     }
@@ -194,8 +213,6 @@ export default class GameScreen extends Component {
     }
   
     render() {
-      console.log(this.state.playerCards, 'player cards')
-      console.log(this.state.levelThreeCards, 'level 3 cards')
       return (
         <div>
           <ModalDetails
