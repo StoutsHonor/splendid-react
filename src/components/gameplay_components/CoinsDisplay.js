@@ -141,7 +141,17 @@ class CoinsDisplay extends Component {
                     this.toggleButtonsOff();
                     return alert("You cannot have more than 10 coins total!");
                   }
-                  this.props.adjustCoins(this.state.selectedCoins);
+                  let coinObj = {};
+                  this.state.selectedCoins.forEach(coin => {
+                    console.log(coin, 'coin')
+                    if(coinObj[coin]) {
+                      coinObj[coin]++;
+                    } else {
+                      coinObj[coin] = 1;
+                    }
+                  })
+                  this.props.adjustBankCoins(coinObj, 'subtract');
+                  this.props.adjustPlayerCoins(coinObj, 'add');
                   this.toggleButtonsOff();
                 }}>
                 Confirm Selection

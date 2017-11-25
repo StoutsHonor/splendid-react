@@ -21,7 +21,8 @@ export default class GameScreen extends Component {
       this.toggleModalDetails = this.toggleModalDetails.bind(this);
       this.toggleModalCard = this.toggleModalCard.bind(this);
       this.handleClickCard = this.handleClickCard.bind(this);
-      this.adjustCoins = this.adjustCoins.bind(this);
+      this.adjustBankCoins = this.adjustBankCoins.bind(this);
+      this.adjustPlayerCoins = this.adjustPlayerCoins.bind(this);
       this.buyCard = this.buyCard.bind(this);
       this.reserveCard = this.reserveCard.bind(this);
       this.costCalculator = this.costCalculator.bind(this);
@@ -83,47 +84,42 @@ export default class GameScreen extends Component {
       this.toggleModalCard();
     }
 
-    adjustCoins(coins) {
-      //created extra control flow for 2 coins of same color, state is not changing fast enough when done one by one
-      const duplicateCheck = (a) => {
-        for(let i = 0; i < a.length; i++) {
-          for(let x = i; x < a.length; x++) {
-            if(x !== i && a[x] === a[i]) {
-              return true;
-            }
-          }
-          return false;
+    adjustBankCoins(coins, action) {
+      for(let color in coins) {
+        let coinState = color + 'Coins';
+        if(action === 'subtract') {
+          this.setState({[coinState]: this.state[coinState] - coins[color]});
+        } else if(action === 'add') {
+          this.setState({[coinState]: this.state[coinState] + coins[color]});
         }
       }
-      if(duplicateCheck(coins)) {
-        let coinState = coins[0] + 'Coins';
-        this.setState({[coinState]: this.state[coinState] - 2});
-        this.setState(prevState => ({
-          playerCoins: {
-            ...prevState.playerCoins,
-            [coins[0]]: prevState.playerCoins[coins[0]] + 2,
-            total: prevState.playerCoins.total + 2
-          }
-        }))
-      } else {
-        coins.forEach(coin => {
-          let coinState = coin + 'Coins';
-          this.setState({[coinState]: this.state[coinState] - 1});
+    }
+
+    adjustPlayerCoins(coins, action) {
+      for(let color in coins) {
+        if(action === 'subtract') {
           this.setState(prevState => ({
             playerCoins: {
               ...prevState.playerCoins,
-              [coin]: prevState.playerCoins[coin] + 1,
-              total: prevState.playerCoins.total + 1
+              [color]: prevState.playerCoins[color] - coins[color],
+              total: prevState.playerCoins.total - coins[color]
             }
           }))
-        })
+        } else if(action === 'add') {
+          this.setState(prevState => ({
+            playerCoins: {
+              ...prevState.playerCoins,
+              [color]: prevState.playerCoins[color] + coins[color],
+              total: prevState.playerCoins.total + coins[color]
+            }
+          }))
+        }
       }
     }
 
     buyCard(level, index) {
       const cardsState = 'level' + level + 'Cards';
       const card = this.state[cardsState][index];
-      console.log(card, 'card to buy')
       const cards = this.state[cardsState].slice();
       const playerCards = this.state.playerCards.slice();
       playerCards.push(card);
@@ -153,7 +149,7 @@ export default class GameScreen extends Component {
         cards.splice(index, 1);
         this.setState({[cardsState]: cards});
       }
-      if(this.state.goldCoins !== 0 && this.state.playerCoins.total < 10) {this.adjustCoins(['gold']);}
+      if(this.state.goldCoins !== 0 && this.state.playerCoins.total < 10) {this.adjustBankCoins({goldCoins: 1}, 'subtract');}
       this.toggleModalCard();
     }
 
@@ -250,7 +246,8 @@ export default class GameScreen extends Component {
           {/* <OpponentsInfo toggleModalDetails={this.toggleModalDetails}/> */}
           <CoinsDisplay
             isPlayerTurn={this.state.isPlayerTurn}
-            adjustCoins={this.adjustCoins}
+            adjustBankCoins={this.adjustBankCoins}
+            adjustPlayerCoins={this.adjustPlayerCoins}
             coins={[this.state.whiteCoins,
               this.state.blueCoins,
               this.state.greenCoins,
