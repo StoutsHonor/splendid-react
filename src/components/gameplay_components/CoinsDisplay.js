@@ -143,7 +143,6 @@ class CoinsDisplay extends Component {
                   }
                   let coinObj = {};
                   this.state.selectedCoins.forEach(coin => {
-                    console.log(coin, 'coin')
                     if(coinObj[coin]) {
                       coinObj[coin]++;
                     } else {

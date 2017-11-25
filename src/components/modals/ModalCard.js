@@ -12,7 +12,7 @@ export default class ModalCard extends Component {
         bsSize="large" 
         aria-labelledby="contained-modal-title-sm"
         show={this.props.showModalCard}
-        onHide={this.props.toggleModalCard}>
+        onHide={() => this.props.toggleModal('Card')}>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-sm">{this.props.isPlayerTurn? "What Would You Like To Do?" : ""}</Modal.Title>
         </Modal.Header>
@@ -40,7 +40,7 @@ export default class ModalCard extends Component {
             <div>
               <Button 
                 className="btn btn-w-m btn-danger pull-left"
-                onClick={this.props.toggleModalCard}>Cancel
+                onClick={() => this.props.toggleModal('Card')}>Cancel
               </Button>
               {this.props.playerDetails.reservedCards.length < 3 ?
                 <Button
@@ -74,8 +74,7 @@ export default class ModalCard extends Component {
                 </Button>
               :
               <Button
-                bsClass="btn btn-w-m btn-success disabled"
-                onClick={() => this.props.buyCard(this.props.position[0], this.props.position[1])}>Cannot Buy
+                bsClass="btn btn-w-m btn-success disabled">Cannot Buy
               </Button>
               }
             </div>
