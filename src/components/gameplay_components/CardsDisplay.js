@@ -14,11 +14,11 @@ class CardsDisplay extends Component {
       <div className="text-center">
         <Panel header="Level 3 Cards">
           {this.props.levelThreeCards ?
-            this.props.levelThreeCards.slice(0,4).map((card, key) => { 
+            this.props.levelThreeCards.slice(0,4).map((card, index) => { 
               return <Card 
                 card={card} 
-                key={key} 
-                index={key} 
+                key={index} 
+                index={index} 
                 level={'Three'}
                 handleClickCard={this.props.handleClickCard} 
                 convertColor={this.props.convertColor}
@@ -29,11 +29,11 @@ class CardsDisplay extends Component {
 
         <Panel header="Level 2 Cards">
           {this.props.levelTwoCards ?
-            this.props.levelTwoCards.slice(0,4).map((card, key) => { 
+            this.props.levelTwoCards.slice(0,4).map((card, index) => { 
               return <Card 
                 card={card} 
-                key={key} 
-                index={key}
+                key={index} 
+                index={index}
                 level={'Two'}
                 handleClickCard={this.props.handleClickCard} 
                 convertColor={this.props.convertColor}
@@ -44,11 +44,11 @@ class CardsDisplay extends Component {
         
         <Panel header="Level 1 Cards">
           {this.props.levelOneCards ?
-            this.props.levelOneCards.slice(0,4).map((card, key) => { 
+            this.props.levelOneCards.slice(0,4).map((card, index) => { 
               return <Card 
                 card={card} 
-                key={key} 
-                index={key}
+                key={index} 
+                index={index}
                 level={'One'}
                 handleClickCard={this.props.handleClickCard} 
                 convertColor={this.props.convertColor}
