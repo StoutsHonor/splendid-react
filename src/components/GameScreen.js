@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 import NoblesDisplay from './gameplay_components/NoblesDisplay';
 import CardsDisplay from './gameplay_components/CardsDisplay';
 import GameButtons from './gameplay_components/GameButtons';
@@ -23,15 +23,18 @@ export default class GameScreen extends Component {
       this.handleClickCard = this.handleClickCard.bind(this);
       this.adjustBankCoins = this.adjustBankCoins.bind(this);
       this.adjustPlayerCoins = this.adjustPlayerCoins.bind(this);
+      this.updatePoints = this.updatePoints.bind(this);
       this.buyCard = this.buyCard.bind(this);
       this.reserveCard = this.reserveCard.bind(this);
       this.costCalculator = this.costCalculator.bind(this);
       this.isAbleToBuy = this.isAbleToBuy.bind(this);
+      this.checkNobles = this.checkNobles.bind(this);
       this.convertColor = this.convertColor.bind(this);
       this.convertStyle = this.convertStyle.bind(this);
       this.state = {
         players: 4, 
-        showModalDetails: false, showModalReservedCards: false, showModalCard: false,
+        showModalDetails: false, showModalReservedCards: false, showModalCard: false, 
+        showModalNobleSelect: false,
         whiteCoins: 0, blueCoins: 0, greenCoins: 0, redCoins: 0, blackCoins: 0, goldCoins: 5,
         nobles: [],
         levelOneCards: [], levelTwoCards: [], levelThreeCards: [],
@@ -42,7 +45,7 @@ export default class GameScreen extends Component {
         playerCards: [],
         playerReservedCards: [],
         playerCoins: {white: 1, blue: 1, green: 1, red: 1, black: 1, gold: 3, total: 8},
-        playerPersistColors: {white: 0, blue: 0, green: 0, red: 0, black: 0},
+        playerPersistColors: {white: 3, blue: 3, green: 3, red: 3, black: 3},
         playerNobles: []
       }
     }
@@ -123,6 +126,10 @@ export default class GameScreen extends Component {
       }
     }
 
+    updatePoints(points) {
+      this.setState({playerPoints: this.state.playerPoints + points});
+    }
+
     buyCard(level, index) {
       let cardsState;
       if(level === "Reserved") {
@@ -135,12 +142,12 @@ export default class GameScreen extends Component {
       const playerCards = this.state.playerCards.slice();
       //player points update
       if(card.points) {
-        this.setState({playerPoints: this.state.playerPoints + card.points});
+        this.updatePoints(card.points);
       }
       //player cards array update
       playerCards.push(card);
       this.setState({playerCards: playerCards});
-      //points adjustment
+      //coins adjustment
       let costObj = this.costCalculator(this.state.playerPersistColors, card);
       costObj.total = 0;
       for(let color in costObj) {
@@ -173,6 +180,7 @@ export default class GameScreen extends Component {
       }
       this.toggleModal('Card');
       alert('You Bought This Card!');
+      this.checkNobles();
     }
 
     reserveCard(level, index) {
@@ -195,6 +203,7 @@ export default class GameScreen extends Component {
       if(this.state.goldCoins !== 0 && this.state.playerCoins.total < 10) {this.adjustBankCoins({goldCoins: 1}, 'subtract');}
       this.toggleModal('Card');
       alert('You Reserved This Card!');
+      this.checkNobles();
     }
 
     costCalculator(playerBuyingPower, cardCost) {
@@ -221,6 +230,20 @@ export default class GameScreen extends Component {
         return false;
       }
       return true;
+    }
+
+    checkNobles() {
+      for(let i = 0; i < this.state.nobles.length; i++) {
+        if(this.costCalculator(this.state.playerPersistColors, this.state.nobles[i]).total === 0) {
+          const nobles = this.state.nobles.slice();
+          const playerNobles = this.state.playerNobles.slice();
+          playerNobles.push(nobles.splice(i, 1));
+          this.setState({nobles: nobles});
+          this.setState({playerNobles: playerNobles});
+          setTimeout(() => this.updatePoints(3), 200);
+          break;
+        }
+      }
     }
 
     convertColor(color) {
@@ -300,6 +323,7 @@ export default class GameScreen extends Component {
             isPlayerTurn={this.state.isPlayerTurn}
             adjustBankCoins={this.adjustBankCoins}
             adjustPlayerCoins={this.adjustPlayerCoins}
+            checkNobles={this.checkNobles}
             coins={[this.state.whiteCoins,
               this.state.blueCoins,
               this.state.greenCoins,
@@ -318,6 +342,7 @@ export default class GameScreen extends Component {
             levelThreeCards={this.state.levelThreeCards}
           />
           <NoblesDisplay nobles={this.state.nobles}/>
+          <Button onClick={this.checkNobles}>Test</Button>
           <GameButtons/>
         </div>
       )

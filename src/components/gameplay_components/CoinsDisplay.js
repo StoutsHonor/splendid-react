@@ -152,6 +152,7 @@ class CoinsDisplay extends Component {
                   this.props.adjustBankCoins(coinObj, 'subtract');
                   this.props.adjustPlayerCoins(coinObj, 'add');
                   this.toggleButtonsOff();
+                  this.props.checkNobles();
                   alert('You Collected Coins!');
                 }}>
                 Confirm Selection
