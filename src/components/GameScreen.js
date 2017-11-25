@@ -75,8 +75,13 @@ export default class GameScreen extends Component {
     }
 
     handleClickCard(level, index) {
-      const cardState = 'level' + level + 'Cards';
-      this.setState({selectedCard: this.state[cardState][index]});
+      let cardsState;
+      if(level === 'Reserved') {
+        cardsState = 'playerReservedCards';
+      } else {
+      cardsState = 'level' + level + 'Cards';
+      }
+      this.setState({selectedCard: this.state[cardsState][index]});
       this.setState({selectedCardPosition: [level, index]})
       this.toggleModal('Card');
     }
@@ -119,7 +124,12 @@ export default class GameScreen extends Component {
     }
 
     buyCard(level, index) {
-      const cardsState = 'level' + level + 'Cards';
+      let cardsState;
+      if(level === "Reserved") {
+        cardsState = "playerReservedCards";
+      } else {
+        cardsState = 'level' + level + 'Cards';
+      }
       const card = this.state[cardsState][index];
       const cards = this.state[cardsState].slice();
       const playerCards = this.state.playerCards.slice();
@@ -162,6 +172,7 @@ export default class GameScreen extends Component {
         this.setState({[cardsState]: cards});
       }
       this.toggleModal('Card');
+      alert('You Bought This Card!');
     }
 
     reserveCard(level, index) {
@@ -183,6 +194,7 @@ export default class GameScreen extends Component {
       //gold coins logic
       if(this.state.goldCoins !== 0 && this.state.playerCoins.total < 10) {this.adjustBankCoins({goldCoins: 1}, 'subtract');}
       this.toggleModal('Card');
+      alert('You Reserved This Card!');
     }
 
     costCalculator(playerBuyingPower, cardCost) {
@@ -245,6 +257,10 @@ export default class GameScreen extends Component {
           <ModalReservedCards
             toggleModal={this.toggleModal}
             showModalReservedCards={this.state.showModalReservedCards}
+            reservedCards={this.state.playerReservedCards}
+            handleClickCard={this.handleClickCard}
+            convertColor={this.convertColor}
+            convertStyle={this.convertStyle}
           />
           <ModalCard
             isPlayerTurn={this.state.isPlayerTurn}

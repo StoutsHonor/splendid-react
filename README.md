@@ -1,3 +1,29 @@
+## To Implement
+
+Game Logic:
+- Nobles
+- Victory Conditions
+- Coin Exchange, if player has close to 10 coins(optional)
+
+UX:
+- Modals to display player details, card details, and action details(right now it's an alert)
+- Coin, card, and noble animations
+- Chat
+- Out-of-game components
+
+UI:
+- This we will focus LAST
+- Basic color identification and some UI components so far
+- Perhaps put all players' mini info on left/right hand side of page
+- Card graphics
+- Bootstrap clean-up
+
+## Completed
+
+- 11/25 all game logic done except: nobles, coin exchange, victory conditions
+- 11/24 card and noble logic displays are done
+- 11/23 coin logic display is done
+
 ## Contribution Guidelines and Best Practices:
 
 - PLEASE make sure the app renders/runs properly before pushing to master.  If you're hesitant or not sure, do a pull request instead.
@@ -7,11 +33,6 @@
 - We will style this web app mostly with `bootstrap`, `react-bootstrap` and `font-awesome`, if CSS is used, try to keep it organized and modular, and try to declare CSS elements inside the component you're trying to style.
 
 - Let's make this s*** so we can play this game and bring back all the memories!!!
-
-## Updates:
-
-- 11/24 card and noble logic displays are done
-- 11/23 coin logic display is done
 
 ## Resources and Dependency Docs:
 

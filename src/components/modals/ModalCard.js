@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Modal, Button, Panel} from 'react-bootstrap';
 
 export default class ModalCard extends Component {
-
   render() {
     let persistColor = this.props.selectedCard.persist;
     if(this.props.selectedCard.persist === "white") {persistColor = "gray"}
@@ -42,7 +41,7 @@ export default class ModalCard extends Component {
                 className="btn btn-w-m btn-danger pull-left"
                 onClick={() => this.props.toggleModal('Card')}>Cancel
               </Button>
-              {this.props.playerDetails.reservedCards.length < 3 ?
+              {this.props.playerDetails.reservedCards.length < 3 && this.props.position[0] !== 'Reserved' ?
                 <Button
                   bsClass="btn btn-w-m btn-warning"
                   onClick={() => this.props.reserveCard(this.props.position[0], this.props.position[1])}>Reserve Card
@@ -50,7 +49,7 @@ export default class ModalCard extends Component {
               :
                 <Button
                   bsClass="btn btn-w-m btn-warning disabled"
-                  onClick={() => alert("You can only reserve a maximum of 3 cards, buy from your reserved cards to make more room!")}
+                  onClick={() => alert("You either: reserved this card already, or reserved 3 cards, the maximum limit. Buy from your reserved cards to make more room!")}
                 >Cannot Reserve
                 </Button>
               }
