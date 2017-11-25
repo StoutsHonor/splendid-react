@@ -26,11 +26,11 @@ class PlayerInfo extends Component {
             <i className="fa fa-eercast fa-2x" style={{color:'red'}}>{info.persistColors.red}</i>
             <i className="fa fa-eercast fa-2x" style={{color:'black'}}>{info.persistColors.black}</i>
           </div>
-          <div className="col-sm-2" style={{fontSize: 18}}>
-            <i className="fa fa-superpowers fa-2x"/> Total Coins: {info.coins.total}
+          <div className="col-sm-2" style={{fontSize: 19, color: info.coins.total < 10? 'black': 'red'}}>
+            <i className="fa fa-superpowers fa-2x" style={{color: info.coins.total < 10? 'black': 'red'}}/> Total Coins: {info.coins.total}
           </div>
-          <div className="col-sm-2" style={{fontSize: 18}}>
-            <i className="fa fa-lock fa-2x"/> Reserved: {info.reservedCards.length}
+          <div className="col-sm-2" style={{fontSize: 19, color: info.reservedCards.length < 3? 'black': 'red'}}>
+            <i className="fa fa-lock fa-2x" style={{color: info.reservedCards.length < 3? 'black': 'red'}}/> Reserved: {info.reservedCards.length}
           </div>
         </Panel>
       </div>

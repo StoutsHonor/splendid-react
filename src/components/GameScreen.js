@@ -31,7 +31,7 @@ export default class GameScreen extends Component {
       this.state = {
         players: 4, 
         showModalDetails: false, showModalCard: false,
-        whiteCoins: 0, blueCoins: 0, greenCoins: 0, redCoins: 0, blackCoins: 0, goldCoins: 2,
+        whiteCoins: 0, blueCoins: 0, greenCoins: 0, redCoins: 0, blackCoins: 0, goldCoins: 5,
         nobles: [],
         levelOneCards: [], levelTwoCards: [], levelThreeCards: [],
         selectedCard: {}, selectedCardPosition:[],
@@ -41,7 +41,7 @@ export default class GameScreen extends Component {
         playerCards: [],
         playerReservedCards: [],
         playerCoins: {white: 0, blue: 0, green: 0, red: 0, black: 0, gold: 0, total: 0},
-        playerPersistColors: {white: 0, blue: 0, green: 0, red: 0, black: 0},
+        playerPersistColors: {white: 10, blue: 10, green: 11, red: 11, black: 11},
         playerNobles: []
       }
     }
@@ -121,10 +121,22 @@ export default class GameScreen extends Component {
     }
 
     buyCard(level, index) {
-      const cardState = 'level' + level + 'Cards';
-      const card = this.state[cardState][index];
+      const cardsState = 'level' + level + 'Cards';
+      const card = this.state[cardsState][index];
       console.log(card, 'card to buy')
-      
+      const cards = this.state[cardsState].slice();
+      const playerCards = this.state.playerCards.slice();
+      playerCards.push(card);
+      this.setState({playerCards: playerCards});
+      if(cards.length > 4) {
+        cards[index] = cards[4];
+        cards.splice(4, 1);
+        this.setState({[cardsState]: cards});
+      } else {
+        cards.splice(index, 1);
+        this.setState({[cardsState]: cards});
+      }
+      this.toggleModalCard();
     }
 
     reserveCard(level, index) {
@@ -186,6 +198,8 @@ export default class GameScreen extends Component {
     }
   
     render() {
+      console.log(this.state.playerCards, 'player cards')
+      console.log(this.state.levelThreeCards, 'level 3 cards')
       return (
         <div>
           <ModalDetails
