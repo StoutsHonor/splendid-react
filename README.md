@@ -1,9 +1,9 @@
 ## To Implement
 
 Game Logic:
-- Nobles
 - Victory Conditions
-- Coin Exchange, if player has close to 10 coins(optional)
+- (Optional) let player choose noble when qualified for 2 or more(modal)
+- (Optional) Coin Exchange, if player has close to 10 coins
 
 UX:
 - Modals to display player details, card details, and action details(right now it's an alert)
@@ -20,9 +20,14 @@ UI:
 
 ## Completed
 
+- 11/25 noble logic completed(see blockers and bugs section)
 - 11/25 all game logic done except: nobles, coin exchange, victory conditions
 - 11/24 card and noble logic displays are done
 - 11/23 coin logic display is done
+
+## Blockers and Bugs
+
+- points doesn't update simultaneously when card and noble points are involved on the same turn, currently, a setTimeout function is wrapped on the noble points call to fix this
 
 ## Contribution Guidelines and Best Practices:
 
