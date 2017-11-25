@@ -152,7 +152,7 @@ class CoinsDisplay extends Component {
                   this.props.adjustBankCoins(coinObj, 'subtract');
                   this.props.adjustPlayerCoins(coinObj, 'add');
                   this.toggleButtonsOff();
-                  {alert('You Collected Coins!')}
+                  alert('You Collected Coins!');
                 }}>
                 Confirm Selection
               </Button>
