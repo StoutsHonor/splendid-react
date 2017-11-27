@@ -18,6 +18,9 @@ UI:
 - Card graphics
 - Bootstrap clean-up
 
+Additional Components:
+- Data visualization component at the end of a game
+
 ## Completed
 
 - 11/25 noble logic completed(see blockers and bugs section)
@@ -28,6 +31,7 @@ UI:
 ## Blockers and Bugs
 
 - points doesn't update simultaneously when card and noble points are involved on the same turn, currently, a setTimeout function is wrapped on the noble points call to fix this
+- Victory Conditions is currently async after a `checkNoble()` call
 
 ## Contribution Guidelines and Best Practices:
 
