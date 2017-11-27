@@ -29,6 +29,7 @@ export default class GameScreen extends Component {
       this.costCalculator = this.costCalculator.bind(this);
       this.isAbleToBuy = this.isAbleToBuy.bind(this);
       this.checkNobles = this.checkNobles.bind(this);
+      this.checkPoints = this.checkPoints.bind(this);
       this.convertColor = this.convertColor.bind(this);
       this.convertStyle = this.convertStyle.bind(this);
       this.state = {
@@ -36,11 +37,11 @@ export default class GameScreen extends Component {
         showModalDetails: false, showModalReservedCards: false, showModalCard: false, 
         showModalNobleSelect: false,
         whiteCoins: 0, blueCoins: 0, greenCoins: 0, redCoins: 0, blackCoins: 0, goldCoins: 5,
-        nobles: [],
+        nobles: [], pointsToWin: 0,
         levelOneCards: [], levelTwoCards: [], levelThreeCards: [],
         selectedCard: {}, selectedCardPosition:[],
         //player states:
-        isPlayerTurn: true,
+        isPlayerTurn: true, didPlayerWin: false, didPlayerLose: false,
         playerPoints: 0, 
         playerCards: [],
         playerReservedCards: [],
@@ -70,6 +71,7 @@ export default class GameScreen extends Component {
         redCoins: coin,
         blackCoins: coin
       })
+      this.setState({pointsToWin: 15})
     }
 
     toggleModal(name) {
@@ -243,6 +245,14 @@ export default class GameScreen extends Component {
           setTimeout(() => this.updatePoints(3), 200);
           break;
         }
+      }
+      //since nobles need delay to check, win condition check is async
+      setTimeout(() => this.checkPoints, 1000);
+    }
+
+    checkPoints() {
+      if(this.state.playerPoints >= this.state.pointsToWin) {
+        this.setState({didPlayerWin: true});
       }
     }
 
