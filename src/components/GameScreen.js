@@ -9,6 +9,7 @@ import PlayerInfo from './gameplay_components/PlayerInfo';
 import ModalDetails from './modals/ModalDetails';
 import ModalReservedCards from './modals/ModalReservedCards';
 import ModalCard from './modals/ModalCard';
+import ModalEnd from './modals/ModalEnd';
 import nobles from '../json_files/nobles';
 import levelOneCards from '../json_files/levelOneCards';
 import levelTwoCards from '../json_files/levelTwoCards';
@@ -29,18 +30,19 @@ export default class GameScreen extends Component {
       this.costCalculator = this.costCalculator.bind(this);
       this.isAbleToBuy = this.isAbleToBuy.bind(this);
       this.checkNobles = this.checkNobles.bind(this);
+      this.checkPoints = this.checkPoints.bind(this);
       this.convertColor = this.convertColor.bind(this);
       this.convertStyle = this.convertStyle.bind(this);
       this.state = {
         players: 4, 
         showModalDetails: false, showModalReservedCards: false, showModalCard: false, 
-        showModalNobleSelect: false,
+        showModalNobleSelect: false, showModalEnd: false,
         whiteCoins: 0, blueCoins: 0, greenCoins: 0, redCoins: 0, blackCoins: 0, goldCoins: 5,
-        nobles: [],
+        nobles: [], pointsToWin: 0,
         levelOneCards: [], levelTwoCards: [], levelThreeCards: [],
         selectedCard: {}, selectedCardPosition:[],
         //player states:
-        isPlayerTurn: true,
+        isPlayerTurn: true, didPlayerWin: false, didPlayerLose: false,
         playerPoints: 0, 
         playerCards: [],
         playerReservedCards: [],
@@ -70,6 +72,7 @@ export default class GameScreen extends Component {
         redCoins: coin,
         blackCoins: coin
       })
+      this.setState({pointsToWin: 15})
     }
 
     toggleModal(name) {
@@ -244,6 +247,14 @@ export default class GameScreen extends Component {
           break;
         }
       }
+      //since nobles need delay to check, win condition check is async
+      setTimeout(() => this.checkPoints, 1000);
+    }
+
+    checkPoints() {
+      if(this.state.playerPoints >= this.state.pointsToWin) {
+        this.setState({didPlayerWin: true});
+      }
     }
 
     convertColor(color) {
@@ -305,6 +316,12 @@ export default class GameScreen extends Component {
               persistColors: this.state.playerPersistColors,
               nobles: this.state.playerNobles
             }}
+          />
+          <ModalEnd
+            toggleModal={this.toggleModal}
+            showModalEnd={this.state.showModalEnd}
+            didPlayerWin={this.state.didPlayerWin}
+            didPlayerLose={this.state.didPlayerLose}
           />
           <PlayerInfo
             isPlayerTurn={this.state.isPlayerTurn}
