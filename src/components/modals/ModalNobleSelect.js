@@ -13,7 +13,7 @@ export default class ModalNobleSelect extends Component {
         show={this.props.showModalNobleSelect}
         onHide={() => this.props.toggleModal('NobleSelect')}>
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-sm">Reserved Cards</Modal.Title>
+          <Modal.Title id="contained-modal-title-sm">Select the Noble you want to Collect</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         </Modal.Body>
