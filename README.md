@@ -1,5 +1,9 @@
 ## To Implement
 
+General:
+- Back End Server
+- Multiplayer(socket.io)
+
 Game Logic:
 - Victory Conditions
 - (Optional) let player choose noble when qualified for 2 or more(modal)
@@ -8,7 +12,7 @@ Game Logic:
 UX:
 - Modals to display player details, card details, and action details(right now it's an alert)
 - Coin, card, and noble animations
-- Chat
+- Chat(socket.io)
 - Out-of-game components
 
 UI:
