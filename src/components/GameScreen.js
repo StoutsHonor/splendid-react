@@ -46,8 +46,8 @@ export default class GameScreen extends Component {
         playerPoints: 0, 
         playerCards: [],
         playerReservedCards: [],
-        playerCoins: {white: 1, blue: 1, green: 1, red: 1, black: 1, gold: 3, total: 8},
-        playerPersistColors: {white: 3, blue: 3, green: 3, red: 3, black: 3},
+        playerCoins: {white: 0, blue: 0, green: 0, red: 0, black: 0, gold: 0, total: 0},
+        playerPersistColors: {white: 0, blue: 0, green: 0, red: 0, black: 0},
         playerNobles: []
       }
     }
@@ -203,7 +203,10 @@ export default class GameScreen extends Component {
         this.setState({[cardsState]: cards});
       }
       //gold coins logic
-      if(this.state.goldCoins !== 0 && this.state.playerCoins.total < 10) {this.adjustBankCoins({goldCoins: 1}, 'subtract');}
+      if(this.state.goldCoins !== 0 && this.state.playerCoins.total < 10) {
+        this.adjustBankCoins({goldCoins: 1}, 'subtract');
+        this.adjustPlayerCoins({gold: 1}, 'add');
+      }
       this.toggleModal('Card');
       alert('You Reserved This Card!');
       this.checkNobles();
