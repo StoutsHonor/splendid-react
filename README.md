@@ -10,7 +10,7 @@ Game Logic:
 - (Optional) Coin Exchange, if player has close to 10 coins
 
 UX:
-- Modals to display player details, card details, and action details(right now it's an alert)
+- Modals to display player details and action details(right now it's an alert)
 - Coin, card, and noble animations
 - Chat(socket.io)
 - Out-of-game components
@@ -27,6 +27,7 @@ Additional Components:
 
 ## Completed
 
+- 11/28 singleplayer test run works, only player and action details modal left
 - 11/25 noble logic completed(see blockers and bugs section)
 - 11/25 all game logic done except: nobles, coin exchange, victory conditions
 - 11/24 card and noble logic displays are done
