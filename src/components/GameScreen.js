@@ -7,6 +7,7 @@ import CoinsDisplay from './gameplay_components/CoinsDisplay';
 import PlayerInfo from './gameplay_components/PlayerInfo';
 //import OpponentsInfo from './gameplay_components/OpponentsInfo';
 import ModalDetails from './modals/ModalDetails';
+import ModalBoughtCards from './modals/ModalBoughtCards';
 import ModalReservedCards from './modals/ModalReservedCards';
 import ModalCard from './modals/ModalCard';
 import ModalEnd from './modals/ModalEnd';
@@ -35,8 +36,8 @@ export default class GameScreen extends Component {
       this.convertStyle = this.convertStyle.bind(this);
       this.state = {
         players: 4, 
-        showModalDetails: false, showModalReservedCards: false, showModalCard: false, 
-        showModalNobleSelect: false, showModalEnd: false,
+        showModalDetails: false, showModalBoughtCards: false, showModalReservedCards: false, 
+        showModalCard: false, showModalNobleSelect: false, showModalEnd: false,
         whiteCoins: 0, blueCoins: 0, greenCoins: 0, redCoins: 0, blackCoins: 0, goldCoins: 5,
         nobles: [], pointsToWin: 0,
         levelOneCards: [], levelTwoCards: [], levelThreeCards: [],
@@ -47,7 +48,7 @@ export default class GameScreen extends Component {
         playerCards: [],
         playerReservedCards: [],
         playerCoins: {white: 0, blue: 0, green: 0, red: 0, black: 0, gold: 0, total: 0},
-        playerPersistColors: {white: 0, blue: 0, green: 0, red: 0, black: 0},
+        playerPersistColors: {white: 7, blue: 7, green: 7, red: 7, black: 7},
         playerNobles: []
       }
     }
@@ -290,6 +291,13 @@ export default class GameScreen extends Component {
               persistColors: this.state.playerPersistColors,
               nobles: this.state.playerNobles
             }}
+          />
+          <ModalBoughtCards
+            toggleModal={this.toggleModal}
+            showModalBoughtCards={this.state.showModalBoughtCards}
+            cards={this.state.playerCards}
+            convertColor={this.convertColor}
+            convertStyle={this.convertStyle}
           />
           <ModalReservedCards
             toggleModal={this.toggleModal}

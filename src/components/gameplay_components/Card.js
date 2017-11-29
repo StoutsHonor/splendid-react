@@ -9,7 +9,9 @@ export default class Card extends Component {
     return (
       <Panel className='col-sm-2'
         onClick={() => {
-          this.props.handleClickCard(this.props.level, this.props.index);
+          if(this.props.level !== "Bought") {
+            this.props.handleClickCard(this.props.level, this.props.index);
+          }
         }}
         header={
           <div>

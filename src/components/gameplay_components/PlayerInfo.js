@@ -37,7 +37,7 @@ class PlayerInfo extends Component {
             <i className="fa fa-superpowers fa-2x" style={{color:'black'}}>{info.coins.black + info.persistColors.black}</i>
             <i className="fa fa-superpowers fa-2x" style={{color:'#DAA520'}}>{info.coins.gold}</i>
           </div>
-          <div className="col-sm-3 text-center" style={{cursor: "pointer"}} onClick={() => this.props.toggleModal('Details')}>
+          <div className="col-sm-3 text-center" style={{cursor: "pointer"}} onClick={() => this.props.toggleModal('BoughtCards')}>
             <i className="fa fa-eercast fa-2x" style={{color:'gray'}}>{info.persistColors.white}</i>
             <i className="fa fa-eercast fa-2x" style={{color:'blue'}}>{info.persistColors.blue}</i>
             <i className="fa fa-eercast fa-2x" style={{color:'green'}}>{info.persistColors.green}</i>
