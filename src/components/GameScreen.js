@@ -48,7 +48,7 @@ export default class GameScreen extends Component {
         playerCards: [],
         playerReservedCards: [],
         playerCoins: {white: 0, blue: 0, green: 0, red: 0, black: 0, gold: 0, total: 0},
-        playerPersistColors: {white: 7, blue: 7, green: 7, red: 7, black: 7},
+        playerPersistColors: {white: 0, blue: 0, green: 0, red: 0, black: 0},
         playerNobles: []
       }
     }
@@ -205,7 +205,7 @@ export default class GameScreen extends Component {
       }
       //gold coins logic
       if(this.state.goldCoins !== 0 && this.state.playerCoins.total < 10) {
-        this.adjustBankCoins({goldCoins: 1}, 'subtract');
+        this.adjustBankCoins({gold: 1}, 'subtract');
         this.adjustPlayerCoins({gold: 1}, 'add');
       }
       this.toggleModal('Card');
@@ -284,7 +284,7 @@ export default class GameScreen extends Component {
             toggleModal={this.toggleModal}
             showModalDetails={this.state.showModalDetails}
             playerDetails={{
-              points: this.state.player,
+              points: this.state.playerPoints,
               cards: this.state.playerCards,
               reservedCards: this.state.playerReservedCards,
               coins: this.state.playerCoins,
@@ -320,7 +320,7 @@ export default class GameScreen extends Component {
             costCalculator={this.costCalculator}
             isAbleToBuy={this.isAbleToBuy}
             playerDetails={{
-              points: this.state.player,
+              points: this.state.playerPoints,
               cards: this.state.playerCards,
               reservedCards: this.state.playerReservedCards,
               coins: this.state.playerCoins,
