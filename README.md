@@ -1,6 +1,7 @@
 ## To Implement
 
 General:
+- action modal?
 - Back End Server
 - Multiplayer(socket.io)
 
@@ -27,6 +28,7 @@ Additional Components:
 
 ## Completed
 
+- 11/30 player details modal implemented
 - 11/28 singleplayer test run works, only player and action details modal left
 - 11/25 noble logic completed(see blockers and bugs section)
 - 11/25 all game logic done except: nobles, coin exchange, victory conditions
