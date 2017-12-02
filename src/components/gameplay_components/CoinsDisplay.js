@@ -111,7 +111,7 @@ class CoinsDisplay extends Component {
           </Panel>
           <Panel
             style={{cursor:'pointer'}}
-            onClick={() => alert("You must reserve a Card collect a Gold Coin")} 
+            onClick={() => this.props.displayNotificationMessage("You must reserve a Card collect a Gold Coin")} 
             className="col-sm-2 text-center" 
             header={<i className="fa fa-bandcamp fa-2x" style={{color:'#DAA520'}}/>}
             bsStyle="warning">
@@ -137,23 +137,26 @@ class CoinsDisplay extends Component {
               <Button
                 bsClass="btn btn-w-m btn-success"
                 onClick={ () => {
+                  console.log('hitting')
                   if(this.props.coinTotal + this.state.selectedCoins.length > 10) {
+                    console.log('hitting 2')
                     this.toggleButtonsOff();
-                    return alert("You cannot have more than 10 coins total!");
+                    this.props.displayNotificationMessage("You cannot have more than 10 coins total!");
+                  } else {
+                    let coinObj = {};
+                    this.state.selectedCoins.forEach(coin => {
+                      if(coinObj[coin]) {
+                        coinObj[coin]++;
+                      } else {
+                        coinObj[coin] = 1;
+                      }
+                    })
+                    this.props.adjustBankCoins(coinObj, 'subtract');
+                    this.props.adjustPlayerCoins(coinObj, 'add');
+                    this.toggleButtonsOff();
+                    this.props.checkNobles();
+                    this.props.displayNotificationMessage('You Collected Coins!');
                   }
-                  let coinObj = {};
-                  this.state.selectedCoins.forEach(coin => {
-                    if(coinObj[coin]) {
-                      coinObj[coin]++;
-                    } else {
-                      coinObj[coin] = 1;
-                    }
-                  })
-                  this.props.adjustBankCoins(coinObj, 'subtract');
-                  this.props.adjustPlayerCoins(coinObj, 'add');
-                  this.toggleButtonsOff();
-                  this.props.checkNobles();
-                  alert('You Collected Coins!');
                 }}>
                 Confirm Selection
               </Button>

@@ -49,7 +49,7 @@ export default class ModalCard extends Component {
               :
                 <Button
                   bsClass="btn btn-w-m btn-warning disabled"
-                  onClick={() => alert("You either: reserved this card already, or reserved 3 cards, the maximum limit. Buy from your reserved cards to make more room!")}
+                  onClick={() => this.props.displayNotificationMessage("You either: reserved this card already, or reserved 3 cards, the maximum limit. Buy from your reserved cards to make more room!")}
                 >Cannot Reserve
                 </Button>
               }

@@ -1,7 +1,6 @@
 ## To Implement
 
 General:
-- action modal?
 - Back End Server
 - Multiplayer(socket.io)
 
@@ -11,7 +10,6 @@ Game Logic:
 - (Optional) Coin Exchange, if player has close to 10 coins
 
 UX:
-- Modals to display player details and action details(right now it's an alert)
 - Coin, card, and noble animations
 - Chat(socket.io)
 - Out-of-game components
@@ -28,7 +26,8 @@ Additional Components:
 
 ## Completed
 
-- 11/30 player details modal implemented
+- 12/01 notification modal implemented in place of alerts
+- 11/29 player details modal implemented
 - 11/28 singleplayer test run works, only player and action details modal left
 - 11/25 noble logic completed(see blockers and bugs section)
 - 11/25 all game logic done except: nobles, coin exchange, victory conditions

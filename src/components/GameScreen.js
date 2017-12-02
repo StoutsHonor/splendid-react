@@ -324,6 +324,7 @@ export default class GameScreen extends Component {
             isPlayerTurn={this.state.isPlayerTurn}
             toggleModal={this.toggleModal}
             showModalCard={this.state.showModalCard}
+            displayNotificationMessage={this.displayNotificationMessage}
             selectedCard={this.state.selectedCard}
             position={this.state.selectedCardPosition}
             convertColor={this.convertColor}
@@ -362,6 +363,7 @@ export default class GameScreen extends Component {
           {/* <OpponentsInfo toggleModalDetails={this.toggleModalDetails}/> */}
           <CoinsDisplay
             isPlayerTurn={this.state.isPlayerTurn}
+            displayNotificationMessage={this.displayNotificationMessage}
             adjustBankCoins={this.adjustBankCoins}
             adjustPlayerCoins={this.adjustPlayerCoins}
             checkNobles={this.checkNobles}
