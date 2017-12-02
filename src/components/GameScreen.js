@@ -197,6 +197,7 @@ export default class GameScreen extends Component {
       }
       this.toggleModal('Card');
       this.displayNotificationMessage('You Bought This Card!');
+      this.setState({showModalReservedCards: false});
       this.checkNobles();
     }
 
