@@ -87,6 +87,11 @@ export default class GameScreen extends Component {
     displayNotificationMessage(message) {
       this.toggleModal('Notification');
       this.setState({currentNotification: message});
+      setTimeout(() => {
+        if(this.state.showModalNotification) {
+          this.setState({showModalNotification: false});
+        }
+      }, 5000)
     }
 
     handleClickCard(level, index) {
