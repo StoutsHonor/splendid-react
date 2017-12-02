@@ -6,6 +6,7 @@ import GameButtons from './gameplay_components/GameButtons';
 import CoinsDisplay from './gameplay_components/CoinsDisplay';
 import PlayerInfo from './gameplay_components/PlayerInfo';
 //import OpponentsInfo from './gameplay_components/OpponentsInfo';
+import ModalNotification from './modals/ModalNotification';
 import ModalDetails from './modals/ModalDetails';
 import ModalBoughtCards from './modals/ModalBoughtCards';
 import ModalReservedCards from './modals/ModalReservedCards';
@@ -22,6 +23,7 @@ export default class GameScreen extends Component {
     constructor(props) {
       super(props);
       this.toggleModal = this.toggleModal.bind(this);
+      this.displayNotificationMessage = this.displayNotificationMessage.bind(this);
       this.handleClickCard = this.handleClickCard.bind(this);
       this.adjustBankCoins = this.adjustBankCoins.bind(this);
       this.adjustPlayerCoins = this.adjustPlayerCoins.bind(this);
@@ -37,11 +39,12 @@ export default class GameScreen extends Component {
       this.state = {
         players: 4, 
         showModalDetails: false, showModalBoughtCards: false, showModalReservedCards: false, 
-        showModalCard: false, showModalNobleSelect: false, showModalEnd: false,
+        showModalCard: false, showModalNobleSelect: false, showModalEnd: false, showModalNotification: false,
         whiteCoins: 0, blueCoins: 0, greenCoins: 0, redCoins: 0, blackCoins: 0, goldCoins: 5,
         nobles: [], pointsToWin: 0,
         levelOneCards: [], levelTwoCards: [], levelThreeCards: [],
         selectedCard: {}, selectedCardPosition:[],
+        currentNotification: '',
         //player states:
         isPlayerTurn: true, didPlayerWin: false, didPlayerLose: false,
         playerPoints: 0, 
@@ -79,6 +82,11 @@ export default class GameScreen extends Component {
     toggleModal(name) {
       let modalName = 'showModal' + name;
       this.setState({[modalName]: !this.state[modalName]})
+    }
+
+    displayNotificationMessage(message) {
+      this.toggleModal('Notification');
+      this.setState({currentNotification: message});
     }
 
     handleClickCard(level, index) {
@@ -183,7 +191,7 @@ export default class GameScreen extends Component {
         this.setState({[cardsState]: cards});
       }
       this.toggleModal('Card');
-      alert('You Bought This Card!');
+      this.displayNotificationMessage('You Bought This Card!');
       this.checkNobles();
     }
 
@@ -209,7 +217,7 @@ export default class GameScreen extends Component {
         this.adjustPlayerCoins({gold: 1}, 'add');
       }
       this.toggleModal('Card');
-      alert('You Reserved This Card!');
+      this.displayNotificationMessage('You Reserved This Card!');
       this.checkNobles();
     }
 
@@ -280,6 +288,11 @@ export default class GameScreen extends Component {
     render() {
       return (
         <div>
+          <ModalNotification
+            toggleModal={this.toggleModal}
+            showModalNotification={this.state.showModalNotification}
+            currentNotification={this.state.currentNotification}
+          />
           <ModalDetails
             toggleModal={this.toggleModal}
             showModalDetails={this.state.showModalDetails}
@@ -311,6 +324,7 @@ export default class GameScreen extends Component {
             isPlayerTurn={this.state.isPlayerTurn}
             toggleModal={this.toggleModal}
             showModalCard={this.state.showModalCard}
+            displayNotificationMessage={this.displayNotificationMessage}
             selectedCard={this.state.selectedCard}
             position={this.state.selectedCardPosition}
             convertColor={this.convertColor}
@@ -349,6 +363,7 @@ export default class GameScreen extends Component {
           {/* <OpponentsInfo toggleModalDetails={this.toggleModalDetails}/> */}
           <CoinsDisplay
             isPlayerTurn={this.state.isPlayerTurn}
+            displayNotificationMessage={this.displayNotificationMessage}
             adjustBankCoins={this.adjustBankCoins}
             adjustPlayerCoins={this.adjustPlayerCoins}
             checkNobles={this.checkNobles}
