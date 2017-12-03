@@ -18,12 +18,16 @@ import levelTwoCards from '../json_files/levelTwoCards';
 import levelThreeCards from '../json_files/levelThreeCards';
 import Random from 'react-randomizer';
 
+let notificationCountdown;
+
 export default class GameScreen extends Component {
   
     constructor(props) {
       super(props);
       this.toggleModal = this.toggleModal.bind(this);
       this.displayNotificationMessage = this.displayNotificationMessage.bind(this);
+      this.startNotificationCountdown = this.startNotificationCountdown.bind(this);
+      this.clearNotificationCountdown = this.clearNotificationCountdown.bind(this);
       this.handleClickCard = this.handleClickCard.bind(this);
       this.adjustBankCoins = this.adjustBankCoins.bind(this);
       this.adjustPlayerCoins = this.adjustPlayerCoins.bind(this);
@@ -87,11 +91,15 @@ export default class GameScreen extends Component {
     displayNotificationMessage(message) {
       this.toggleModal('Notification');
       this.setState({currentNotification: message});
-      setTimeout(() => {
-        if(this.state.showModalNotification) {
-          this.setState({showModalNotification: false});
-        }
-      }, 5000)
+      this.startNotificationCountdown();
+    }
+
+    startNotificationCountdown() {
+      notificationCountdown = setTimeout(() => this.setState({showModalNotification: false}), 5000);
+    }
+
+    clearNotificationCountdown() {
+      clearTimeout(notificationCountdown);
     }
 
     handleClickCard(level, index) {
@@ -297,6 +305,7 @@ export default class GameScreen extends Component {
           <ModalNotification
             toggleModal={this.toggleModal}
             showModalNotification={this.state.showModalNotification}
+            clearNotificationCountdown={this.clearNotificationCountdown}
             currentNotification={this.state.currentNotification}
           />
           <ModalDetails
