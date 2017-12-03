@@ -11,7 +11,7 @@ export default class ModalEnd extends Component {
     }
     render() {
       if(this.state.navigate) {
-        return <Redirect to='/' push={true}/>
+        return <Redirect to='/score-screen' push={true}/>
       }
       return (
         <Modal 

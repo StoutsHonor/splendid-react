@@ -5,6 +5,7 @@ General:
 - Multiplayer(socket.io)
 
 Game Logic:
+- Per Turn Countdown
 - Victory Conditions
 - (Optional) let player choose noble when qualified for 2 or more(modal)
 - (Optional) Coin Exchange, if player has close to 10 coins
@@ -35,7 +36,6 @@ Additional Components:
 - 11/23 coin logic display is done
 
 ## Blockers and Bugs
-- need to remove SetTimeout Listener when user force closes the notification modal
 - `checkNoble()` failed at one instance when card is bought and noble condition is met
 - points doesn't update simultaneously when card and noble points are involved on the same turn, currently, a setTimeout function is wrapped on the noble points call to fix this
 - Victory Conditions is currently async after a `checkNoble()` call

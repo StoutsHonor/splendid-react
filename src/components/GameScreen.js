@@ -54,8 +54,8 @@ export default class GameScreen extends Component {
         playerPoints: 0, 
         playerCards: [],
         playerReservedCards: [],
-        playerCoins: {white: 0, blue: 0, green: 0, red: 0, black: 0, gold: 0, total: 0},
-        playerPersistColors: {white: 0, blue: 0, green: 0, red: 0, black: 0},
+        playerCoins: {white: 7, blue: 7, green: 7, red: 7, black: 7, gold: 7, total: 0},
+        playerPersistColors: {white: 2, blue: 2, green: 2, red: 2, black: 2},
         playerNobles: []
       }
     }
@@ -262,25 +262,29 @@ export default class GameScreen extends Component {
     }
 
     checkNobles() {
-      for(let i = 0; i < this.state.nobles.length; i++) {
-        if(this.costCalculator(this.state.playerPersistColors, this.state.nobles[i]).total === 0) {
-          const nobles = this.state.nobles.slice();
-          const playerNobles = this.state.playerNobles.slice();
-          playerNobles.push(nobles.splice(i, 1));
-          this.setState({nobles: nobles});
-          this.setState({playerNobles: playerNobles});
-          setTimeout(() => this.updatePoints(3), 200);
-          break;
+      setTimeout(() => {
+        for(let i = 0; i < this.state.nobles.length; i++) {
+          if(this.costCalculator(this.state.playerPersistColors, this.state.nobles[i]).total === 0) {
+            const nobles = this.state.nobles.slice();
+            const playerNobles = this.state.playerNobles.slice();
+            playerNobles.push(nobles.splice(i, 1));
+            this.setState({nobles: nobles});
+            this.setState({playerNobles: playerNobles});
+            this.updatePoints(3);
+            break;
+          }
         }
-      }
+      }, 200);
       //since nobles need delay to check, win condition check is async
-      setTimeout(() => this.checkPoints, 1000);
+      setTimeout(() => this.checkPoints(), 1000);
     }
 
     checkPoints() {
+      console.log('check points hitting');
       if(this.state.playerPoints >= this.state.pointsToWin) {
         this.setState({didPlayerWin: true});
-      }
+        this.toggleModal('End');
+      } 
     }
 
     convertColor(color) {

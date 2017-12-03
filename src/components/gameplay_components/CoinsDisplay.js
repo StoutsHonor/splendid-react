@@ -137,9 +137,7 @@ class CoinsDisplay extends Component {
               <Button
                 bsClass="btn btn-w-m btn-success"
                 onClick={ () => {
-                  console.log('hitting')
                   if(this.props.coinTotal + this.state.selectedCoins.length > 10) {
-                    console.log('hitting 2')
                     this.toggleButtonsOff();
                     this.props.displayNotificationMessage("You cannot have more than 10 coins total!");
                   } else {
