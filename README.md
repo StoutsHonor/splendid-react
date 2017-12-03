@@ -6,7 +6,7 @@ General:
 
 Game Logic:
 - Per Turn Countdown
-- Victory Conditions
+- Use async inside `checkPoints()` to call function for next player turn
 - (Optional) let player choose noble when qualified for 2 or more(modal)
 - (Optional) Coin Exchange, if player has close to 10 coins
 
@@ -27,6 +27,7 @@ Additional Components:
 
 ## Completed
 
+- 12/02 victory conditions and notification countdown fixed
 - 12/01 notification modal implemented in place of alerts
 - 11/29 player details modal implemented
 - 11/28 singleplayer test run works, only player and action details modal left
@@ -36,9 +37,6 @@ Additional Components:
 - 11/23 coin logic display is done
 
 ## Blockers and Bugs
-- `checkNoble()` failed at one instance when card is bought and noble condition is met
-- points doesn't update simultaneously when card and noble points are involved on the same turn, currently, a setTimeout function is wrapped on the noble points call to fix this
-- Victory Conditions is currently async after a `checkNoble()` call
 
 ## Contribution Guidelines and Best Practices:
 

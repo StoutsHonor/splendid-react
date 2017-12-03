@@ -27,7 +27,7 @@ class PlayerInfo extends Component {
       <div>
         <Panel>
           <div className="col-sm-1 text-center" style={{fontSize: 18, cursor: "pointer"}}  onClick={() => this.props.toggleModal('Details')}>
-            <i className="fa fa-bolt fa-2x"/> {info.points}
+            <i className="fa fa-bolt fa-2x"> {info.points}</i>
           </div>
           <div className="col-sm-3 text-center" style={{cursor: "pointer"}} onClick={() => this.props.toggleModal('Details')}>
             <i className="fa fa-superpowers fa-2x" style={{color:'gray'}}>{info.coins.white + info.persistColors.white}</i>
@@ -35,7 +35,6 @@ class PlayerInfo extends Component {
             <i className="fa fa-superpowers fa-2x" style={{color:'green'}}>{info.coins.green + info.persistColors.green}</i>
             <i className="fa fa-superpowers fa-2x" style={{color:'red'}}>{info.coins.red + info.persistColors.red}</i>
             <i className="fa fa-superpowers fa-2x" style={{color:'black'}}>{info.coins.black + info.persistColors.black}</i>
-            <i className="fa fa-superpowers fa-2x" style={{color:'#DAA520'}}>{info.coins.gold}</i>
           </div>
           <div className="col-sm-3 text-center" style={{cursor: "pointer"}} onClick={() => this.props.toggleModal('BoughtCards')}>
             <i className="fa fa-eercast fa-2x" style={{color:'gray'}}>{info.persistColors.white}</i>
@@ -51,6 +50,7 @@ class PlayerInfo extends Component {
               <i className="fa fa-bandcamp fa-2x" style={{color:'green'}}>{info.coins.green}</i>
               <i className="fa fa-bandcamp fa-2x" style={{color:'red'}}>{info.coins.red}</i>
               <i className="fa fa-bandcamp fa-2x" style={{color:'black'}}>{info.coins.black}</i>
+              <i className="fa fa-bandcamp fa-2x" style={{color:'#DAA520'}}>{info.coins.gold}</i>
             </div>
           :
             <div 
