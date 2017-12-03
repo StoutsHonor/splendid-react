@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Modal, Button} from 'react-bootstrap';
-import Card from '../gameplay_components/Card';
 
 export default class ModalNotification extends Component {
 
@@ -11,7 +10,10 @@ export default class ModalNotification extends Component {
         bsSize="large" 
         aria-labelledby="contained-modal-title-sm"
         show={this.props.showModalNotification}
-        onHide={() => this.props.toggleModal('Notification')}>
+        onHide={() => {
+          this.props.clearNotificationCountdown();
+          this.props.toggleModal('Notification');
+        }}>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-sm">Notifications</Modal.Title>
         </Modal.Header>
@@ -19,7 +21,10 @@ export default class ModalNotification extends Component {
           {this.props.currentNotification}
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={() => this.props.toggleModal('Notification')}>Close</Button>
+          <Button onClick={() => {
+            this.props.clearNotificationCountdown();
+            this.props.toggleModal('Notification');
+          }}>Close</Button>
         </Modal.Footer>
       </Modal>
     )

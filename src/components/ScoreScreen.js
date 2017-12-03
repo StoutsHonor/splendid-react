@@ -7,12 +7,12 @@ class ScoreScreen extends Component {
     return (
       <div>
         <div>
-          This is the Login Page
+          This is the Score Screen Page
         </div>
-        <div><Link to='/home'>Go to Home</Link></div>
+        <div><Link to='/'>Go to Home</Link></div>
       </div>
     )
   }
 }
 
-export default Login;
+export default ScoreScreen;
