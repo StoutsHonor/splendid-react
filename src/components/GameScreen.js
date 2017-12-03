@@ -87,6 +87,11 @@ export default class GameScreen extends Component {
     displayNotificationMessage(message) {
       this.toggleModal('Notification');
       this.setState({currentNotification: message});
+      setTimeout(() => {
+        if(this.state.showModalNotification) {
+          this.setState({showModalNotification: false});
+        }
+      }, 5000)
     }
 
     handleClickCard(level, index) {
@@ -192,6 +197,7 @@ export default class GameScreen extends Component {
       }
       this.toggleModal('Card');
       this.displayNotificationMessage('You Bought This Card!');
+      this.setState({showModalReservedCards: false});
       this.checkNobles();
     }
 
