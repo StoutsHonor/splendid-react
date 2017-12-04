@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
 import {Panel, ButtonGroup, Button} from 'react-bootstrap';
+import ModalCoin from '../modals/ModalCoin';
 
 class CoinsDisplay extends Component {
   constructor(props) {
     super(props);
     this.toggleButtonsOn = this.toggleButtonsOn.bind(this);
     this.toggleButtonsOff = this.toggleButtonsOff.bind(this);
+    this.toggleModalCoin = this.toggleModalCoin.bind(this);
     this.updateSelectedCoins = this.updateSelectedCoins.bind(this);
     this.removeSelectedCoin = this.removeSelectedCoin.bind(this);
     this.state = {
       showButtons: false,
-      selectedCoins: []
+      showModalCoin: false,
+      selectedCoins: [],
     }
   }
 
@@ -21,6 +24,10 @@ class CoinsDisplay extends Component {
   toggleButtonsOff() {
     this.setState({selectedCoins: []});
     this.setState({showButtons: false});
+  }
+
+  toggleModalCoin() {
+    this.setState({showModalCoin: !this.state.showModalCoin});
   }
 
   updateSelectedCoins(color, colorIndex) {
@@ -60,6 +67,11 @@ class CoinsDisplay extends Component {
     return (
       <div>
         <div>
+          <ModalCoin
+            toggleModalCoin={this.toggleModalCoin}
+            showModalCoin={this.state.showModalCoin}
+            selectedCoins={this.state.selectedCoins}
+          />
           <Panel
             style={{cursor:'pointer'}}
             onClick={() => { this.toggleButtonsOn();
@@ -134,30 +146,35 @@ class CoinsDisplay extends Component {
                 onClick={this.toggleButtonsOff}>
                 Reset Selection
               </Button>
-              <Button
-                bsClass="btn btn-w-m btn-success"
-                onClick={ () => {
-                  if(this.props.coinTotal + this.state.selectedCoins.length > 10) {
-                    this.toggleButtonsOff();
-                    this.props.displayNotificationMessage("You cannot have more than 10 coins total!");
-                  } else {
-                    let coinObj = {};
-                    this.state.selectedCoins.forEach(coin => {
-                      if(coinObj[coin]) {
-                        coinObj[coin]++;
-                      } else {
-                        coinObj[coin] = 1;
-                      }
-                    })
-                    this.props.adjustBankCoins(coinObj, 'subtract');
-                    this.props.adjustPlayerCoins(coinObj, 'add');
-                    this.toggleButtonsOff();
-                    this.props.checkNobles();
-                    this.props.displayNotificationMessage('You Collected Coins!');
-                  }
-                }}>
-                Confirm Selection
-              </Button>
+              {this.props.coinTotal + this.state.selectedCoins.length <= 10 ? 
+                <Button
+                  bsClass="btn btn-w-m btn-success"
+                  onClick={ () => {
+                    if(this.props.coinTotal + this.state.selectedCoins.length > 10) {
+                      this.toggleButtonsOff();
+                      this.props.displayNotificationMessage("You cannot have more than 10 coins total!");
+                    } else {
+                      let coinObj = {};
+                      this.state.selectedCoins.forEach(coin => {
+                        if(coinObj[coin]) {
+                          coinObj[coin]++;
+                        } else {
+                          coinObj[coin] = 1;
+                        }
+                      })
+                      this.props.adjustBankCoins(coinObj, 'subtract');
+                      this.props.adjustPlayerCoins(coinObj, 'add');
+                      this.toggleButtonsOff();
+                      this.props.checkNobles();
+                      this.props.displayNotificationMessage('You Collected Coins!');
+                    }
+                  }}>
+                  Confirm Selection
+                </Button> :
+                <Button bsClass="btn btn-w-m btn-warning" onClick={this.toggleModalCoin}>
+                  Exchange Coins
+                </Button>
+              }
             </ButtonGroup>
           </div> : null
         }

@@ -54,7 +54,7 @@ export default class GameScreen extends Component {
       playerPoints: 0, 
       playerCards: [],
       playerReservedCards: [],
-      playerCoins: {white: 0, blue: 0, green: 0, red: 0, black: 0, gold: 0, total: 0},
+      playerCoins: {white: 0, blue: 0, green: 0, red: 0, black: 0, gold: 0, total: 10},
       playerPersistColors: {white: 0, blue: 0, green: 0, red: 0, black: 0},
       playerNobles: []
     }
