@@ -54,7 +54,7 @@ export default class GameScreen extends Component {
       playerPoints: 0, 
       playerCards: [],
       playerReservedCards: [],
-      playerCoins: {white: 0, blue: 0, green: 0, red: 0, black: 0, gold: 0, total: 10},
+      playerCoins: {white: 1, blue: 1, green: 1, red: 1, black: 1, gold: 5, total: 9},
       playerPersistColors: {white: 0, blue: 0, green: 0, red: 0, black: 0},
       playerNobles: []
     }
@@ -238,7 +238,7 @@ export default class GameScreen extends Component {
   costCalculator(playerBuyingPower, cardCost) {
     const results = {total: 0};
     for(let color in cardCost) {
-      if(color === 'white' || color === 'blue' || color === 'green' || color === 'red' || color === 'black') {
+      if(color === 'white' || color === 'blue' || color === 'green' || color === 'red' || color === 'black' || color === 'gold') {
         if(playerBuyingPower[color]) {
           if(cardCost[color] > playerBuyingPower[color]) {
             results[color] = cardCost[color] - playerBuyingPower[color];
@@ -382,6 +382,7 @@ export default class GameScreen extends Component {
         <CoinsDisplay
           isPlayerTurn={this.state.isPlayerTurn}
           displayNotificationMessage={this.displayNotificationMessage}
+          costCalculator={this.costCalculator}
           adjustBankCoins={this.adjustBankCoins}
           adjustPlayerCoins={this.adjustPlayerCoins}
           checkNobles={this.checkNobles}
@@ -392,6 +393,7 @@ export default class GameScreen extends Component {
             this.state.blackCoins,
             this.state.goldCoins
           ]}
+          playerCoins={this.state.playerCoins}
           coinTotal={this.state.playerCoins.total}
         />
         <CardsDisplay

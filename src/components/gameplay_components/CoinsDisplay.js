@@ -9,11 +9,13 @@ class CoinsDisplay extends Component {
     this.toggleButtonsOff = this.toggleButtonsOff.bind(this);
     this.toggleModalCoin = this.toggleModalCoin.bind(this);
     this.updateSelectedCoins = this.updateSelectedCoins.bind(this);
+    this.updateExchangeCoins = this.updateExchangeCoins.bind(this);
     this.removeSelectedCoin = this.removeSelectedCoin.bind(this);
     this.state = {
       showButtons: false,
       showModalCoin: false,
       selectedCoins: [],
+      selectedCoinsExchange: []
     }
   }
 
@@ -23,6 +25,7 @@ class CoinsDisplay extends Component {
 
   toggleButtonsOff() {
     this.setState({selectedCoins: []});
+    this.setState({selectedCoinsExchange: []});
     this.setState({showButtons: false});
   }
 
@@ -54,6 +57,24 @@ class CoinsDisplay extends Component {
     }
   }
 
+  updateExchangeCoins(color) {
+    let coinObj = {[color]: 1};
+    let exchange = this.state.selectedCoinsExchange;
+    exchange.forEach(coin => {
+      if(coinObj[coin]) {
+        coinObj[coin]++;
+      } else {
+        coinObj[coin] = 1;
+      }
+    });
+    console.log(coinObj, 'coin object')
+    if(this.props.costCalculator(this.props.playerCoins, coinObj).total === 0 && exchange.length < this.state.selectedCoins.length) {
+      console.log('ABLE to exchange');
+      let coins = this.state.selectedCoinsExchange.concat(color);
+      this.setState({selectedCoinsExchange: coins});
+    }
+  }
+
   removeSelectedCoin(index) {
     let coins = this.state.selectedCoins;
     coins.splice(index, 1);
@@ -64,6 +85,13 @@ class CoinsDisplay extends Component {
   }
 
   render() {
+    console.log(this.props.costCalculator({
+      white: 1,
+      gold: 1
+    },{
+      gold: 2
+    }
+  ), 'test')
     return (
       <div>
         <div>
@@ -71,6 +99,7 @@ class CoinsDisplay extends Component {
             toggleModalCoin={this.toggleModalCoin}
             showModalCoin={this.state.showModalCoin}
             selectedCoins={this.state.selectedCoins}
+            playerCoins={this.props.playerCoins}
           />
           <Panel
             style={{cursor:'pointer'}}
@@ -130,13 +159,41 @@ class CoinsDisplay extends Component {
             {this.props.coins[5]}
           </Panel>
         </div>
-        { this.state.selectedCoins ?
+        { this.state.selectedCoins.length ?
           <div className="text-center">
-            {this.state.selectedCoins.map((value, index) => {
-              if(value === 'white') { value = 'gray'}
-              return <i className="fa fa-bandcamp fa-4x" style={{color: value}} onClick={() => {this.removeSelectedCoin(index)}} key={index}/>
-            })}
+            <div>
+              Coins to Pick Up:
+            </div>
+            <div className="text-center">
+              {this.state.selectedCoins.map((value, index) => {
+                if(value === 'white') { value = 'gray'}
+                return <i className="fa fa-bandcamp fa-4x" style={{color: value}} onClick={() => {this.removeSelectedCoin(index)}} key={index}/>
+              })}
+            </div>
           </div>: null
+        }
+        { this.props.coinTotal + this.state.selectedCoins.length > 10 ?
+          <div className="text-center">
+            <div>Your Coins:</div>
+            <div style={{cursor: "pointer"}}>
+              <i className="fa fa-bandcamp fa-2x" style={{color:'gray'}} onClick={() => this.updateExchangeCoins('white')}>{this.props.playerCoins.white}</i>
+              <i className="fa fa-bandcamp fa-2x" style={{color:'blue'}} onClick={() => this.updateExchangeCoins('blue')}>{this.props.playerCoins.blue}</i>
+              <i className="fa fa-bandcamp fa-2x" style={{color:'green'}} onClick={() => this.updateExchangeCoins('green')}>{this.props.playerCoins.green}</i>
+              <i className="fa fa-bandcamp fa-2x" style={{color:'red'}} onClick={() => this.updateExchangeCoins('red')}>{this.props.playerCoins.red}</i>
+              <i className="fa fa-bandcamp fa-2x" style={{color:'black'}} onClick={() => this.updateExchangeCoins('black')}>{this.props.playerCoins.black}</i>
+              <i className="fa fa-bandcamp fa-2x" style={{color:'#DAA520'}} onClick={() => this.updateExchangeCoins('gold')}>{this.props.playerCoins.gold}</i>
+            </div>
+            <div>
+              Coins to Give Back:
+            </div>
+            <div className="text-center">
+              {this.state.selectedCoinsExchange.map((value, index) => {
+                if(value === 'white') { value = 'gray'}
+                if(value === 'gold') { value = '#DAA520'}
+                return <i className="fa fa-bandcamp fa-4x" style={{color: value}} onClick={() => {this.removeSelectedCoin(index)}} key={index}/>
+              })}
+            </div>
+          </div> : null
         }
         { this.state.showButtons && this.props.isPlayerTurn ?
           <div className="text-center">
@@ -171,7 +228,7 @@ class CoinsDisplay extends Component {
                   }}>
                   Confirm Selection
                 </Button> :
-                <Button bsClass="btn btn-w-m btn-warning" onClick={this.toggleModalCoin}>
+                <Button bsClass="btn btn-w-m btn-warning" onClick={() => console.log('exchange is clicked')}>
                   Exchange Coins
                 </Button>
               }
