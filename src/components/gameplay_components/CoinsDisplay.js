@@ -11,6 +11,8 @@ class CoinsDisplay extends Component {
     this.updateSelectedCoins = this.updateSelectedCoins.bind(this);
     this.updateExchangeCoins = this.updateExchangeCoins.bind(this);
     this.removeSelectedCoin = this.removeSelectedCoin.bind(this);
+    this.submitSelectedCoins = this.submitSelectedCoins.bind(this);
+    this.submitExchangeCoins = this.submitExchangeCoins.bind(this);
     this.state = {
       showButtons: false,
       showModalCoin: false,
@@ -75,23 +77,70 @@ class CoinsDisplay extends Component {
     }
   }
 
-  removeSelectedCoin(index) {
-    let coins = this.state.selectedCoins;
+  removeSelectedCoin(index, name) {
+    let coins = this.state[name];
     coins.splice(index, 1);
-    this.setState({selectedCoins: coins});
+    this.setState({[name]: coins});
     if(this.state.selectedCoins.length === 0) {
       this.toggleButtonsOff();
     }
   }
 
-  render() {
-    console.log(this.props.costCalculator({
-      white: 1,
-      gold: 1
-    },{
-      gold: 2
+  submitSelectedCoins() {
+    if(this.props.coinTotal + this.state.selectedCoins.length > 10) {
+      this.toggleButtonsOff();
+      this.props.displayNotificationMessage("You cannot have more than 10 coins total!");
+    } else {
+      let coinObj = {};
+      this.state.selectedCoins.forEach(coin => {
+        if(coinObj[coin]) {
+          coinObj[coin]++;
+        } else {
+          coinObj[coin] = 1;
+        }
+      })
+      this.props.adjustBankCoins(coinObj, 'subtract');
+      this.props.adjustPlayerCoins(coinObj, 'add');
+      this.toggleButtonsOff();
+      this.props.checkNobles();
+      this.props.displayNotificationMessage('You Collected Coins!');
     }
-  ), 'test')
+  }
+
+  submitExchangeCoins() {
+    if(this.props.coinTotal + this.state.selectedCoins.length - this.state.selectedCoinsExchange.length > 10) {
+      this.props.displayNotificationMessage("You Cannot Have More Than 10 Coins Total");
+      return;
+    }
+    let selected = {};
+    let exchange = {};
+    this.state.selectedCoins.forEach(coin => {
+      if(selected[coin]) {
+        selected[coin]++;
+      } else {
+        selected[coin] = 1;
+      }
+    })
+    this.state.selectedCoinsExchange.forEach(coin => {
+      if(exchange[coin]) {
+        exchange[coin]++;
+      } else {
+        exchange[coin] = 1;
+      }
+    })
+    this.props.adjustBankCoins(selected, 'subtract');
+    this.props.adjustPlayerCoins(selected, 'add');
+    this.props.adjustBankCoins(exchange, 'add');
+    this.props.adjustPlayerCoins(exchange, 'subtract');
+    this.toggleButtonsOff();
+    this.props.checkNobles();
+    this.props.displayNotificationMessage('You Exchanged Coins!');
+  }
+
+  render() {
+    console.log(this.props.coinTotal, 'total')
+    console.log(this.state.selectedCoins, 'selected')
+    console.log(this.state.selectedCoinsExchange, 'exchange')
     return (
       <div>
         <div>
@@ -167,7 +216,7 @@ class CoinsDisplay extends Component {
             <div className="text-center">
               {this.state.selectedCoins.map((value, index) => {
                 if(value === 'white') { value = 'gray'}
-                return <i className="fa fa-bandcamp fa-4x" style={{color: value}} onClick={() => {this.removeSelectedCoin(index)}} key={index}/>
+                return <i className="fa fa-bandcamp fa-4x" style={{color: value}} onClick={() => {this.removeSelectedCoin(index, 'selectedCoins')}} key={index}/>
               })}
             </div>
           </div>: null
@@ -190,7 +239,7 @@ class CoinsDisplay extends Component {
               {this.state.selectedCoinsExchange.map((value, index) => {
                 if(value === 'white') { value = 'gray'}
                 if(value === 'gold') { value = '#DAA520'}
-                return <i className="fa fa-bandcamp fa-4x" style={{color: value}} onClick={() => {this.removeSelectedCoin(index)}} key={index}/>
+                return <i className="fa fa-bandcamp fa-4x" style={{color: value}} onClick={() => {this.removeSelectedCoin(index, 'selectedCoinsExchange')}} key={index}/>
               })}
             </div>
           </div> : null
@@ -206,29 +255,10 @@ class CoinsDisplay extends Component {
               {this.props.coinTotal + this.state.selectedCoins.length <= 10 ? 
                 <Button
                   bsClass="btn btn-w-m btn-success"
-                  onClick={ () => {
-                    if(this.props.coinTotal + this.state.selectedCoins.length > 10) {
-                      this.toggleButtonsOff();
-                      this.props.displayNotificationMessage("You cannot have more than 10 coins total!");
-                    } else {
-                      let coinObj = {};
-                      this.state.selectedCoins.forEach(coin => {
-                        if(coinObj[coin]) {
-                          coinObj[coin]++;
-                        } else {
-                          coinObj[coin] = 1;
-                        }
-                      })
-                      this.props.adjustBankCoins(coinObj, 'subtract');
-                      this.props.adjustPlayerCoins(coinObj, 'add');
-                      this.toggleButtonsOff();
-                      this.props.checkNobles();
-                      this.props.displayNotificationMessage('You Collected Coins!');
-                    }
-                  }}>
+                  onClick={this.submitSelectedCoins}>
                   Confirm Selection
                 </Button> :
-                <Button bsClass="btn btn-w-m btn-warning" onClick={() => console.log('exchange is clicked')}>
+                <Button bsClass="btn btn-w-m btn-warning" onClick={this.submitExchangeCoins}>
                   Exchange Coins
                 </Button>
               }
