@@ -12,12 +12,10 @@ export default class ModalBoughtCards extends Component {
         aria-labelledby="contained-modal-title-sm"
         show={this.props.showModalBoughtCards}
         onHide={() => this.props.toggleModal('BoughtCards')}>
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-sm">Your Cards</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+        <Modal.Header>
           {this.props.cards.map((card, index) => {
-            return <Card 
+            return <Card
+              className={'col-sm-3'} 
               card={card}
               key={index}
               index={index}
@@ -26,6 +24,9 @@ export default class ModalBoughtCards extends Component {
               convertStyle={this.props.convertStyle}
             />
           })}
+        </Modal.Header>
+        <Modal.Body closeButton>
+          <Modal.Title id="contained-modal-title-sm">Your Cards</Modal.Title>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={() => this.props.toggleModal('BoughtCards')}>Close</Button>

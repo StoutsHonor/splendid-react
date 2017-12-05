@@ -15,7 +15,8 @@ class CardsDisplay extends Component {
         <Panel header="Level 3 Cards">
           {this.props.levelThreeCards ?
             this.props.levelThreeCards.slice(0,4).map((card, index) => { 
-              return <Card 
+              return <Card
+                className={'col-sm-2'}
                 card={card} 
                 key={index} 
                 index={index} 
@@ -31,6 +32,7 @@ class CardsDisplay extends Component {
           {this.props.levelTwoCards ?
             this.props.levelTwoCards.slice(0,4).map((card, index) => { 
               return <Card 
+                className={'col-sm-2'}
                 card={card} 
                 key={index} 
                 index={index}
@@ -46,6 +48,7 @@ class CardsDisplay extends Component {
           {this.props.levelOneCards ?
             this.props.levelOneCards.slice(0,4).map((card, index) => { 
               return <Card 
+                className={'col-sm-2'}
                 card={card} 
                 key={index} 
                 index={index}

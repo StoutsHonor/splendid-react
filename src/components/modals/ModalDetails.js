@@ -17,10 +17,12 @@ export default class ModalDetails extends Component {
         </Modal.Header>
         <Modal.Body>
           <div className="text-center">
+            Points: 
             <i className="fa fa-bolt fa-2x"> {info.points}</i>
           </div>
           <div>
-          <i className="fa fa-lock fa-2x" style={{color: info.reservedCards.length < 3? 'black': 'red'}}> {info.reservedCards.length}</i>
+            Reserved Cards: 
+            <i className="fa fa-lock fa-2x" style={{color: info.reservedCards.length < 3? 'black': 'red'}}> {info.reservedCards.length}</i>
           </div>
           <div className="text-center">
             Total Coins: 

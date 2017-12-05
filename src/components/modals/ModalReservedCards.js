@@ -12,12 +12,10 @@ export default class ModalReservedCards extends Component {
         aria-labelledby="contained-modal-title-sm"
         show={this.props.showModalReservedCards}
         onHide={() => this.props.toggleModal('ReservedCards')}>
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-sm">Reserved Cards</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+        <Modal.Header>
           {this.props.reservedCards.map((card, index) => {
-            return <Card 
+            return <Card
+              className={'col-sm-3'} 
               card={card}
               key={index}
               index={index}
@@ -27,6 +25,9 @@ export default class ModalReservedCards extends Component {
               convertStyle={this.props.convertStyle}
             />
           })}
+        </Modal.Header>
+        <Modal.Body closeButton>
+          <Modal.Title id="contained-modal-title-sm">Reserved Cards</Modal.Title>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={() => this.props.toggleModal('ReservedCards')}>Close</Button>
