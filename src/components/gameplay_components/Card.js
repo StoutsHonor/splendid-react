@@ -7,7 +7,7 @@ export default class Card extends Component {
     let persistColor = this.props.card.persist;
     if(this.props.card.persist === "white") {persistColor = "gray"}
     return (
-      <Panel className='col-sm-2'
+      <Panel className={this.props.className}
         onClick={() => {
           if(this.props.level !== "Bought") {
             this.props.handleClickCard(this.props.level, this.props.index);

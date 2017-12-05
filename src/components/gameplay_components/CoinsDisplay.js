@@ -69,9 +69,7 @@ class CoinsDisplay extends Component {
         coinObj[coin] = 1;
       }
     });
-    console.log(coinObj, 'coin object')
     if(this.props.costCalculator(this.props.playerCoins, coinObj).total === 0 && exchange.length < this.state.selectedCoins.length) {
-      console.log('ABLE to exchange');
       let coins = this.state.selectedCoinsExchange.concat(color);
       this.setState({selectedCoinsExchange: coins});
     }
@@ -138,9 +136,6 @@ class CoinsDisplay extends Component {
   }
 
   render() {
-    console.log(this.props.coinTotal, 'total')
-    console.log(this.state.selectedCoins, 'selected')
-    console.log(this.state.selectedCoinsExchange, 'exchange')
     return (
       <div>
         <div>
