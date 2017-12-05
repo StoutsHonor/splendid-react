@@ -3,11 +3,6 @@ import {Panel} from 'react-bootstrap';
 import Card from './Card';
 
 class CardsDisplay extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    }
-  }
 
   render() {
     return (

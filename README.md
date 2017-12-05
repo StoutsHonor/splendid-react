@@ -2,17 +2,16 @@
 
 General:
 - Back End Server
-- Multiplayer(socket.io)
+- Multiplayer(socket.io)(Use async inside `checkPoints()` to call function for next player turn)
 
-Game Logic:
+Optional Game Logic:
 - Per Turn Countdown
-- Use async inside `checkPoints()` to call function for next player turn
-- (Optional) let player choose noble when qualified for 2 or more(modal)
+- Let player choose noble when qualified for 2 or more(modal)
 
 UX:
 - Coin, card, and noble animations
 - Chat(socket.io)
-- Out-of-game components
+- Out-of-game components(see Additional Components)
 
 UI:
 - This we will focus LAST
@@ -22,7 +21,15 @@ UI:
 - Bootstrap clean-up
 
 Additional Components:
-- Data visualization component at score screen
+- ScoreScreen(data visualization)
+- Home(make it look nice)
+- CreateGame(host)
+- JoinGame(join)
+- WaitingRoom
+- Leaderboard
+- Settings(adjust game settings)
+- Login
+- UserProfile(not set yet)
 
 ## Completed
 
