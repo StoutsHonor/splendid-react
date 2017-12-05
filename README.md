@@ -8,7 +8,6 @@ Game Logic:
 - Per Turn Countdown
 - Use async inside `checkPoints()` to call function for next player turn
 - (Optional) let player choose noble when qualified for 2 or more(modal)
-- (Optional) Coin Exchange, if player has close to 10 coins
 
 UX:
 - Coin, card, and noble animations
@@ -27,6 +26,7 @@ Additional Components:
 
 ## Completed
 
+- 12/04 exchange coins logic implemented
 - 12/02 victory conditions and notification countdown fixed
 - 12/01 notification modal implemented in place of alerts
 - 11/29 player details modal implemented

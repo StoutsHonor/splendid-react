@@ -11,6 +11,7 @@ class CoinsDisplay extends Component {
     this.updateSelectedCoins = this.updateSelectedCoins.bind(this);
     this.updateExchangeCoins = this.updateExchangeCoins.bind(this);
     this.removeSelectedCoin = this.removeSelectedCoin.bind(this);
+    this.submitSelectedCoins = this.submitSelectedCoins.bind(this);
     this.submitExchangeCoins = this.submitExchangeCoins.bind(this);
     this.state = {
       showButtons: false,
@@ -82,6 +83,27 @@ class CoinsDisplay extends Component {
     this.setState({[name]: coins});
     if(this.state.selectedCoins.length === 0) {
       this.toggleButtonsOff();
+    }
+  }
+
+  submitSelectedCoins() {
+    if(this.props.coinTotal + this.state.selectedCoins.length > 10) {
+      this.toggleButtonsOff();
+      this.props.displayNotificationMessage("You cannot have more than 10 coins total!");
+    } else {
+      let coinObj = {};
+      this.state.selectedCoins.forEach(coin => {
+        if(coinObj[coin]) {
+          coinObj[coin]++;
+        } else {
+          coinObj[coin] = 1;
+        }
+      })
+      this.props.adjustBankCoins(coinObj, 'subtract');
+      this.props.adjustPlayerCoins(coinObj, 'add');
+      this.toggleButtonsOff();
+      this.props.checkNobles();
+      this.props.displayNotificationMessage('You Collected Coins!');
     }
   }
 
@@ -233,26 +255,7 @@ class CoinsDisplay extends Component {
               {this.props.coinTotal + this.state.selectedCoins.length <= 10 ? 
                 <Button
                   bsClass="btn btn-w-m btn-success"
-                  onClick={ () => {
-                    if(this.props.coinTotal + this.state.selectedCoins.length > 10) {
-                      this.toggleButtonsOff();
-                      this.props.displayNotificationMessage("You cannot have more than 10 coins total!");
-                    } else {
-                      let coinObj = {};
-                      this.state.selectedCoins.forEach(coin => {
-                        if(coinObj[coin]) {
-                          coinObj[coin]++;
-                        } else {
-                          coinObj[coin] = 1;
-                        }
-                      })
-                      this.props.adjustBankCoins(coinObj, 'subtract');
-                      this.props.adjustPlayerCoins(coinObj, 'add');
-                      this.toggleButtonsOff();
-                      this.props.checkNobles();
-                      this.props.displayNotificationMessage('You Collected Coins!');
-                    }
-                  }}>
+                  onClick={this.submitSelectedCoins}>
                   Confirm Selection
                 </Button> :
                 <Button bsClass="btn btn-w-m btn-warning" onClick={this.submitExchangeCoins}>
