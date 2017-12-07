@@ -264,13 +264,11 @@ export default class GameScreen extends Component {
   }
 
   checkNobles() {
-    console.log('hitting noble function')
     let qualifiedNobles = [];
     setTimeout(() => {
       this.state.nobles.forEach((noble, index) => {
         if(this.costCalculator(this.state.playerPersistColors, noble).total === 0) {
           qualifiedNobles.push(index);
-          console.log(qualifiedNobles)
         }
       })
       if(qualifiedNobles.length === 1) {

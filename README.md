@@ -6,7 +6,6 @@ General:
 
 Optional Game Logic:
 - Per Turn Countdown
-- Let player choose noble when qualified for 2 or more(modal)
 
 UX:
 - Coin, card, and noble animations
@@ -33,6 +32,7 @@ Additional Components:
 
 ## Completed
 
+- 12/07 noble selection(when qualified for 2 or more) implemented
 - 12/04 exchange coins logic implemented
 - 12/02 victory conditions and notification countdown fixed
 - 12/01 notification modal implemented in place of alerts
