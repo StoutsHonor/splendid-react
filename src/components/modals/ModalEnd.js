@@ -20,10 +20,8 @@ export default class ModalEnd extends Component {
           aria-labelledby="contained-modal-title-sm"
           show={this.props.showModalEnd}
           onHide={() => this.props.toggleModal('End')}>
-          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-sm">Congratulations, You Won!!!</Modal.Title>
-          </Modal.Header>
           <Modal.Body>
+            <Modal.Title id="contained-modal-title-sm">Congratulations, You Won!!!</Modal.Title>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={() => {

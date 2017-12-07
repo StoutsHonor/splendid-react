@@ -26,7 +26,7 @@ export default class ModalReservedCards extends Component {
             />
           })}
         </Modal.Header>
-        <Modal.Body closeButton>
+        <Modal.Body>
           <Modal.Title id="contained-modal-title-sm">Reserved Cards</Modal.Title>
         </Modal.Body>
         <Modal.Footer>
