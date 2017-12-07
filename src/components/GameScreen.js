@@ -56,8 +56,8 @@ export default class GameScreen extends Component {
       playerPoints: 0, 
       playerCards: [],
       playerReservedCards: [],
-      playerCoins: {white: 1, blue: 1, green: 1, red: 1, black: 1, gold: 5, total: 9},
-      playerPersistColors: {white: 4, blue: 4, green: 4, red: 4, black: 4},
+      playerCoins: {white: 0, blue: 0, green: 0, red: 0, black: 0, gold: 0, total: 0},
+      playerPersistColors: {white: 0, blue: 0, green: 0, red: 0, black: 0},
       playerNobles: []
     }
   }
@@ -273,9 +273,11 @@ export default class GameScreen extends Component {
       })
       if(qualifiedNobles.length === 1) {
         this.handleSelectedNoble(qualifiedNobles[0]);
+        this.setState({showModalNotification: false});
       } else if (qualifiedNobles.length > 1) {
         this.setState({qualifiedNobles: qualifiedNobles});
         this.toggleModal('NobleSelect');
+        this.setState({showModalNotification: false});
       }
     }, 200);
     //since nobles need delay to check, win condition check is async
@@ -290,7 +292,7 @@ export default class GameScreen extends Component {
     this.setState({playerNobles: playerNobles});
     this.updatePoints(3);
     setTimeout(() => this.checkPoints(), 1000);
-    alert('You Chose Your Noble Wisely!');
+    this.displayNotificationMessage('You Chose Your Noble Wisely!');
   }
 
   checkPoints() {

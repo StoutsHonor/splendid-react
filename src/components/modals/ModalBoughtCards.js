@@ -25,7 +25,7 @@ export default class ModalBoughtCards extends Component {
             />
           })}
         </Modal.Header>
-        <Modal.Body closeButton>
+        <Modal.Body>
           <Modal.Title id="contained-modal-title-sm">Your Cards</Modal.Title>
         </Modal.Body>
         <Modal.Footer>

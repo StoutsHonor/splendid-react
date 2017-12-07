@@ -4,8 +4,6 @@ import Card from '../gameplay_components/Card';
 
 export default class ModalCard extends Component {
   render() {
-    let persistColor = this.props.selectedCard.persist;
-    if(this.props.selectedCard.persist === "white") {persistColor = "gray"}
     return (
       <Modal 
         className="text-center"
@@ -22,7 +20,7 @@ export default class ModalCard extends Component {
             convertStyle={this.props.convertStyle}
           />
         </Modal.Header>
-        <Modal.Body closeButton>
+        <Modal.Body>
           <Modal.Title id="contained-modal-title-sm">{this.props.isPlayerTurn? "What Would You Like To Do With This Card?" : ""}</Modal.Title>
         </Modal.Body>
         <Modal.Footer>

@@ -12,7 +12,7 @@ export default class ModalDetails extends Component {
         aria-labelledby="contained-modal-title-sm"
         show={this.props.showModalDetails}
         onHide={() => this.props.toggleModal('Details')}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title id="contained-modal-title-sm">Player Details</Modal.Title>
         </Modal.Header>
         <Modal.Body>

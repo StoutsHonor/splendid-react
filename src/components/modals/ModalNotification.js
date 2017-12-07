@@ -14,7 +14,7 @@ export default class ModalNotification extends Component {
           this.props.clearNotificationCountdown();
           this.props.toggleModal('Notification');
         }}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title id="contained-modal-title-sm">Notifications</Modal.Title>
         </Modal.Header>
         <Modal.Body>

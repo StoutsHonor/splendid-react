@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Modal, Button} from 'react-bootstrap';
+import {Modal} from 'react-bootstrap';
 
 export default class ModalNobleSelect extends Component {
 
@@ -9,12 +9,18 @@ export default class ModalNobleSelect extends Component {
         className="text-center"
         bsSize="large" 
         aria-labelledby="contained-modal-title-sm"
-        show={this.props.showModalNobleSelect}
-        onHide={() => this.props.toggleModal('NobleSelect')}>
+        show={this.props.showModalNobleSelect}>
         <Modal.Header>
-          {this.props.nobles.map((noble, key) => {
+          {this.props.nobles.map((noble, i) => {
             return (
-              <div className="panel panel-warning col-sm-2" style={{height: 175, marginLeft: 10, cursor: 'pointer'}} key={key} onClick={() => this.props.handleSelectedNoble(key)}>
+              <div 
+                className="panel panel-warning col-sm-2" 
+                style={{height: 175, marginLeft: 10, cursor: 'pointer'}} 
+                key={i} 
+                onClick={() => {
+                  this.props.toggleModal('NobleSelect');
+                  this.props.handleSelectedNoble(i);
+                }}>
                 <div className="panel-heading"><i className="fa fa-bolt fa-3x">3</i></div>
                 <div className="panel-body">
                   <div>
@@ -30,10 +36,8 @@ export default class ModalNobleSelect extends Component {
           })}
         </Modal.Header>
         <Modal.Body>
+          You're Eligible for These Nobles, But You Can Only Choose ONE Per Turn...
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={() => this.props.toggleModal('NobleSelect')}>Close</Button>
-        </Modal.Footer>
       </Modal>
     )
   }

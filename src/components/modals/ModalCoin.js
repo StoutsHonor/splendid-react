@@ -11,7 +11,7 @@ export default class ModalCoin extends Component {
         aria-labelledby="contained-modal-title-sm"
         show={this.props.showModalCoin}
         onHide={() => this.props.toggleModalCoins}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title id="contained-modal-title-sm">Exchange Coins</Modal.Title>
         </Modal.Header>
         <Modal.Body>
