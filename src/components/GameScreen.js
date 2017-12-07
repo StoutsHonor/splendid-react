@@ -11,6 +11,7 @@ import ModalDetails from './modals/ModalDetails';
 import ModalBoughtCards from './modals/ModalBoughtCards';
 import ModalReservedCards from './modals/ModalReservedCards';
 import ModalCard from './modals/ModalCard';
+import ModalNobleSelect from './modals/ModalNobleSelect';
 import ModalEnd from './modals/ModalEnd';
 import nobles from '../json_files/nobles';
 import levelOneCards from '../json_files/levelOneCards';
@@ -37,6 +38,7 @@ export default class GameScreen extends Component {
     this.costCalculator = this.costCalculator.bind(this);
     this.isAbleToBuy = this.isAbleToBuy.bind(this);
     this.checkNobles = this.checkNobles.bind(this);
+    this.handleSelectedNoble = this.handleSelectedNoble.bind(this);
     this.checkPoints = this.checkPoints.bind(this);
     this.convertColor = this.convertColor.bind(this);
     this.convertStyle = this.convertStyle.bind(this);
@@ -48,14 +50,14 @@ export default class GameScreen extends Component {
       nobles: [], pointsToWin: 0,
       levelOneCards: [], levelTwoCards: [], levelThreeCards: [],
       selectedCard: {}, selectedCardPosition:[],
-      currentNotification: '',
+      currentNotification: '', qualifiedNobles: [],
       //player states:
       isPlayerTurn: true, didPlayerWin: false, didPlayerLose: false,
       playerPoints: 0, 
       playerCards: [],
       playerReservedCards: [],
       playerCoins: {white: 1, blue: 1, green: 1, red: 1, black: 1, gold: 5, total: 9},
-      playerPersistColors: {white: 0, blue: 0, green: 0, red: 0, black: 0},
+      playerPersistColors: {white: 4, blue: 4, green: 4, red: 4, black: 4},
       playerNobles: []
     }
   }
@@ -262,21 +264,35 @@ export default class GameScreen extends Component {
   }
 
   checkNobles() {
+    console.log('hitting noble function')
+    let qualifiedNobles = [];
     setTimeout(() => {
-      for(let i = 0; i < this.state.nobles.length; i++) {
-        if(this.costCalculator(this.state.playerPersistColors, this.state.nobles[i]).total === 0) {
-          const nobles = this.state.nobles.slice();
-          const playerNobles = this.state.playerNobles.slice();
-          playerNobles.push(nobles.splice(i, 1));
-          this.setState({nobles: nobles});
-          this.setState({playerNobles: playerNobles});
-          this.updatePoints(3);
-          break;
+      this.state.nobles.forEach((noble, index) => {
+        if(this.costCalculator(this.state.playerPersistColors, noble).total === 0) {
+          qualifiedNobles.push(index);
+          console.log(qualifiedNobles)
         }
+      })
+      if(qualifiedNobles.length === 1) {
+        this.handleSelectedNoble(qualifiedNobles[0]);
+      } else if (qualifiedNobles.length > 1) {
+        this.setState({qualifiedNobles: qualifiedNobles});
+        this.toggleModal('NobleSelect');
       }
     }, 200);
     //since nobles need delay to check, win condition check is async
     setTimeout(() => this.checkPoints(), 1000);
+  }
+
+  handleSelectedNoble(index) {
+    const nobles = this.state.nobles.slice();
+    const playerNobles = this.state.playerNobles.slice();
+    playerNobles.push(nobles.splice(index, 1));
+    this.setState({nobles: nobles});
+    this.setState({playerNobles: playerNobles});
+    this.updatePoints(3);
+    setTimeout(() => this.checkPoints(), 1000);
+    alert('You Chose Your Noble Wisely!');
   }
 
   checkPoints() {
@@ -359,6 +375,13 @@ export default class GameScreen extends Component {
             persistColors: this.state.playerPersistColors,
             nobles: this.state.playerNobles
           }}
+        />
+        <ModalNobleSelect
+          toggleModal={this.toggleModal}
+          nobles={this.state.nobles}
+          showModalNobleSelect={this.state.showModalNobleSelect}
+          qualifiedNobles={this.state.qualifiedNobles}
+          handleSelectedNoble={this.handleSelectedNoble}
         />
         <ModalEnd
           toggleModal={this.toggleModal}
