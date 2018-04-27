@@ -27,26 +27,9 @@ export default class GameScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.toggleModal = this.toggleModal.bind(this);
-    this.displayNotificationMessage = this.displayNotificationMessage.bind(this);
-    this.startNotificationCountdown = this.startNotificationCountdown.bind(this);
-    this.clearNotificationCountdown = this.clearNotificationCountdown.bind(this);
-    this.handleClickCard = this.handleClickCard.bind(this);
-    this.adjustBankCoins = this.adjustBankCoins.bind(this);
-    this.adjustPlayerCoins = this.adjustPlayerCoins.bind(this);
-    this.updatePoints = this.updatePoints.bind(this);
-    this.buyCard = this.buyCard.bind(this);
-    this.reserveCard = this.reserveCard.bind(this);
-    this.costCalculator = this.costCalculator.bind(this);
-    this.isAbleToBuy = this.isAbleToBuy.bind(this);
-    this.checkNobles = this.checkNobles.bind(this);
-    this.handleSelectedNoble = this.handleSelectedNoble.bind(this);
-    this.checkPoints = this.checkPoints.bind(this);
-    this.convertColor = this.convertColor.bind(this);
-    this.convertStyle = this.convertStyle.bind(this);
     this.state = {
       players: 4,
-      showModalDetails: false, showModalBoughtCards: false, showModalReservedCards: false, 
+      showModalDetails: false, showModalBoughtCards: false, showModalReservedCards: false,
       showModalCard: false, showModalNobleSelect: false, showModalEnd: false, showModalNotification: false,
       whiteCoins: 0, blueCoins: 0, greenCoins: 0, redCoins: 0, blackCoins: 0, goldCoins: 5,
       nobles: [], pointsToWin: 0,
@@ -87,26 +70,26 @@ export default class GameScreen extends Component {
     this.setState({pointsToWin: 15})
   }
 
-  toggleModal(name) {
-    let modalName = 'showModal' + name;
-    this.setState({[modalName]: !this.state[modalName]})
+  toggleModal = name => {
+    const modalName = 'showModal' + name;
+    this.setState({[modalName]: !this.state[modalName]});
   }
 
-  displayNotificationMessage(message) {
+  displayNotificationMessage = message => {
     this.toggleModal('Notification');
     this.setState({currentNotification: message});
     this.startNotificationCountdown();
   }
 
-  startNotificationCountdown() {
+  startNotificationCountdown = () => {
     notificationCountdown = setTimeout(() => this.setState({showModalNotification: false}), 5000);
   }
 
-  clearNotificationCountdown() {
+  clearNotificationCountdown = () => {
     clearTimeout(notificationCountdown);
   }
 
-  handleClickCard(level, index) {
+  handleClickCard = (level, index) => {
     let cardsState;
     if(level === 'Reserved') {
       cardsState = 'playerReservedCards';
@@ -118,7 +101,7 @@ export default class GameScreen extends Component {
     this.toggleModal('Card');
   }
 
-  adjustBankCoins(coins, action) {
+  adjustBankCoins = (coins, action) => {
     for(let color in coins) {
       if(color !== 'total') {
         let coinState = color + 'Coins';
@@ -131,7 +114,7 @@ export default class GameScreen extends Component {
     }
   }
 
-  adjustPlayerCoins(coins, action) {
+  adjustPlayerCoins = (coins, action) => {
     for(let color in coins) {
       if(color !== 'total') {
         if(action === 'subtract') {
@@ -155,11 +138,11 @@ export default class GameScreen extends Component {
     }
   }
 
-  updatePoints(points) {
+  updatePoints = points => {
     this.setState({playerPoints: this.state.playerPoints + points});
   }
 
-  buyCard(level, index) {
+  buyCard = (level, index) => {
     let cardsState;
     if(level === "Reserved") {
       cardsState = "playerReservedCards";
@@ -213,7 +196,7 @@ export default class GameScreen extends Component {
     this.checkNobles();
   }
 
-  reserveCard(level, index) {
+  reserveCard = (level, index) => {
     const cardsState = 'level' + level + 'Cards';
     const cards = this.state[cardsState].slice();
     const playerCards = this.state.playerReservedCards.slice();
@@ -239,7 +222,7 @@ export default class GameScreen extends Component {
     this.checkNobles();
   }
 
-  costCalculator(playerBuyingPower, cardCost) {
+  costCalculator = (playerBuyingPower, cardCost) => {
     const results = {total: 0};
     for(let color in cardCost) {
       if(color === 'white' || color === 'blue' || color === 'green' || color === 'red' || color === 'black' || color === 'gold') {
@@ -257,7 +240,7 @@ export default class GameScreen extends Component {
     return results;
   }
 
-  isAbleToBuy(playerBuyingPower, cardCost) {
+  isAbleToBuy = (playerBuyingPower, cardCost) => {
     let coinsNeeded = this.costCalculator(playerBuyingPower, cardCost);
     if (coinsNeeded.total > playerBuyingPower.gold) {
       return false;
@@ -265,7 +248,7 @@ export default class GameScreen extends Component {
     return true;
   }
 
-  checkNobles() {
+  checkNobles = () => {
     let qualifiedNobles = [];
     setTimeout(() => {
       this.state.nobles.forEach((noble, index) => {
@@ -286,7 +269,7 @@ export default class GameScreen extends Component {
     setTimeout(() => this.checkPoints(), 1000);
   }
 
-  handleSelectedNoble(index) {
+  handleSelectedNoble = index => {
     const nobles = this.state.nobles.slice();
     const playerNobles = this.state.playerNobles.slice();
     playerNobles.push(nobles.splice(index, 1));
@@ -297,14 +280,14 @@ export default class GameScreen extends Component {
     this.displayNotificationMessage('You Chose Your Noble Wisely!');
   }
 
-  checkPoints() {
+  checkPoints = () => {
     if(this.state.playerPoints >= this.state.pointsToWin) {
       this.setState({didPlayerWin: true});
       this.toggleModal('End');
     } 
   }
 
-  convertColor(color) {
+  convertColor = color => {
     if(color === 'white') { return "#dcdcdc";}
     if(color === 'blue') { return "#b0e0e6";}
     if(color === 'green') {return "#3cb371";}
@@ -313,7 +296,7 @@ export default class GameScreen extends Component {
     return color;
   }
 
-  convertStyle(style) {
+  convertStyle = style => {
     if(style === 'white' || style ==='black') { return 'default'}
     if(style === 'blue') { return 'primary'}
     if(style === 'green') { return 'success'}
