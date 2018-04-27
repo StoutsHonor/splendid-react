@@ -16,7 +16,7 @@ class GameButtons extends Component {
     }
     return (
       <div>
-        <Button 
+        <Button
           bsClass="btn btn-w-m btn-default pull-left"
           onClick={() => {
             this.setState({navigate: true});
@@ -24,15 +24,15 @@ class GameButtons extends Component {
           <i className="fa fa-arrow-left"/> Back To Home
         </Button>
         <ButtonGroup bsClass="text-center">
-          <Button 
+          <Button
             bsClass="btn btn-w-m btn-success">
             <i className="fa fa-superpowers"/> Collect Coins
           </Button>
-          <Button 
+          <Button
             bsClass="btn btn-w-m btn-success">
             <i className="fa fa-money"/> Purchase Card
           </Button>
-          <Button 
+          <Button
             bsClass="btn btn-w-m btn-success">
             <i className="fa fa-lock"/> Reserve Card
           </Button>

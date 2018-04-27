@@ -6,16 +6,16 @@ export default class ModalBoughtCards extends Component {
 
   render() {
     return (
-      <Modal 
+      <Modal
         className="text-center"
-        bsSize="large" 
+        bsSize="large"
         aria-labelledby="contained-modal-title-sm"
         show={this.props.showModalBoughtCards}
         onHide={() => this.props.toggleModal('BoughtCards')}>
         <Modal.Header>
           {this.props.cards.map((card, index) => {
             return <Card
-              className={'col-sm-3'} 
+              className={'col-sm-3'}
               card={card}
               key={index}
               index={index}

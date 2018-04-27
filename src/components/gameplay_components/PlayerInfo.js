@@ -4,20 +4,18 @@ import {Panel} from 'react-bootstrap';
 class PlayerInfo extends Component {
   constructor(props) {
     super(props);
-    this.handleHoverColors = this.handleHoverColors.bind(this);
-    this.toggleCoins = this.toggleCoins.bind(this);
     this.state = {
       backgroundReservedCards: 'default',
       showCoins: true
     }
   }
 
-  handleHoverColors(name, color) {
+  handleHoverColors = (name, color) => {
     let state = 'background' + name;
     this.setState({[state]: color});
   }
 
-  toggleCoins() {
+  toggleCoins = () => {
     this.setState({showCoins: !this.state.showCoins});
   }
 
@@ -53,19 +51,19 @@ class PlayerInfo extends Component {
               <i className="fa fa-bandcamp fa-2x" style={{color:'#DAA520'}}>{info.coins.gold}</i>
             </div>
           :
-            <div 
-              className="col-sm-3 text-center" 
+            <div
+              className="col-sm-3 text-center"
               style={{fontSize: 19, color: info.coins.total < 10? 'black': 'red', cursor: "pointer"}}
               onClick={this.toggleCoins}
             >
               <i className="fa fa-bandcamp fa-2x" style={{color: info.coins.total < 10? 'black': 'red'}}/> Total Coins: {info.coins.total}
             </div>
           }
-          <div 
-            className="col-sm-2 text-center" 
+          <div
+            className="col-sm-2 text-center"
             style={{
-              backgroundColor: this.state.backgroundReservedCards, 
-              fontSize: 19, 
+              backgroundColor: this.state.backgroundReservedCards,
+              fontSize: 19,
               color: info.reservedCards.length < 3? 'black': 'red',
               cursor: "pointer"
             }}

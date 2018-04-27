@@ -5,9 +5,9 @@ export default class ModalNotification extends Component {
 
   render() {
     return (
-      <Modal 
+      <Modal
         className="text-center"
-        bsSize="large" 
+        bsSize="large"
         aria-labelledby="contained-modal-title-sm"
         show={this.props.showModalNotification}
         onHide={() => {

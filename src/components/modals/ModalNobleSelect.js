@@ -5,18 +5,18 @@ export default class ModalNobleSelect extends Component {
 
   render() {
     return (
-      <Modal 
+      <Modal
         className="text-center"
-        bsSize="large" 
+        bsSize="large"
         aria-labelledby="contained-modal-title-sm"
         show={this.props.showModalNobleSelect}>
         <Modal.Header>
           {this.props.nobles.map((noble, i) => {
             return (
-              <div 
-                className="panel panel-warning col-sm-2" 
-                style={{height: 175, marginLeft: 10, cursor: 'pointer'}} 
-                key={i} 
+              <div
+                className="panel panel-warning col-sm-2"
+                style={{height: 175, marginLeft: 10, cursor: 'pointer'}}
+                key={i}
                 onClick={() => {
                   this.props.toggleModal('NobleSelect');
                   this.props.handleSelectedNoble(i);

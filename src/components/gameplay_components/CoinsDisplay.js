@@ -141,8 +141,8 @@ class CoinsDisplay extends Component {
             style={{cursor:'pointer'}}
             onClick={() => { this.toggleButtonsOn();
               this.updateSelectedCoins('white', 0);
-            }} 
-            className="col-sm-2 text-center" 
+            }}
+            className="col-sm-2 text-center"
             header={<i className="fa fa-bandcamp fa-2x" style={{color:'gray'}}/>}>
             {this.props.coins[0]}
           </Panel>
@@ -150,7 +150,7 @@ class CoinsDisplay extends Component {
             style={{cursor:'pointer'}}
             onClick={() => { this.toggleButtonsOn();
               this.updateSelectedCoins('blue', 1);
-            }} 
+            }}
             className="col-sm-2 text-center"
             header={<i className="fa fa-bandcamp fa-2x" style={{color:'blue'}}/>}
             bsStyle="primary">
@@ -160,8 +160,8 @@ class CoinsDisplay extends Component {
             style={{cursor:'pointer'}}
             onClick={() => { this.toggleButtonsOn();
               this.updateSelectedCoins('green', 2);
-            }} 
-            className="col-sm-2 text-center" 
+            }}
+            className="col-sm-2 text-center"
             header={<i className="fa fa-bandcamp fa-2x" style={{color:'green'}}/>}
             bsStyle="success">
             {this.props.coins[2]}
@@ -170,8 +170,8 @@ class CoinsDisplay extends Component {
             style={{cursor:'pointer'}}
             onClick={() => { this.toggleButtonsOn();
               this.updateSelectedCoins('red', 3);
-            }} 
-            className="col-sm-2 text-center" 
+            }}
+            className="col-sm-2 text-center"
             header={<i className="fa fa-bandcamp fa-2x" style={{color:'red'}}/>}
             bsStyle="danger">
             {this.props.coins[3]}
@@ -180,16 +180,16 @@ class CoinsDisplay extends Component {
             style={{cursor:'pointer'}}
             onClick={() => { this.toggleButtonsOn();
               this.updateSelectedCoins('black', 4);
-            }} 
-            className="col-sm-2 text-center" 
-            header={<i className="fa fa-bandcamp fa-2x" style={{color:'black'}}/>} 
+            }}
+            className="col-sm-2 text-center"
+            header={<i className="fa fa-bandcamp fa-2x" style={{color:'black'}}/>}
             bsStyle="default">
             {this.props.coins[4]}
           </Panel>
           <Panel
             style={{cursor:'pointer'}}
-            onClick={() => this.props.displayNotificationMessage("You must reserve a Card collect a Gold Coin")} 
-            className="col-sm-2 text-center" 
+            onClick={() => this.props.displayNotificationMessage("You must reserve a Card collect a Gold Coin")}
+            className="col-sm-2 text-center"
             header={<i className="fa fa-bandcamp fa-2x" style={{color:'#DAA520'}}/>}
             bsStyle="warning">
             {this.props.coins[5]}
@@ -239,7 +239,7 @@ class CoinsDisplay extends Component {
                 onClick={this.toggleButtonsOff}>
                 Reset Selection
               </Button>
-              {this.props.coinTotal + this.state.selectedCoins.length <= 10 ? 
+              {this.props.coinTotal + this.state.selectedCoins.length <= 10 ?
                 <Button
                   bsClass="btn btn-w-m btn-success"
                   onClick={this.submitSelectedCoins}>

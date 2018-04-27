@@ -18,8 +18,8 @@ export default class Card extends Component {
             <i className="fa fa-eercast fa-3x" style={{color: persistColor}}/>
             {this.props.card.points ? <i className="fa fa-bolt fa-2x pull-right" style={{color: '#DAA520'}}>{this.props.card.points}</i> : null }
           </div>
-        } 
-        bsStyle={this.props.convertStyle(this.props.card.persist)} 
+        }
+        bsStyle={this.props.convertStyle(this.props.card.persist)}
         style={{backgroundColor: this.props.convertColor(this.props.card.persist), height: 250, marginLeft: 10, cursor: 'pointer'}}>
         <div>
           {this.props.card.white ? <div><i className="fa fa-bandcamp fa-2x" style={{color:'gray'}}>{this.props.card.white}</i></div> : null }
