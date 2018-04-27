@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import {} from 'react-bootstrap';
+import Random from 'react-randomizer';
+
+
 import NoblesDisplay from './gameplay_components/NoblesDisplay';
 import CardsDisplay from './gameplay_components/CardsDisplay';
 import GameButtons from './gameplay_components/GameButtons';
@@ -17,12 +20,11 @@ import nobles from '../json_files/nobles';
 import levelOneCards from '../json_files/levelOneCards';
 import levelTwoCards from '../json_files/levelTwoCards';
 import levelThreeCards from '../json_files/levelThreeCards';
-import Random from 'react-randomizer';
 
 let notificationCountdown;
 
 export default class GameScreen extends Component {
-  
+
   constructor(props) {
     super(props);
     this.toggleModal = this.toggleModal.bind(this);
@@ -43,7 +45,7 @@ export default class GameScreen extends Component {
     this.convertColor = this.convertColor.bind(this);
     this.convertStyle = this.convertStyle.bind(this);
     this.state = {
-      players: 4, 
+      players: 4,
       showModalDetails: false, showModalBoughtCards: false, showModalReservedCards: false, 
       showModalCard: false, showModalNobleSelect: false, showModalEnd: false, showModalNotification: false,
       whiteCoins: 0, blueCoins: 0, greenCoins: 0, redCoins: 0, blackCoins: 0, goldCoins: 5,
@@ -53,7 +55,7 @@ export default class GameScreen extends Component {
       currentNotification: '', qualifiedNobles: [],
       //player states:
       isPlayerTurn: true, didPlayerWin: false, didPlayerLose: false,
-      playerPoints: 0, 
+      playerPoints: 0,
       playerCards: [],
       playerReservedCards: [],
       playerCoins: {white: 0, blue: 0, green: 0, red: 0, black: 0, gold: 0, total: 0},
@@ -76,7 +78,7 @@ export default class GameScreen extends Component {
       coin = 7;
     }
     this.setState({
-      whiteCoins: coin, 
+      whiteCoins: coin,
       blueCoins: coin,
       greenCoins: coin,
       redCoins: coin,
@@ -420,11 +422,11 @@ export default class GameScreen extends Component {
           coinTotal={this.state.playerCoins.total}
         />
         <CardsDisplay
-          handleClickCard={this.handleClickCard} 
+          handleClickCard={this.handleClickCard}
           convertColor={this.convertColor}
           convertStyle={this.convertStyle}
-          levelOneCards={this.state.levelOneCards} 
-          levelTwoCards={this.state.levelTwoCards} 
+          levelOneCards={this.state.levelOneCards}
+          levelTwoCards={this.state.levelTwoCards}
           levelThreeCards={this.state.levelThreeCards}
         />
         <NoblesDisplay nobles={this.state.nobles}/>
