@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
-import {} from 'react-bootstrap';
 import Random from 'react-randomizer';
-
 
 import NoblesDisplay from './gameplay_components/NoblesDisplay';
 import CardsDisplay from './gameplay_components/CardsDisplay';
 import GameButtons from './gameplay_components/GameButtons';
 import CoinsDisplay from './gameplay_components/CoinsDisplay';
 import PlayerInfo from './gameplay_components/PlayerInfo';
-//import OpponentsInfo from './gameplay_components/OpponentsInfo';
 import ModalNotification from './modals/ModalNotification';
 import ModalDetails from './modals/ModalDetails';
 import ModalBoughtCards from './modals/ModalBoughtCards';
@@ -16,10 +13,10 @@ import ModalReservedCards from './modals/ModalReservedCards';
 import ModalCard from './modals/ModalCard';
 import ModalNobleSelect from './modals/ModalNobleSelect';
 import ModalEnd from './modals/ModalEnd';
-import nobles from '../json_files/nobles';
-import levelOneCards from '../json_files/levelOneCards';
-import levelTwoCards from '../json_files/levelTwoCards';
-import levelThreeCards from '../json_files/levelThreeCards';
+import Nobles from '../json_files/nobles';
+import LevelOneCards from '../json_files/levelOneCards';
+import LevelTwoCards from '../json_files/levelTwoCards';
+import LevelThreeCards from '../json_files/levelThreeCards';
 
 let notificationCountdown;
 
@@ -48,10 +45,10 @@ export default class GameScreen extends Component {
   }
 
   componentDidMount() {
-    this.setState({nobles: (Random.randomizeArray(nobles)).slice(0, this.state.players + 1)});
-    this.setState({levelOneCards: Random.randomizeArray(levelOneCards)});
-    this.setState({levelTwoCards: Random.randomizeArray(levelTwoCards)});
-    this.setState({levelThreeCards: Random.randomizeArray(levelThreeCards)});
+    const nobles = Random.randomizeArray(Nobles).slice(0, this.state.players + 1);
+    const levelOneCards = Random.randomizeArray(LevelOneCards);
+    const levelTwoCards = Random.randomizeArray(LevelTwoCards);
+    const levelThreeCards = Random.randomizeArray(LevelThreeCards);
     let coin;
     if(this.state.players === 2) {
       coin = 4;
@@ -61,13 +58,17 @@ export default class GameScreen extends Component {
       coin = 7;
     }
     this.setState({
+      nobles,
+      levelOneCards,
+      levelTwoCards,
+      levelThreeCards,
       whiteCoins: coin,
       blueCoins: coin,
       greenCoins: coin,
       redCoins: coin,
-      blackCoins: coin
+      blackCoins: coin,
+      pointsToWin: 15
     })
-    this.setState({pointsToWin: 15})
   }
 
   toggleModal = name => {
@@ -96,8 +97,10 @@ export default class GameScreen extends Component {
     } else {
     cardsState = 'level' + level + 'Cards';
     }
-    this.setState({selectedCard: this.state[cardsState][index]});
-    this.setState({selectedCardPosition: [level, index]})
+    this.setState({
+      selectedCard: this.state[cardsState][index],
+      selectedCardPosition: [level, index]
+    });
     this.toggleModal('Card');
   }
 
@@ -273,8 +276,7 @@ export default class GameScreen extends Component {
     const nobles = this.state.nobles.slice();
     const playerNobles = this.state.playerNobles.slice();
     playerNobles.push(nobles.splice(index, 1));
-    this.setState({nobles: nobles});
-    this.setState({playerNobles: playerNobles});
+    this.setState({nobles, playerNobles});
     this.updatePoints(3);
     setTimeout(() => this.checkPoints(), 1000);
     this.displayNotificationMessage('You Chose Your Noble Wisely!');
@@ -284,7 +286,7 @@ export default class GameScreen extends Component {
     if(this.state.playerPoints >= this.state.pointsToWin) {
       this.setState({didPlayerWin: true});
       this.toggleModal('End');
-    } 
+    }
   }
 
   convertColor = color => {
@@ -386,7 +388,6 @@ export default class GameScreen extends Component {
             nobles: this.state.playerNobles
           }}
         />
-        {/* <OpponentsInfo toggleModalDetails={this.toggleModalDetails}/> */}
         <CoinsDisplay
           isPlayerTurn={this.state.isPlayerTurn}
           displayNotificationMessage={this.displayNotificationMessage}
