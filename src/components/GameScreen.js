@@ -97,8 +97,10 @@ export default class GameScreen extends Component {
     } else {
     cardsState = 'level' + level + 'Cards';
     }
-    this.setState({selectedCard: this.state[cardsState][index]});
-    this.setState({selectedCardPosition: [level, index]})
+    this.setState({
+      selectedCard: this.state[cardsState][index],
+      selectedCardPosition: [level, index]
+    });
     this.toggleModal('Card');
   }
 
@@ -274,8 +276,7 @@ export default class GameScreen extends Component {
     const nobles = this.state.nobles.slice();
     const playerNobles = this.state.playerNobles.slice();
     playerNobles.push(nobles.splice(index, 1));
-    this.setState({nobles: nobles});
-    this.setState({playerNobles: playerNobles});
+    this.setState({nobles, playerNobles});
     this.updatePoints(3);
     setTimeout(() => this.checkPoints(), 1000);
     this.displayNotificationMessage('You Chose Your Noble Wisely!');
