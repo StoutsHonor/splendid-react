@@ -5,14 +5,6 @@ import ModalCoin from '../modals/ModalCoin';
 class CoinsDisplay extends Component {
   constructor(props) {
     super(props);
-    this.toggleButtonsOn = this.toggleButtonsOn.bind(this);
-    this.toggleButtonsOff = this.toggleButtonsOff.bind(this);
-    this.toggleModalCoin = this.toggleModalCoin.bind(this);
-    this.updateSelectedCoins = this.updateSelectedCoins.bind(this);
-    this.updateExchangeCoins = this.updateExchangeCoins.bind(this);
-    this.removeSelectedCoin = this.removeSelectedCoin.bind(this);
-    this.submitSelectedCoins = this.submitSelectedCoins.bind(this);
-    this.submitExchangeCoins = this.submitExchangeCoins.bind(this);
     this.state = {
       showButtons: false,
       showModalCoin: false,
@@ -21,21 +13,21 @@ class CoinsDisplay extends Component {
     }
   }
 
-  toggleButtonsOn() {
+  toggleButtonsOn = () => {
     if(this.props.isPlayerTurn) {this.setState({showButtons: true})};
   }
 
-  toggleButtonsOff() {
+  toggleButtonsOff = () => {
     this.setState({selectedCoins: []});
     this.setState({selectedCoinsExchange: []});
     this.setState({showButtons: false});
   }
 
-  toggleModalCoin() {
+  toggleModalCoin = () => {
     this.setState({showModalCoin: !this.state.showModalCoin});
   }
 
-  updateSelectedCoins(color, colorIndex) {
+  updateSelectedCoins = (color, colorIndex) => {
     const coins = this.state.selectedCoins;
     const duplicateCheck = (a) => {
       for(let i = 0; i < a.length; i++) {
@@ -59,7 +51,7 @@ class CoinsDisplay extends Component {
     }
   }
 
-  updateExchangeCoins(color) {
+  updateExchangeCoins = color => {
     let coinObj = {[color]: 1};
     let exchange = this.state.selectedCoinsExchange;
     exchange.forEach(coin => {
@@ -75,7 +67,7 @@ class CoinsDisplay extends Component {
     }
   }
 
-  removeSelectedCoin(index, name) {
+  removeSelectedCoin = (index, name) => {
     let coins = this.state[name];
     coins.splice(index, 1);
     this.setState({[name]: coins});
@@ -84,7 +76,7 @@ class CoinsDisplay extends Component {
     }
   }
 
-  submitSelectedCoins() {
+  submitSelectedCoins = () => {
     if(this.props.coinTotal + this.state.selectedCoins.length > 10) {
       this.toggleButtonsOff();
       this.props.displayNotificationMessage("You cannot have more than 10 coins total!");
@@ -105,7 +97,7 @@ class CoinsDisplay extends Component {
     }
   }
 
-  submitExchangeCoins() {
+  submitExchangeCoins = () => {
     if(this.props.coinTotal + this.state.selectedCoins.length - this.state.selectedCoinsExchange.length > 10) {
       this.props.displayNotificationMessage("You Cannot Have More Than 10 Coins Total");
       return;
