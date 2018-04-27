@@ -14,9 +14,9 @@ export default class ModalEnd extends Component {
         return <Redirect to='/score-screen' push={true}/>
       }
       return (
-        <Modal 
+        <Modal
           className="text-center"
-          bsSize="large" 
+          bsSize="large"
           aria-labelledby="contained-modal-title-sm"
           show={this.props.showModalEnd}
           onHide={() => this.props.toggleModal('End')}>

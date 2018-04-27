@@ -5,13 +5,13 @@ import Card from '../gameplay_components/Card';
 export default class ModalCard extends Component {
   render() {
     return (
-      <Modal 
+      <Modal
         className="text-center"
-        bsSize="large" 
+        bsSize="large"
         aria-labelledby="contained-modal-title-sm"
         show={this.props.showModalCard}
         onHide={() => this.props.toggleModal('Card')}>
-        
+
         <Modal.Header className="text-center">
           <Card
             className={'col-sm-3'}
@@ -26,7 +26,7 @@ export default class ModalCard extends Component {
         <Modal.Footer>
           {this.props.isPlayerTurn ?
             <div>
-              <Button 
+              <Button
                 className="btn btn-w-m btn-danger pull-left"
                 onClick={() => this.props.toggleModal('Card')}>Cancel
               </Button>
@@ -34,7 +34,7 @@ export default class ModalCard extends Component {
                 <Button
                   bsClass="btn btn-w-m btn-warning"
                   onClick={() => this.props.reserveCard(this.props.position[0], this.props.position[1])}>Reserve Card
-                </Button> 
+                </Button>
               :
                 <Button
                   bsClass="btn btn-w-m btn-warning disabled"

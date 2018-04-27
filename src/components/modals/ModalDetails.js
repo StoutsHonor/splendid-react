@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import {Modal, Button} from 'react-bootstrap';
 
 export default class ModalDetails extends Component {
-  
+
   render() {
     let info = this.props.playerDetails;
     return (
-      <Modal 
+      <Modal
         className="text-center"
-        bsSize="large" 
+        bsSize="large"
         aria-labelledby="contained-modal-title-sm"
         show={this.props.showModalDetails}
         onHide={() => this.props.toggleModal('Details')}>
@@ -17,15 +17,15 @@ export default class ModalDetails extends Component {
         </Modal.Header>
         <Modal.Body>
           <div className="text-center">
-            Points: 
+            Points:
             <i className="fa fa-bolt fa-2x"> {info.points}</i>
           </div>
           <div>
-            Reserved Cards: 
+            Reserved Cards:
             <i className="fa fa-lock fa-2x" style={{color: info.reservedCards.length < 3? 'black': 'red'}}> {info.reservedCards.length}</i>
           </div>
           <div className="text-center">
-            Total Coins: 
+            Total Coins:
             <i className="fa fa-bandcamp fa-2x" style={{color:'gray'}}>{info.coins.white}</i>
             <i className="fa fa-bandcamp fa-2x" style={{color:'blue'}}>{info.coins.blue}</i>
             <i className="fa fa-bandcamp fa-2x" style={{color:'green'}}>{info.coins.green}</i>
@@ -33,7 +33,7 @@ export default class ModalDetails extends Component {
             <i className="fa fa-bandcamp fa-2x" style={{color:'black'}}>{info.coins.black}</i>
             <i className="fa fa-bandcamp fa-2x" style={{color:'#DAA520'}}>{info.coins.gold}</i>
           </div>
-          
+
           <div className="text-center">
             Persistent Colors:
             <i className="fa fa-eercast fa-2x" style={{color:'gray'}}>{info.persistColors.white}</i>
