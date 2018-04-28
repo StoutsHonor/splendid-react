@@ -1,22 +1,23 @@
 import React, {Component} from 'react';
 import Random from 'react-randomizer';
 
-import NoblesDisplay from './gameplay_components/NoblesDisplay';
-import CardsDisplay from './gameplay_components/CardsDisplay';
-import GameButtons from './gameplay_components/GameButtons';
-import CoinsDisplay from './gameplay_components/CoinsDisplay';
-import PlayerInfo from './gameplay_components/PlayerInfo';
-import ModalNotification from './modals/ModalNotification';
-import ModalDetails from './modals/ModalDetails';
-import ModalBoughtCards from './modals/ModalBoughtCards';
-import ModalReservedCards from './modals/ModalReservedCards';
-import ModalCard from './modals/ModalCard';
-import ModalNobleSelect from './modals/ModalNobleSelect';
-import ModalEnd from './modals/ModalEnd';
-import Nobles from '../json_files/nobles';
 import LevelOneCards from '../json_files/levelOneCards';
 import LevelTwoCards from '../json_files/levelTwoCards';
 import LevelThreeCards from '../json_files/levelThreeCards';
+import Nobles from '../json_files/nobles';
+
+import CardsDisplay from './gameplay_components/CardsDisplay';
+import CoinsDisplay from './gameplay_components/CoinsDisplay';
+import GameButtons from './gameplay_components/GameButtons';
+import ModalBoughtCards from './modals/ModalBoughtCards';
+import ModalCard from './modals/ModalCard';
+import ModalDetails from './modals/ModalDetails';
+import ModalEnd from './modals/ModalEnd';
+import ModalNobleSelect from './modals/ModalNobleSelect';
+import ModalNotification from './modals/ModalNotification';
+import ModalReservedCards from './modals/ModalReservedCards';
+import NoblesDisplay from './gameplay_components/NoblesDisplay';
+import PlayerInfo from './gameplay_components/PlayerInfo';
 
 let notificationCountdown;
 
@@ -95,7 +96,7 @@ export default class GameScreen extends Component {
     if(level === 'Reserved') {
       cardsState = 'playerReservedCards';
     } else {
-    cardsState = 'level' + level + 'Cards';
+      cardsState = 'level' + level + 'Cards';
     }
     this.setState({
       selectedCard: this.state[cardsState][index],
