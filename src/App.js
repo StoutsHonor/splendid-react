@@ -4,6 +4,8 @@ import {} from 'react-redux';
 import {} from 'redux';
 import history from './history';
 
+import PlayersProvider from './contexts/PlayersProvider';
+
 import CreateGame from './components/CreateGame';
 import GameScreen from './components/GameScreen';
 import Home from './components/Home';
@@ -16,7 +18,7 @@ import WaitingRoom from './components/WaitingRoom';
 class App extends Component {
   render() {
     return (
-      <div>
+      <PlayersProvider>
         <Router history={history}>
           <Switch>
             <Route exact path='/' component={Home}/>
@@ -29,7 +31,7 @@ class App extends Component {
             <Route exact path='/score-screen' component={ScoreScreen}/>
           </Switch>
         </Router>
-      </div>
+      </PlayersProvider>
     );
   }
 }
