@@ -5,9 +5,9 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
-    "react": "^16.1.0",
+    "react": "^16.3.2",
     "react-bootstrap": "^0.31.5",
-    "react-dom": "^16.1.0",
+    "react-dom": "^16.3.2",
     "react-randomizer": "^1.0.6",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
