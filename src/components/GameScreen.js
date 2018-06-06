@@ -50,24 +50,24 @@ export default class GameScreen extends Component {
     const levelOneCards = Random.randomizeArray(LevelOneCards);
     const levelTwoCards = Random.randomizeArray(LevelTwoCards);
     const levelThreeCards = Random.randomizeArray(LevelThreeCards);
-    let coin;
+    let coinNumber;
     if(this.state.players === 2) {
-      coin = 4;
+      coinNumber = 4;
     } else if(this.state.players === 3) {
-      coin = 5;
+      coinNumber = 5;
     } else {
-      coin = 7;
+      coinNumber = 7;
     }
     this.setState({
       nobles,
       levelOneCards,
       levelTwoCards,
       levelThreeCards,
-      whiteCoins: coin,
-      blueCoins: coin,
-      greenCoins: coin,
-      redCoins: coin,
-      blackCoins: coin,
+      whiteCoins: coinNumber,
+      blueCoins: coinNumber,
+      greenCoins: coinNumber,
+      redCoins: coinNumber,
+      blackCoins: coinNumber,
       pointsToWin: 15
     })
   }
