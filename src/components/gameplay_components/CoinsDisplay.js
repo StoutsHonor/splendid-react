@@ -27,24 +27,25 @@ class CoinsDisplay extends Component {
     this.setState({showModalCoin: !this.state.showModalCoin});
   }
 
+  duplicateCheck = coins => {
+    for(let i = 0; i < coins.length; i++) {
+      for(let x = i; x < coins.length; x++) {
+        if(x !== i && coins[x] === coins[i]) {
+          return true;
+        }
+      }
+      return false;
+    }
+  }
+
   updateSelectedCoins = (color, colorIndex) => {
     const coins = this.state.selectedCoins;
-    const duplicateCheck = (a) => {
-      for(let i = 0; i < a.length; i++) {
-        for(let x = i; x < a.length; x++) {
-          if(x !== i && a[x] === a[i]) {
-            return true;
-          }
-        }
-        return false;
-      }
-    }
     //prevents player from picking up coin if there are no coins of that color
     if(!this.props.coins[colorIndex] && coins.length === 0){this.setState({showButtons: false}); return;}
     //prevents player from picking up 2 coins of the same color if colored coin is less than 3
     if(this.props.coins[colorIndex] <= 2 && coins.includes(color)){return;}
     //prevents player from picking up another coin of the same color if they already have 2 coins
-    if(coins.length < 3 && !duplicateCheck(coins) && this.props.coins[colorIndex]) {
+    if(coins.length < 3 && !this.duplicateCheck(coins) && this.props.coins[colorIndex]) {
       if(!coins.includes(color) || coins.length < 2) {
         this.setState({selectedCoins: coins.concat(color)});
       }
@@ -195,7 +196,7 @@ class CoinsDisplay extends Component {
             {this.props.coins[5]}
           </Panel>
         </div>
-        { this.state.selectedCoins.length ?
+        { this.state.selectedCoins.length &&
           <div className="text-center">
             <div>
               Coins to Pick Up:
@@ -206,9 +207,9 @@ class CoinsDisplay extends Component {
                 return <i className="fa fa-bandcamp fa-4x" style={{color: value}} onClick={() => {this.removeSelectedCoin(index, 'selectedCoins')}} key={index}/>
               })}
             </div>
-          </div>: null
+          </div>
         }
-        { this.props.coinTotal + this.state.selectedCoins.length > 10 ?
+        { this.props.coinTotal + this.state.selectedCoins.length > 10 &&
           <div className="text-center">
             <div>Your Coins:</div>
             <div style={{cursor: "pointer"}}>
@@ -229,12 +230,12 @@ class CoinsDisplay extends Component {
                 return <i className="fa fa-bandcamp fa-4x" style={{color: value}} onClick={() => {this.removeSelectedCoin(index, 'selectedCoinsExchange')}} key={index}/>
               })}
             </div>
-          </div> : null
+          </div>
         }
-        { this.state.showButtons && this.props.isPlayerTurn ?
+        { this.state.showButtons && this.props.isPlayerTurn &&
           <div className="text-center">
             <ButtonGroup>
-              <Button 
+              <Button
                 bsClass="btn btn-w-m btn-danger"
                 onClick={this.toggleButtonsOff}>
                 Reset Selection
@@ -250,7 +251,7 @@ class CoinsDisplay extends Component {
                 </Button>
               }
             </ButtonGroup>
-          </div> : null
+          </div>
         }
       </div>
     )
