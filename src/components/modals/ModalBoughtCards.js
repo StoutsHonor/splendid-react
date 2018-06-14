@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Modal, Button} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Modal, Button } from 'react-bootstrap';
 import Card from '../gameplay_components/Card';
 
 export default class ModalBoughtCards extends Component {

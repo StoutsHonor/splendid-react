@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {Modal, Button} from 'react-bootstrap';
-import {Redirect} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Modal, Button } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 
 export default class ModalEnd extends Component {
     constructor(props) {
