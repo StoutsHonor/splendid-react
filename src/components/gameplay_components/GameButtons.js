@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {Button, ButtonGroup} from 'react-bootstrap';
-import {Redirect} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Button, ButtonGroup } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 
 class GameButtons extends Component {
   constructor(props) {

@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Panel, ButtonGroup, Button} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Panel, ButtonGroup, Button } from 'react-bootstrap';
 import ModalCoin from '../modals/ModalCoin';
 
 class CoinsDisplay extends Component {

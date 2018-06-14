@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Router, Switch, Route} from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
 import history from './history';
 
 import PlayersProvider from './contexts/Players';

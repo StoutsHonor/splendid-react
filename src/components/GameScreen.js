@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Random from 'react-randomizer';
-import {PlayersConsumer} from '../contexts/Players';
+import { PlayersConsumer } from '../contexts/Players';
 
 import LevelOneCards from '../json_files/levelOneCards';
 import LevelTwoCards from '../json_files/levelTwoCards';
