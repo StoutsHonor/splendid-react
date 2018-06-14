@@ -24,3 +24,5 @@ export default class PlayersProvider extends Component {
     )
   }
 }
+
+export const PlayersConsumer = PlayersContext.Consumer;
