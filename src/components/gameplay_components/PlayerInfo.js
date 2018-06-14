@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Panel} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Panel } from 'react-bootstrap';
 
 class PlayerInfo extends Component {
   constructor(props) {

@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Random from 'react-randomizer';
+import { PlayersConsumer } from '../contexts/Players';
 
 import LevelOneCards from '../json_files/levelOneCards';
 import LevelTwoCards from '../json_files/levelTwoCards';
@@ -308,115 +309,122 @@ export default class GameScreen extends Component {
 
   render() {
     return (
-      <div>
-        <ModalNotification
-          toggleModal={this.toggleModal}
-          showModalNotification={this.state.showModalNotification}
-          clearNotificationCountdown={this.clearNotificationCountdown}
-          currentNotification={this.state.currentNotification}
-        />
-        <ModalDetails
-          toggleModal={this.toggleModal}
-          showModalDetails={this.state.showModalDetails}
-          playerDetails={{
-            points: this.state.playerPoints,
-            cards: this.state.playerCards,
-            reservedCards: this.state.playerReservedCards,
-            coins: this.state.playerCoins,
-            persistColors: this.state.playerPersistColors,
-            nobles: this.state.playerNobles
-          }}
-        />
-        <ModalBoughtCards
-          toggleModal={this.toggleModal}
-          showModalBoughtCards={this.state.showModalBoughtCards}
-          cards={this.state.playerCards}
-          convertColor={this.convertColor}
-          convertStyle={this.convertStyle}
-        />
-        <ModalReservedCards
-          toggleModal={this.toggleModal}
-          showModalReservedCards={this.state.showModalReservedCards}
-          reservedCards={this.state.playerReservedCards}
-          handleClickCard={this.handleClickCard}
-          convertColor={this.convertColor}
-          convertStyle={this.convertStyle}
-        />
-        <ModalCard
-          isPlayerTurn={this.state.isPlayerTurn}
-          toggleModal={this.toggleModal}
-          showModalCard={this.state.showModalCard}
-          displayNotificationMessage={this.displayNotificationMessage}
-          selectedCard={this.state.selectedCard}
-          position={this.state.selectedCardPosition}
-          convertColor={this.convertColor}
-          convertStyle={this.convertStyle}
-          buyCard={this.buyCard}
-          reserveCard={this.reserveCard}
-          costCalculator={this.costCalculator}
-          isAbleToBuy={this.isAbleToBuy}
-          playerDetails={{
-            points: this.state.playerPoints,
-            cards: this.state.playerCards,
-            reservedCards: this.state.playerReservedCards,
-            coins: this.state.playerCoins,
-            persistColors: this.state.playerPersistColors,
-            nobles: this.state.playerNobles
-          }}
-        />
-        <ModalNobleSelect
-          toggleModal={this.toggleModal}
-          nobles={this.state.nobles}
-          showModalNobleSelect={this.state.showModalNobleSelect}
-          qualifiedNobles={this.state.qualifiedNobles}
-          handleSelectedNoble={this.handleSelectedNoble}
-        />
-        <ModalEnd
-          toggleModal={this.toggleModal}
-          showModalEnd={this.state.showModalEnd}
-          didPlayerWin={this.state.didPlayerWin}
-          didPlayerLose={this.state.didPlayerLose}
-        />
-        <PlayerInfo
-          isPlayerTurn={this.state.isPlayerTurn}
-          toggleModal={this.toggleModal}
-          playerDetails={{
-            points: this.state.playerPoints,
-            cards: this.state.playerCards,
-            reservedCards: this.state.playerReservedCards,
-            coins: this.state.playerCoins,
-            persistColors: this.state.playerPersistColors,
-            nobles: this.state.playerNobles
-          }}
-        />
-        <CoinsDisplay
-          isPlayerTurn={this.state.isPlayerTurn}
-          displayNotificationMessage={this.displayNotificationMessage}
-          costCalculator={this.costCalculator}
-          adjustBankCoins={this.adjustBankCoins}
-          adjustPlayerCoins={this.adjustPlayerCoins}
-          checkNobles={this.checkNobles}
-          coins={[this.state.whiteCoins,
-            this.state.blueCoins,
-            this.state.greenCoins,
-            this.state.redCoins,
-            this.state.blackCoins,
-            this.state.goldCoins
-          ]}
-          playerCoins={this.state.playerCoins}
-          coinTotal={this.state.playerCoins.total}
-        />
-        <CardsDisplay
-          handleClickCard={this.handleClickCard}
-          convertColor={this.convertColor}
-          convertStyle={this.convertStyle}
-          levelOneCards={this.state.levelOneCards}
-          levelTwoCards={this.state.levelTwoCards}
-          levelThreeCards={this.state.levelThreeCards}
-        />
-        <NoblesDisplay nobles={this.state.nobles}/>
-        <GameButtons/>
-      </div>
+      <PlayersConsumer>
+        {value => {
+          const {players, changePlayerNumber} = value;
+          return (
+            <div>
+              <ModalNotification
+                toggleModal={this.toggleModal}
+                showModalNotification={this.state.showModalNotification}
+                clearNotificationCountdown={this.clearNotificationCountdown}
+                currentNotification={this.state.currentNotification}
+              />
+              <ModalDetails
+                toggleModal={this.toggleModal}
+                showModalDetails={this.state.showModalDetails}
+                playerDetails={{
+                  points: this.state.playerPoints,
+                  cards: this.state.playerCards,
+                  reservedCards: this.state.playerReservedCards,
+                  coins: this.state.playerCoins,
+                  persistColors: this.state.playerPersistColors,
+                  nobles: this.state.playerNobles
+                }}
+              />
+              <ModalBoughtCards
+                toggleModal={this.toggleModal}
+                showModalBoughtCards={this.state.showModalBoughtCards}
+                cards={this.state.playerCards}
+                convertColor={this.convertColor}
+                convertStyle={this.convertStyle}
+              />
+              <ModalReservedCards
+                toggleModal={this.toggleModal}
+                showModalReservedCards={this.state.showModalReservedCards}
+                reservedCards={this.state.playerReservedCards}
+                handleClickCard={this.handleClickCard}
+                convertColor={this.convertColor}
+                convertStyle={this.convertStyle}
+              />
+              <ModalCard
+                isPlayerTurn={this.state.isPlayerTurn}
+                toggleModal={this.toggleModal}
+                showModalCard={this.state.showModalCard}
+                displayNotificationMessage={this.displayNotificationMessage}
+                selectedCard={this.state.selectedCard}
+                position={this.state.selectedCardPosition}
+                convertColor={this.convertColor}
+                convertStyle={this.convertStyle}
+                buyCard={this.buyCard}
+                reserveCard={this.reserveCard}
+                costCalculator={this.costCalculator}
+                isAbleToBuy={this.isAbleToBuy}
+                playerDetails={{
+                  points: this.state.playerPoints,
+                  cards: this.state.playerCards,
+                  reservedCards: this.state.playerReservedCards,
+                  coins: this.state.playerCoins,
+                  persistColors: this.state.playerPersistColors,
+                  nobles: this.state.playerNobles
+                }}
+              />
+              <ModalNobleSelect
+                toggleModal={this.toggleModal}
+                nobles={this.state.nobles}
+                showModalNobleSelect={this.state.showModalNobleSelect}
+                qualifiedNobles={this.state.qualifiedNobles}
+                handleSelectedNoble={this.handleSelectedNoble}
+              />
+              <ModalEnd
+                toggleModal={this.toggleModal}
+                showModalEnd={this.state.showModalEnd}
+                didPlayerWin={this.state.didPlayerWin}
+                didPlayerLose={this.state.didPlayerLose}
+              />
+              <PlayerInfo
+                isPlayerTurn={this.state.isPlayerTurn}
+                toggleModal={this.toggleModal}
+                playerDetails={{
+                  points: this.state.playerPoints,
+                  cards: this.state.playerCards,
+                  reservedCards: this.state.playerReservedCards,
+                  coins: this.state.playerCoins,
+                  persistColors: this.state.playerPersistColors,
+                  nobles: this.state.playerNobles
+                }}
+              />
+              <CoinsDisplay
+                isPlayerTurn={this.state.isPlayerTurn}
+                displayNotificationMessage={this.displayNotificationMessage}
+                costCalculator={this.costCalculator}
+                adjustBankCoins={this.adjustBankCoins}
+                adjustPlayerCoins={this.adjustPlayerCoins}
+                checkNobles={this.checkNobles}
+                coins={[this.state.whiteCoins,
+                  this.state.blueCoins,
+                  this.state.greenCoins,
+                  this.state.redCoins,
+                  this.state.blackCoins,
+                  this.state.goldCoins
+                ]}
+                playerCoins={this.state.playerCoins}
+                coinTotal={this.state.playerCoins.total}
+              />
+              <CardsDisplay
+                handleClickCard={this.handleClickCard}
+                convertColor={this.convertColor}
+                convertStyle={this.convertStyle}
+                levelOneCards={this.state.levelOneCards}
+                levelTwoCards={this.state.levelTwoCards}
+                levelThreeCards={this.state.levelThreeCards}
+              />
+              <NoblesDisplay nobles={this.state.nobles}/>
+              <GameButtons/>
+            </div>
+          )
+        }}
+      </PlayersConsumer>
     )
   }
 }

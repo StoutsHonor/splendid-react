@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import {Router, Switch, Route} from 'react-router-dom';
-import {} from 'react-redux';
-import {} from 'redux';
+import { Router, Switch, Route } from 'react-router-dom';
 import history from './history';
 
-import PlayersProvider from './contexts/PlayersProvider';
+import PlayersProvider from './contexts/Players';
 
 import CreateGame from './components/CreateGame';
 import GameScreen from './components/GameScreen';

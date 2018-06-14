@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Panel} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Panel } from 'react-bootstrap';
 import Card from './Card';
 
 class CardsDisplay extends Component {

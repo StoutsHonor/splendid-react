@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 const PlayersContext = React.createContext();
 
@@ -24,3 +24,5 @@ export default class PlayersProvider extends Component {
     )
   }
 }
+
+export const PlayersConsumer = PlayersContext.Consumer;
