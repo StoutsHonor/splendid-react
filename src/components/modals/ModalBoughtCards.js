@@ -20,8 +20,6 @@ export default class ModalBoughtCards extends Component {
               key={index}
               index={index}
               level={'Bought'}
-              convertColor={this.props.convertColor}
-              convertStyle={this.props.convertStyle}
             />
           })}
         </Modal.Header>

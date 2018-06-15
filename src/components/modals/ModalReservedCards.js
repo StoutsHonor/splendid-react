@@ -21,8 +21,6 @@ export default class ModalReservedCards extends Component {
               index={index}
               level={'Reserved'}
               handleClickCard={this.props.handleClickCard}
-              convertColor={this.props.convertColor}
-              convertStyle={this.props.convertStyle}
             />
           })}
         </Modal.Header>

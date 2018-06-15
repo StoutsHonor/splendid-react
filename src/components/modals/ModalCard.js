@@ -16,8 +16,6 @@ export default class ModalCard extends Component {
           <Card
             className={'col-sm-3'}
             card={this.props.selectedCard}
-            convertColor={this.props.convertColor}
-            convertStyle={this.props.convertStyle}
           />
         </Modal.Header>
         <Modal.Body>
