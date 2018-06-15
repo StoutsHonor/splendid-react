@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import Card from '../gameplay_components/Card';
+import Card from '../shared/Card';
 
 export default class ModalCard extends Component {
   render() {
@@ -16,8 +16,6 @@ export default class ModalCard extends Component {
           <Card
             className={'col-sm-3'}
             card={this.props.selectedCard}
-            convertColor={this.props.convertColor}
-            convertStyle={this.props.convertStyle}
           />
         </Modal.Header>
         <Modal.Body>

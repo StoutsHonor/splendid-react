@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Panel } from 'react-bootstrap';
-import Card from './Card';
+import Card from '../shared/Card';
 
 class CardsDisplay extends Component {
 
@@ -17,8 +17,6 @@ class CardsDisplay extends Component {
                 index={index}
                 level={'Three'}
                 handleClickCard={this.props.handleClickCard}
-                convertColor={this.props.convertColor}
-                convertStyle={this.props.convertStyle}
               />
             }) : null }
         </Panel>
@@ -33,8 +31,6 @@ class CardsDisplay extends Component {
                 index={index}
                 level={'Two'}
                 handleClickCard={this.props.handleClickCard}
-                convertColor={this.props.convertColor}
-                convertStyle={this.props.convertStyle}
               />
             }) : null }
         </Panel>
@@ -49,8 +45,6 @@ class CardsDisplay extends Component {
                 index={index}
                 level={'One'}
                 handleClickCard={this.props.handleClickCard}
-                convertColor={this.props.convertColor}
-                convertStyle={this.props.convertStyle}
               />
             }) : null }
         </Panel>

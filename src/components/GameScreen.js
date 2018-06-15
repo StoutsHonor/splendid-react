@@ -47,7 +47,6 @@ class GameScreen extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.store, 'store')
     const nobles = Random.randomizeArray(Nobles).slice(0, this.state.players + 1);
     const levelOneCards = Random.randomizeArray(LevelOneCards);
     const levelTwoCards = Random.randomizeArray(LevelTwoCards);
@@ -292,22 +291,6 @@ class GameScreen extends Component {
     }
   }
 
-  convertColor = color => {
-    if(color === 'white') { return "#dcdcdc";}
-    if(color === 'blue') { return "#b0e0e6";}
-    if(color === 'green') {return "#3cb371";}
-    if(color === 'red') {return "#FFE4E1";}
-    if(color === 'black') { return "#696969";}
-    return color;
-  }
-
-  convertStyle = style => {
-    if(style === 'white' || style ==='black') { return 'default'}
-    if(style === 'blue') { return 'primary'}
-    if(style === 'green') { return 'success'}
-    if(style === 'red') { return 'danger'}
-  }
-
   render() {
     return (
       <div>
@@ -333,16 +316,12 @@ class GameScreen extends Component {
           toggleModal={this.toggleModal}
           showModalBoughtCards={this.state.showModalBoughtCards}
           cards={this.state.playerCards}
-          convertColor={this.convertColor}
-          convertStyle={this.convertStyle}
         />
         <ModalReservedCards
           toggleModal={this.toggleModal}
           showModalReservedCards={this.state.showModalReservedCards}
           reservedCards={this.state.playerReservedCards}
           handleClickCard={this.handleClickCard}
-          convertColor={this.convertColor}
-          convertStyle={this.convertStyle}
         />
         <ModalCard
           isPlayerTurn={this.state.isPlayerTurn}
@@ -351,8 +330,6 @@ class GameScreen extends Component {
           displayNotificationMessage={this.displayNotificationMessage}
           selectedCard={this.state.selectedCard}
           position={this.state.selectedCardPosition}
-          convertColor={this.convertColor}
-          convertStyle={this.convertStyle}
           buyCard={this.buyCard}
           reserveCard={this.reserveCard}
           costCalculator={this.costCalculator}
@@ -410,8 +387,6 @@ class GameScreen extends Component {
         />
         <CardsDisplay
           handleClickCard={this.handleClickCard}
-          convertColor={this.convertColor}
-          convertStyle={this.convertStyle}
           levelOneCards={this.state.levelOneCards}
           levelTwoCards={this.state.levelTwoCards}
           levelThreeCards={this.state.levelThreeCards}

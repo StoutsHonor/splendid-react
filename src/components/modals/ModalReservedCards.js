@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import Card from '../gameplay_components/Card';
+import Card from '../shared/Card';
 
 export default class ModalReservedCards extends Component {
 
@@ -21,8 +21,6 @@ export default class ModalReservedCards extends Component {
               index={index}
               level={'Reserved'}
               handleClickCard={this.props.handleClickCard}
-              convertColor={this.props.convertColor}
-              convertStyle={this.props.convertStyle}
             />
           })}
         </Modal.Header>
