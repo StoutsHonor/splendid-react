@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Panel } from 'react-bootstrap';
-import Card from './Card';
+import Card from '../shared/Card';
 
 class CardsDisplay extends Component {
 
