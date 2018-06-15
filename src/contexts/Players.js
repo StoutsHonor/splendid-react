@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const PlayersContext = React.createContext();
 
-export default class PlayersProvider extends Component {
+export class PlayersProvider extends Component {
   state = {
     players: 4
   }
@@ -15,8 +15,12 @@ export default class PlayersProvider extends Component {
     return (
       <PlayersContext.Provider
         value={{
-          players: this.state.players,
-          changePlayerNumber: this.changePlayerNumber
+          state: {
+            players: this.state.players,
+          },
+          actions: {
+            changePlayerNumber: this.changePlayerNumber
+          }
         }}
       >
         {this.props.children}

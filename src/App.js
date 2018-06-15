@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 import history from './history';
 
-import PlayersProvider from './contexts/Players';
+import { Providers } from './contexts/index';
 
 import CreateGame from './components/CreateGame';
 import GameScreen from './components/GameScreen';
@@ -16,7 +16,7 @@ import WaitingRoom from './components/WaitingRoom';
 class App extends Component {
   render() {
     return (
-      <PlayersProvider>
+      <Providers>
         <Router history={history}>
           <Switch>
             <Route exact path='/' component={Home}/>
@@ -29,7 +29,7 @@ class App extends Component {
             <Route exact path='/score-screen' component={ScoreScreen}/>
           </Switch>
         </Router>
-      </PlayersProvider>
+      </Providers>
     );
   }
 }
