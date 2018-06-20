@@ -2,33 +2,33 @@ import React from 'react';
 
 import { ColorSchemesProvider, ColorSchemesConsumer } from './ColorSchemes';
 import { ModalStatesProvider, ModalStatesConsumer } from './ModalStates';
-import { PlayersProvider, PlayersConsumer } from './Players';
+import { PlayerStatesProvider, PlayerStatesConsumer } from './PlayerStates';
 
 export function Providers({children}) {
   return (
     <ColorSchemesProvider>
     <ModalStatesProvider>
-    <PlayersProvider>
+    <PlayerStatesProvider>
       {children}
-    </PlayersProvider>
+    </PlayerStatesProvider>
     </ModalStatesProvider>
     </ColorSchemesProvider>
   )
 }
 
-export function Consumers({children}) {
+export function AllConsumers({children}) {
   return (
     <ColorSchemesConsumer>
       {colorSchemes => (
         <ModalStatesConsumer>
           {modalStates => (
-            <PlayersConsumer>
-              {players => children({
+            <PlayerStatesConsumer>
+              {playerStates => children({
                 colorSchemes,
                 modalStates,
-                players
+                playerStates
               })}
-            </PlayersConsumer>
+            </PlayerStatesConsumer>
           )}
         </ModalStatesConsumer>
       )}

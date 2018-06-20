@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Random from 'react-randomizer';
-import { Consumers } from '../contexts/index';
+import { AllConsumers } from '../contexts/index';
 
 import LevelOneCards from '../json_files/levelOneCards';
 import LevelTwoCards from '../json_files/levelTwoCards';
@@ -294,6 +294,45 @@ class GameScreen extends Component {
   render() {
     return (
       <div>
+        <PlayerInfo
+          isPlayerTurn={this.state.isPlayerTurn}
+          toggleModal={this.toggleModal}
+          playerDetails={{
+            points: this.state.playerPoints,
+            cards: this.state.playerCards,
+            reservedCards: this.state.playerReservedCards,
+            coins: this.state.playerCoins,
+            persistColors: this.state.playerPersistColors,
+            nobles: this.state.playerNobles
+          }}
+        />
+        <CoinsDisplay
+          isPlayerTurn={this.state.isPlayerTurn}
+          displayNotificationMessage={this.displayNotificationMessage}
+          costCalculator={this.costCalculator}
+          adjustBankCoins={this.adjustBankCoins}
+          adjustPlayerCoins={this.adjustPlayerCoins}
+          checkNobles={this.checkNobles}
+          coins={[this.state.whiteCoins,
+            this.state.blueCoins,
+            this.state.greenCoins,
+            this.state.redCoins,
+            this.state.blackCoins,
+            this.state.goldCoins
+          ]}
+          playerCoins={this.state.playerCoins}
+          coinTotal={this.state.playerCoins.total}
+        />
+        <CardsDisplay
+          handleClickCard={this.handleClickCard}
+          levelOneCards={this.state.levelOneCards}
+          levelTwoCards={this.state.levelTwoCards}
+          levelThreeCards={this.state.levelThreeCards}
+        />
+        <NoblesDisplay nobles={this.state.nobles}/>
+        <GameButtons/>
+
+        {/* Modal Components */}
         <ModalNotification
           toggleModal={this.toggleModal}
           showModalNotification={this.state.showModalNotification}
@@ -356,50 +395,13 @@ class GameScreen extends Component {
           didPlayerWin={this.state.didPlayerWin}
           didPlayerLose={this.state.didPlayerLose}
         />
-        <PlayerInfo
-          isPlayerTurn={this.state.isPlayerTurn}
-          toggleModal={this.toggleModal}
-          playerDetails={{
-            points: this.state.playerPoints,
-            cards: this.state.playerCards,
-            reservedCards: this.state.playerReservedCards,
-            coins: this.state.playerCoins,
-            persistColors: this.state.playerPersistColors,
-            nobles: this.state.playerNobles
-          }}
-        />
-        <CoinsDisplay
-          isPlayerTurn={this.state.isPlayerTurn}
-          displayNotificationMessage={this.displayNotificationMessage}
-          costCalculator={this.costCalculator}
-          adjustBankCoins={this.adjustBankCoins}
-          adjustPlayerCoins={this.adjustPlayerCoins}
-          checkNobles={this.checkNobles}
-          coins={[this.state.whiteCoins,
-            this.state.blueCoins,
-            this.state.greenCoins,
-            this.state.redCoins,
-            this.state.blackCoins,
-            this.state.goldCoins
-          ]}
-          playerCoins={this.state.playerCoins}
-          coinTotal={this.state.playerCoins.total}
-        />
-        <CardsDisplay
-          handleClickCard={this.handleClickCard}
-          levelOneCards={this.state.levelOneCards}
-          levelTwoCards={this.state.levelTwoCards}
-          levelThreeCards={this.state.levelThreeCards}
-        />
-        <NoblesDisplay nobles={this.state.nobles}/>
-        <GameButtons/>
       </div>
     )
   }
 }
 
 export default props => (
-  <Consumers>
+  <AllConsumers>
     {store => <GameScreen {...props} store={store} />}
-  </Consumers>
+  </AllConsumers>
 )
