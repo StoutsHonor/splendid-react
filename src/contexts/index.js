@@ -16,7 +16,7 @@ export function Providers({children}) {
   )
 }
 
-export function Consumers({children}) {
+export function AllConsumers({children}) {
   return (
     <ColorSchemesConsumer>
       {colorSchemes => (

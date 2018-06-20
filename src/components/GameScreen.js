@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Random from 'react-randomizer';
-import { Consumers } from '../contexts/index';
+import { AllConsumers } from '../contexts/index';
 
 import LevelOneCards from '../json_files/levelOneCards';
 import LevelTwoCards from '../json_files/levelTwoCards';
@@ -399,7 +399,7 @@ class GameScreen extends Component {
 }
 
 export default props => (
-  <Consumers>
+  <AllConsumers>
     {store => <GameScreen {...props} store={store} />}
-  </Consumers>
+  </AllConsumers>
 )
